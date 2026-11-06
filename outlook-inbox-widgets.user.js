@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.1.0
+// @version      0.1.1
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
+// @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFEUlEQVR4nO2dS68URRTHjxcWrtxBgJUPFpooCMRHwhrYoK7wc/CIIawGRAzhA0igq2YMz5trTAT9AMZEYKvLKzOneiIaFj4ikGguUObU3Jnbc6fvTPdM9dSjzy+pZALp01X/f3dVdd+qPgAMwzAMwzAMwzBMQMjObpB4FoS6BxJ/A4FPQSoddRHURnwAUt0FgZ9C0t41f+G/TF8Dqb4Ggc+dCyKdG/IcBH4FMn11PuKLzkEQ6i/nDZfelX9AqsPVit/sHAKJK2snxWcg1XVz4ktqOyzpTRA7S3qTaWuSfgBC3VjVoK/HCiTpgeq6neyVL/A+tPBtqDsC94DAdsaEP+GyesX+iajPz4ovl7fYP0mgkBbDJixZPkFn92DApVkAX/mjNNXeQXdEWjW7b4E1aKq5Nthctxc4MqS6meklztgLbOb5AwMqHukDRqQfZnS6YzGw+n0QuIXb7AWODJHuyIwDDywGzjzh1mGqOS2kzVoX9BSskX3gYBxoxQYUhw1wDBvgGDbAMd4YIDvvgcRjINKTQReJx0xbqtTKatCryy+BxO88eD2srRaB35q22dSqMGWCxii+7Be8ZVWrwhQNehnfz6n43yDxAkg8H1i50Kv7uvYk7Xf9NUDiiQ2uHgkNvQCh0NALps75XdFxnw04nbld/wjShEae+Nm24OkwDKDXsUJ9MXz1qKbXJmj9Akh1ceTCobYEZwD9pgaFYoLeQHxzR6xrVzAG9Bvmuwl6jPhE0Ab4boKeIH4UBvhqgi4gfjQG+GaCLih+VAb4YoIuIX50Brg2QZcUP0oDXJmgpxA/WgPmbYKeUvyoDZiXCbOIH70BG7/8svPuyEbs6A0gGnozCFy2akKe+HQOOlcZojdA53YRs3VHNmNGbUAj9/XvLzPdCbZjRmuA3mBwpCV+0w7MVcSM0oBJg2Mjr/82gm0eP46oZqmYtXwOKCpEI9eE73O3hvY2kfwwVcxaPQmXFaChF0BgkjOY/gQSr5ki8OfRgRaTsTHL1CEaA2aZkwtaKFVkIziugFCfTIxXpi5RGGDjgSjBN1a3hj7JueIfm+1TLXy9cLyidQreANtPui18ERK1H2T6MYj0iPlN/zYNReoWtAGzvoeZB5PeRwVrQAjiFzEhSAN6a2nCEH+SCfRVlOAM4JVx2l6ligaldZP508MwxC+yNpT2C/h7B9CmjPXTQ/UQEjzlfKOFKFlMndXDkfY0u+/4awBBGxny74IICnq+P2Bth8xt92Ipu0Wob8LYIdOHblWJRz3YaHF+xnJ0Yrczq1ZugkYKG+AYNsAxbIBj2ADHsAGOYQMcwwY4hg1wDBtQNwOS7k7zJV0q9Hs9Qn2++gfzc7U4Vs7dADw1+D/6PdqY/1b//99aHCvnbcCkv5fysRbwsTEywGMr+XCrr12BcHBsdR9uNTlTeoEpecFQhbo7zdp72nlCOQZGjlXnQOIjEOqz0cZ04zo2++ligb9CJR/vpswRTD7NzkcVfbw7sy6G1mYy+Qi1OHZ8mBpajz/ImITPTNoOZpgk3TeUwEF03wSrmFRNg/6tzSlMMly5vxUkdjK9xCJYh/JkDSfxaZu0HXUnMVd+Z2gVXQtfri6H2Ggaq5smcwTNAOqQW2CJNvulO8yAa/r8eaWx6kMnoFRN2QcOLtpc+ZWL34fyZFGqJk5lqHsDrlqsrtsZB6Vq6i1Dv2Me1uqUzFPgj2aqaX22wzAMwzAMwzAMw0CV/A/uwEX3AsFDWQAAAABJRU5ErkJggg==
 // @match        https://outlook.office.com/*
 // @match        https://outlook.office365.com/*
 // @match        https://outlook.live.com/*
