@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.1.6
+// @version      0.2.0
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -29,6 +29,8 @@
     todo: 'self',
     todoExpanded: false,
     selfOrder: [],
+    titleEdits: {},
+    allDayExpanded: false,
     scheduleDate: '',
     schedule: [],
     localBlocks: []
@@ -41,6 +43,8 @@
   let scanComplete = false;
   let scanProgress = 0;
   let scannedScroller = null;
+  let pendingBlock = null;
+  let flowCleanup = null;
   let focus = { part: 0, elapsed: 0, running: false, finished: false, last: 0 };
   const PARTS = [
     ['focus', 25, 'Focus 1 of 2'],
@@ -92,7 +96,10 @@
   }
   const save = () => GM_setValue(STORE, state);
   const todayKey = () => new Date().toLocaleDateString('en-CA');
-  const personalInbox = () => /^\/mail(?:\/?$|\/inbox(?:\/|$))/i.test(location.pathname);
+  const personalInbox = () => /^\/mail(?:\/?$|\/inbox\/?$)/i.test(location.pathname);
+  const searchActive = () => document.documentElement.dataset.erinSearch === 'open' ||
+    !!document.querySelector('button[aria-label="Exit search"]') || /\/search(?:\/|$)/i.test(location.pathname);
+  const widgetContext = () => personalInbox() && !searchActive();
   const visible = el => !!el && el.getClientRects().length > 0;
   const messageList = () => {
     const lists = [...document.querySelectorAll('[data-app-section="MessageList"]')];
@@ -119,6 +126,41 @@
     @media(prefers-reduced-motion:reduce){#${ROOT_ID} *{scroll-behavior:auto!important;transition:none!important}}
   `);
 
+  GM_addStyle(`
+    #${ROOT_ID}{padding:0 0 8px;--on-brand:#fff;min-width:0}
+    #${ROOT_ID} .eiw-shell{width:100%;min-width:0}
+    #${ROOT_ID} .eiw-top{height:44px;gap:8px;padding:5px 7px 5px 12px}
+    #${ROOT_ID} .eiw-title{flex:0 0 auto;font-size:14px}
+    #${ROOT_ID} .eiw-summary{flex:1;min-width:0;overflow:visible;text-overflow:clip;font-size:11px;line-height:1.1}
+    #${ROOT_ID} .eiw-summary b{font-size:15px;color:var(--brand);font-weight:750}
+    #${ROOT_ID} .eiw-tab[aria-selected="true"],#${ROOT_ID} .eiw-switch button[aria-pressed="true"]{color:var(--on-brand)!important}
+    #${ROOT_ID} .eiw-collapse{position:relative;font-size:0}
+    #${ROOT_ID} .eiw-collapse:after{content:"";display:block;width:18px;height:18px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 5.5 8 10.5l5-5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .18s ease}
+    #${ROOT_ID}[data-collapsed="true"] .eiw-collapse:after{transform:rotate(180deg)}
+    #${ROOT_ID} .eiw-panel{overflow:hidden;padding:10px 12px 12px}
+    #${ROOT_ID} .eiw-timeline{height:98px;padding-top:12px}.eiw-total,.eiw-bcount{display:none}.eiw-line{height:54px}
+    #${ROOT_ID} .eiw-all-day{display:flex;align-items:flex-start;gap:6px;margin:4px 0 9px}
+    #${ROOT_ID} .eiw-day{flex:1;display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px;padding:0;overflow:hidden;max-height:30px}
+    #${ROOT_ID} .eiw-day.expanded{max-height:none}.eiw-pill{max-width:min(240px,100%)}
+    #${ROOT_ID} .eiw-day-toggle{display:none;flex:none}.eiw-day-toggle.visible{display:block}
+    #${ROOT_ID} .eiw-strip{height:70px;margin:19px 0 10px;touch-action:none;user-select:none;cursor:crosshair}
+    #${ROOT_ID} .eiw-selection{position:absolute;top:6px;height:54px;border:2px dashed var(--brand);background:color-mix(in srgb,var(--brand) 12%,transparent);border-radius:5px;pointer-events:none}
+    #${ROOT_ID} .eiw-composer{display:grid;grid-template-columns:minmax(110px,1fr) auto;gap:6px;align-items:center;padding:8px;border:1px solid var(--brand);border-radius:8px;background:var(--bg);margin:8px 0}
+    #${ROOT_ID} .eiw-composer input{min-width:0;height:30px;border:1px solid var(--line);border-radius:5px;padding:0 8px;background:var(--bg)}
+    #${ROOT_ID} .eiw-kinds{display:flex;gap:4px;flex-wrap:wrap}.eiw-kinds button{padding:3px 7px}
+    #${ROOT_ID} .eiw-cf{position:relative;height:min(355px,42vh);overflow:auto;overscroll-behavior:contain;padding:4px 3px 74px;scrollbar-width:thin}
+    #${ROOT_ID} .eiw-cfst{position:relative}.eiw-card{position:absolute;left:0;right:0;transform-origin:50% 0;transition:transform .16s ease,opacity .16s ease,box-shadow .16s ease;height:92px;min-height:92px;padding:9px 40px 8px 11px;display:block}
+    #${ROOT_ID} .eiw-card.expanded{position:relative!important;transform:none!important;margin-bottom:7px;opacity:1!important}
+    #${ROOT_ID} .eiw-cf.expanded{height:min(480px,55vh)}#${ROOT_ID} .eiw-cf.expanded .eiw-cfst{height:auto!important}
+    #${ROOT_ID} .eiw-card-title{height:auto;min-height:19px;line-height:19px;white-space:nowrap;padding-right:95px;cursor:default}
+    #${ROOT_ID} .eiw-reply{position:absolute;right:38px;top:8px;max-width:120px;text-align:right;color:var(--mute);font-size:9px;line-height:1.2;white-space:nowrap}.eiw-reply b{font-size:11px;color:var(--ink)}
+    #${ROOT_ID} .eiw-open{position:absolute;right:7px;top:31px}.eiw-grip{position:absolute;right:8px;bottom:7px;border:0;background:transparent;color:var(--mute);cursor:grab;font-size:16px;touch-action:none}
+    #${ROOT_ID} .eiw-people{display:flex;gap:0;height:18px;overflow:hidden}.eiw-person+.eiw-person:before{content:"·";padding:0 5px;color:var(--mute)}
+    #${ROOT_ID} .eiw-flow-foot{display:flex;gap:6px;justify-content:flex-end;align-items:center;margin-top:7px}.eiw-jump{opacity:0;pointer-events:none;transition:opacity .15s}.eiw-jump.visible{opacity:1;pointer-events:auto}
+    #${ROOT_ID} .eiw-tags{margin-top:2px}.eiw-tag{background:var(--tag-bg,color-mix(in srgb,var(--orange) 18%,var(--bg)));color:var(--tag-fg,color-mix(in srgb,var(--orange) 75%,var(--ink)));border:1px solid var(--tag-border,transparent)}
+    @container(max-width:519px){#${ROOT_ID} .eiw-summary{font-size:10px}#${ROOT_ID} .eiw-summary b{font-size:14px}#${ROOT_ID} .eiw-panel{padding-inline:8px}#${ROOT_ID} .eiw-composer{grid-template-columns:1fr}.eiw-card{height:96px;min-height:96px}.eiw-reply{max-width:96px}}
+  `);
+
   function classify(title) {
     const t = title.toLowerCase();
     if (/focus|write|draft|review/.test(t)) return 'focus';
@@ -132,6 +174,14 @@
     const cleaned = title.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+/i, '');
     const date = new Date(cleaned);
     return Number.isNaN(date.getTime()) ? null : date;
+  }
+
+  function rowDate(row, group) {
+    const tokens = [...row.querySelectorAll('span,time')].map(n => n.textContent.trim()).filter(Boolean);
+    const clock = tokens.find(t => /^\d{1,2}:\d{2}\s*[AP]M$/i.test(t));
+    if (clock && /today|pinned/i.test(group || '')) return new Date(`${todayKey()} ${clock}`);
+    const dated = tokens.find(t => /^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\s*(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}/i.test(t));
+    return dated ? parseDateTitle(dated) : null;
   }
 
   function scrapeMessages() {
@@ -150,16 +200,22 @@
       const mark = el.querySelector('button[title="Mark as read"],button[aria-label="Mark as read"]');
       const unread = !!mark || /^Unread\b/i.test(el.getAttribute('aria-label') || '');
       const categoryNodes = [...el.querySelectorAll('[aria-label^="Search for all messages with the category"], .fui-Tag__primaryText')];
-      const categories = [...new Set(categoryNodes.map(n => n.textContent.trim()).filter(Boolean))];
+      const categoryStyles = categoryNodes.map(n => {
+        const name = n.textContent.trim();
+        const tag = n.closest('[class*="Tag"],button,span') || n;
+        const style = getComputedStyle(tag);
+        return { name, bg: style.backgroundColor, color: style.color, border: style.borderColor };
+      }).filter(x => x.name);
+      const categories = [...new Set(categoryStyles.map(x => x.name))];
       const sender = el.querySelector('span[title*="@"]')?.textContent.trim() ||
         el.querySelector('.ESO13 span')?.textContent.trim() ||
         [...el.querySelectorAll('span')].find(n => visible(n) && getComputedStyle(n).fontSize === '14px' && !n.className.includes('Avatar'))?.textContent.trim() || 'Unknown sender';
       const subject = el.querySelector('.TtcXM')?.textContent.trim() ||
         [...el.querySelectorAll('span')].find(n => visible(n) && getComputedStyle(n).fontSize === '13px' && n.textContent.trim().length > 4)?.textContent.trim() || '(no subject)';
       const dated = [...el.querySelectorAll('[title]')].find(n => /\b20\d{2}\b/.test(n.title) && /\d{1,2}:\d{2}/.test(n.title));
-      const date = parseDateTitle(dated?.title);
+      const date = parseDateTitle(dated?.title) || rowDate(el, currentGroup);
       const old = cache.get(id) || {};
-      const next = { id, unread, categories, sender, subject, date: date || old.date || null, group: currentGroup || old.group || '', row: el };
+      const next = { id, unread, categories, categoryStyles, sender, subject, date: date || old.date || null, group: currentGroup || old.group || '', row: el };
       if (!old.id || old.unread !== next.unread || old.subject !== next.subject || old.sender !== next.sender || old.group !== next.group || String(old.date) !== String(next.date) || old.categories?.join('\n') !== next.categories.join('\n')) changed = true;
       cache.set(id, next);
     });
@@ -214,7 +270,7 @@
   }
 
   function timelineHTML(items) {
-    if (!items.length) return `<div class="eiw-empty">${scanning ? 'Scanning the complete inbox…' : 'Refresh the inbox scan to collect message rows.'}</div>`;
+    if (!items.length) return `<div class="eiw-empty">${scanning ? 'Scanning the inbox…' : 'No inbox messages loaded yet.'}</div>`;
     const names = ['Today', 'Yesterday', 'This week', 'This month', 'Last month', 'Earlier'];
     const buckets = names.map((name, index) => ({ name, items: items.filter(x => bucketFor(x) === index) }));
     const unread = items.filter(x => x.unread).sort((a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
@@ -224,26 +280,30 @@
       const dots = bucket.items.map((item, i) => item.unread ? `<i class="eiw-dot${item === newest ? ' newest' : ''}${item === oldest ? ' oldest' : ''}" style="left:${((i + .5) / bucket.items.length) * 100}%" title="${esc(item.subject)} — ${esc(formatStamp(item))}"></i>` : '').join('');
       return `<div class="eiw-bucket" style="flex:${count}"><span class="eiw-bname">${bucket.name}</span><span class="eiw-bcount"><b>${bucket.items.filter(x => x.unread).length}</b> / ${bucket.items.length}</span>${dots}</div>`;
     }).join('');
-    return `<div class="eiw-timeline"><div class="eiw-total"><b>${unread.length}</b> / ${items.length}<br>unread / ${scanComplete ? 'inbox' : 'loaded'}</div><div class="eiw-line">${groups}</div><div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatStamp(newest))}</span><span><b>Oldest unread</b><br>${esc(formatStamp(oldest, true))}</span></div></div>`;
+    return `<div class="eiw-timeline"><div class="eiw-line">${groups}</div><div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatStamp(newest))}</span><span><b>Oldest unread</b><br>${esc(formatStamp(oldest, true))}</span></div></div>`;
   }
 
   function scheduleHTML() {
     const events = state.scheduleDate === todayKey() ? state.schedule : [];
     const allDay = events.filter(x => x.allDay);
-    const timed = events.filter(x => !x.allDay);
+    const timed = events.filter(x => !x.allDay).concat(state.localBlocks.filter(x => x.date === todayKey() && Number.isFinite(x.start) && Number.isFinite(x.end)));
     const dayStart = 8 * 60, dayEnd = 17 * 60, nowDate = new Date(), now = nowDate.getHours() * 60 + nowDate.getMinutes();
     const pos = m => Math.max(0, Math.min(100, (m - dayStart) / (dayEnd - dayStart) * 100));
     const hours = Array.from({length: 10}, (_, i) => `<i class="eiw-hour" style="left:${i / 9 * 100}%">${(i + 8) > 12 ? i - 4 : i + 8}</i>`).join('');
     const blocks = timed.filter(x => x.end > dayStart && x.start < dayEnd).map(x => `<div class="eiw-event ${x.kind}" title="${esc(x.title)}" style="left:${pos(x.start)}%;width:${Math.max(1.5, pos(x.end) - pos(x.start))}%">${esc(x.title)}</div>`).join('');
     const upcoming = timed.filter(x => x.end > now).sort((a,b) => a.start-b.start)[0];
     const mins = upcoming ? Math.max(0, upcoming.start - now) : 0;
-    const local = state.localBlocks.filter(x => x.date === todayKey());
-    return `<div class="eiw-hd"><b>Today · ${new Date().toLocaleDateString([], {month:'short',day:'numeric'})}</b><button class="eiw-btn" data-action="add-block">Add planning block</button></div>
-      <p class="eiw-note">Open Outlook’s native My Day once to refresh live calendar events. Planning blocks stay only in this userscript.</p>
-      <div class="eiw-day">${allDay.length ? allDay.map(x => `<span class="eiw-pill">${esc(x.title)}</span>`).join('') : '<span class="eiw-note">No all-day events loaded</span>'}</div>
-      <div class="eiw-strip">${hours}${blocks}${now >= dayStart && now <= dayEnd ? `<i class="eiw-now" style="left:${pos(now)}%"></i>` : ''}</div>
+    const composer = pendingBlock ? `<div class="eiw-composer"><input data-block-title aria-label="Time block title" placeholder="What are you blocking time for?" value="${esc(pendingBlock.title || '')}"><div class="eiw-kinds">${[['meeting','Meeting'],['focus','Focus'],['admin','Admin'],['break','Break']].map(([k,l]) => `<button class="eiw-btn" data-save-kind="${k}">${l}</button>`).join('')}<button class="eiw-btn" data-action="cancel-block">Cancel</button></div></div>` : '';
+    return `<div class="eiw-hd"><b>Today · ${new Date().toLocaleDateString([], {month:'short',day:'numeric'})}</b><span class="eiw-note">Drag the timeline to block local time</span></div>
+      <div class="eiw-all-day"><div class="eiw-day ${state.allDayExpanded ? 'expanded' : ''}">${allDay.length ? allDay.map(x => `<span class="eiw-pill">${esc(x.title)}</span>`).join('') : '<span class="eiw-note">No all-day events</span>'}</div><button class="eiw-btn eiw-day-toggle" data-action="all-day-toggle">${state.allDayExpanded ? 'Collapse' : 'All'}</button></div>
+      <div class="eiw-strip" data-schedule-strip data-start="${dayStart}" data-end="${dayEnd}">${hours}${blocks}${now >= dayStart && now <= dayEnd ? `<i class="eiw-now" style="left:${pos(now)}%"></i>` : ''}<i class="eiw-selection" hidden></i></div>${composer}
       <div class="eiw-next">${upcoming ? `Next: ${esc(upcoming.title)} · ${mins ? `in ${mins}m` : 'now'}` : 'No upcoming timed event loaded'}</div>
-      <div class="eiw-local">Local planning blocks (click to remove)</div><div class="eiw-local-list">${local.length ? local.map(x => `<button data-remove-block="${esc(x.id)}">${esc(x.time)} · ${esc(x.title)}</button>`).join('') : '<span class="eiw-note">None</span>'}</div>`;
+      <div class="eiw-local-list">${state.localBlocks.filter(x => x.date === todayKey()).map(x => `<button data-remove-block="${esc(x.id)}" title="Remove local block">${esc(minutesLabel(x.start))} · ${esc(x.title)}</button>`).join('')}</div>`;
+  }
+
+  function minutesLabel(minutes) {
+    const hour = Math.floor(minutes / 60), minute = minutes % 60;
+    return new Date(2000, 0, 1, hour, minute).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
   }
 
   function focusHTML() {
@@ -269,14 +329,22 @@
     let items = todoItems(state.todo);
     if (state.todo === 'waiting') items.sort((a,b) => b.days-a.days);
     else if (state.selfOrder.length) items.sort((a,b) => (state.selfOrder.indexOf(a.id) + 1 || 9999) - (state.selfOrder.indexOf(b.id) + 1 || 9999));
-    const shown = state.todoExpanded ? items : items.slice(0, 5);
-    const cards = shown.map(x => `<div class="eiw-card ${state.todo === 'waiting' ? 'waiting' : ''} ${x.days > 30 ? 'overdue' : ''}" draggable="${state.todo === 'self' && state.todoExpanded}" data-message-id="${esc(x.id)}">${state.todo === 'waiting' ? `<div class="eiw-age"><b>${x.days}d</b><span>since reply</span></div>` : ''}<div class="eiw-card-main"><div class="eiw-card-title">${esc(x.subject)}</div><div class="eiw-people">${esc(x.sender)}</div><div class="eiw-tags"><span class="eiw-tag main">${esc(x.action.charAt(0).toUpperCase() + x.action.slice(1))}</span>${x.extras.map(t => `<span class="eiw-tag extra">${esc(t)}</span>`).join('')}</div></div><button class="eiw-open" data-open-message="${esc(x.id)}" title="Open email" aria-label="Open email: ${esc(x.subject)}">↗</button></div>`).join('');
-    return `<div class="eiw-hd"><div class="eiw-switch"><button data-todo="self" aria-pressed="${state.todo === 'self'}">Self ${todoItems('self').length}</button><button data-todo="waiting" aria-pressed="${state.todo === 'waiting'}">Waiting ${todoItems('waiting').length}</button></div><span class="eiw-note">${state.todo === 'self' ? 'Expand to drag into your order.' : 'Longest wait first; red is over 30 days.'}</span></div><div class="eiw-cards">${cards || `<div class="eiw-empty">${scanning ? 'Scanning the complete inbox…' : 'No inbox messages have this category.'}</div>`}</div>${items.length > 5 ? `<button class="eiw-btn eiw-more" data-action="todo-expand">${state.todoExpanded ? 'Collapse to top 5' : `Show all ${items.length}`}</button>` : ''}`;
+    const limit = matchMedia('(max-width:700px)').matches ? 3 : 5;
+    const shown = state.todoExpanded ? items : items;
+    const cards = shown.map(x => {
+      const title = state.titleEdits[x.id] || x.subject;
+      const people = x.sender.split(/\s*;\s*/).filter(Boolean).map(p => `<span class="eiw-person">${esc(p)}</span>`).join('');
+      const styleFor = name => x.categoryStyles?.find(s => s.name === name) || {};
+      const tag = (name, cls = '') => { const s = styleFor(name); return `<span class="eiw-tag ${cls}" style="--tag-bg:${esc(s.bg || '')};--tag-fg:${esc(s.color || '')};--tag-border:${esc(s.border || '')}">${esc(name)}</span>`; };
+      const reply = x.date ? `<span class="eiw-reply"><i>Last reply:</i> ${x.date.toLocaleDateString([], {month:'short',day:'numeric'})} · <b>${x.days}</b> days ago</span>` : '';
+      return `<article class="eiw-card ${state.todoExpanded ? 'expanded' : ''} ${state.todo === 'waiting' ? 'waiting' : ''} ${x.days > 30 ? 'overdue' : ''}" data-message-id="${esc(x.id)}"><div class="eiw-card-title" data-edit-title="${esc(x.id)}">${esc(title)}</div>${reply}<div class="eiw-people">${people}</div><div class="eiw-tags">${tag(x.categories.find(c => /^Self|^Waiting/i.test(c)) || x.action, 'main')}${x.extras.map(t => tag(t, 'extra')).join('')}</div><button class="eiw-open" data-open-message="${esc(x.id)}" title="View message" aria-label="View message: ${esc(title)}">→</button>${state.todo === 'self' && state.todoExpanded ? '<button class="eiw-grip" data-grip title="Drag to reorder" aria-label="Drag to reorder">⋮⋮</button>' : ''}</article>`;
+    }).join('');
+    return `<div class="eiw-hd"><div class="eiw-switch"><button data-todo="self" aria-pressed="${state.todo === 'self'}">Self ${todoItems('self').length}</button><button data-todo="waiting" aria-pressed="${state.todo === 'waiting'}">Waiting ${todoItems('waiting').length}</button></div></div><div class="eiw-cf ${state.todoExpanded ? 'expanded' : ''}" data-flow data-limit="${limit}"><div class="eiw-cfst">${cards || `<div class="eiw-empty">No inbox messages have this category.</div>`}</div></div><div class="eiw-flow-foot"><button class="eiw-btn eiw-jump" data-action="todo-top">↑ Top</button>${items.length > limit ? `<button class="eiw-btn" data-action="todo-expand">${state.todoExpanded ? `Collapse to top ${limit}` : `Show all ${items.length}`}</button>` : ''}</div>`;
   }
 
   function panelHTML() {
     const items = [...cache.values()];
-    if (state.tab === 'timeline') return `<p class="eiw-note">Dots are unread messages; red is oldest and ringed is newest. The inbox is scanned automatically and can be refreshed with ↻.</p>${timelineHTML(items)}`;
+    if (state.tab === 'timeline') return timelineHTML(items);
     if (state.tab === 'schedule') return scheduleHTML();
     if (state.tab === 'focus') return focusHTML();
     return todoHTML();
@@ -286,11 +354,52 @@
     if (!root) return;
     const unread = [...cache.values()].filter(x => x.unread).length;
     root.dataset.collapsed = String(state.collapsed);
-    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Inbox add-ons</span><span class="eiw-summary">${scanning ? `Scanning inbox ${scanProgress}%` : `${unread} unread · ${cache.size} ${scanComplete ? 'complete' : 'loaded'}`}</span><button class="eiw-iconbtn" data-action="scan" title="Refresh all inbox data" aria-label="Refresh all inbox data">↻</button><button class="eiw-iconbtn" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Expand' : 'Collapse'} inbox add-ons">${state.collapsed ? '⌄' : '⌃'}</button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
+    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b>${unread}</b> unread / ${cache.size} in inbox</span><button class="eiw-iconbtn" data-action="scan" title="Refresh inbox data" aria-label="Refresh inbox data">↻</button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
+    requestAnimationFrame(() => { syncGeometryAndTheme(); initAllDay(); initFlow(); });
+  }
+
+  function syncGeometryAndTheme() {
+    if (!root?.isConnected) return;
+    const region = messageList()?.querySelector('[role="complementary"]');
+    if (region) {
+      const rr = region.getBoundingClientRect(), hr = root.parentElement.getBoundingClientRect();
+      root.style.width = `${rr.width}px`;
+      root.style.marginLeft = `${rr.left - hr.left}px`;
+    }
+    const newMail = [...document.querySelectorAll('button')].find(b => (b.getAttribute('aria-label') || b.textContent.trim()) === 'New mail');
+    if (newMail) { const s = getComputedStyle(newMail); root.style.setProperty('--brand', s.backgroundColor); root.style.setProperty('--on-brand', s.color); }
+  }
+
+  function initAllDay() {
+    const day = root?.querySelector('.eiw-day'), toggle = root?.querySelector('.eiw-day-toggle');
+    if (day && toggle && (day.scrollHeight > day.clientHeight + 2 || state.allDayExpanded)) toggle.classList.add('visible');
+  }
+
+  function initFlow() {
+    flowCleanup?.(); flowCleanup = null;
+    const flow = root?.querySelector('[data-flow]');
+    if (!flow || state.todoExpanded) return;
+    const cards = [...flow.querySelectorAll('.eiw-card')], stage = flow.querySelector('.eiw-cfst'), jump = root.querySelector('.eiw-jump');
+    if (!cards.length) return;
+    const gap = 13, base = 92, limit = Number(flow.dataset.limit) || 5;
+    stage.style.height = `${Math.max(flow.clientHeight, base + (cards.length - 1) * 45)}px`;
+    const update = () => {
+      const y = flow.scrollTop;
+      cards.forEach((card, i) => {
+        const natural = i * 45, distance = natural - y, rank = Math.max(0, Math.min(limit - 1, distance / 45));
+        const scale = .78 + .22 * (1 - rank / Math.max(1, limit - 1));
+        card.style.transform = `translateY(${natural}px) scale(${scale})`;
+        card.style.opacity = String(.48 + .52 * (1 - rank / Math.max(1, limit - 1)));
+        card.style.zIndex = String(cards.length - i);
+      });
+      jump?.classList.toggle('visible', y > 50);
+    };
+    flow.addEventListener('scroll', update, {passive:true}); update();
+    flowCleanup = () => flow.removeEventListener('scroll', update);
   }
 
   function scheduleRender() {
-    if (scanning) return;
+    if (scanning || !widgetContext()) return;
     clearTimeout(renderTimer);
     renderTimer = setTimeout(() => {
       const messagesChanged = scrapeMessages();
@@ -300,7 +409,7 @@
   }
 
   function mount() {
-    if (!personalInbox()) {
+    if (!widgetContext()) {
       document.getElementById(ROOT_ID)?.remove();
       root = null;
       scannedScroller = null;
@@ -318,14 +427,14 @@
     if (!root || !root.isConnected) {
       root = document.createElement('section');
       root.id = ROOT_ID;
-      root.setAttribute('aria-label', 'Inbox add-ons');
+      root.setAttribute('aria-label', 'Widgets');
       host.insertBefore(root, region);
       bind();
       created = true;
     } else if (root.parentElement !== host || root.nextElementSibling !== region) host.insertBefore(root, region);
     const messagesChanged = scrapeMessages();
     const scheduleChanged = scrapeMyDay();
-    if (created || messagesChanged || scheduleChanged) render();
+    if (created || messagesChanged || scheduleChanged) render(); else syncGeometryAndTheme();
     const scroller = list.querySelector('[data-testid="virtuoso-scroller"]');
     if (scroller && scroller !== scannedScroller && !scanning) setTimeout(() => scanAllMessages(false), 350);
   }
@@ -335,7 +444,7 @@
   });
 
   async function scanAllMessages(force) {
-    if (scanning || !personalInbox()) return;
+    if (scanning || !widgetContext()) return;
     const scroller = messageList()?.querySelector('[data-testid="virtuoso-scroller"]');
     if (!scroller || (!force && scroller === scannedScroller)) return;
     scannedScroller = scroller;
@@ -353,6 +462,7 @@
       for (let top = 0; top < max; top += step) positions.push(top);
       positions.push(max);
       for (let index = 0; index < positions.length; index++) {
+        if (!widgetContext()) break;
         scroller.scrollTop = positions[index];
         await settleVirtualList();
         scrapeMessages();
@@ -365,9 +475,9 @@
       scrapeMessages();
       scroller.removeAttribute('data-erin-inbox-scan');
       scanning = false;
-      scanComplete = true;
+      scanComplete = widgetContext();
       scanProgress = 100;
-      render();
+      if (widgetContext()) render(); else mount();
     }
   }
 
@@ -404,42 +514,60 @@
         return;
       }
       if (target.dataset.removeBlock) { state.localBlocks = state.localBlocks.filter(x => x.id !== target.dataset.removeBlock); save(); render(); return; }
+      if (target.dataset.saveKind && pendingBlock) {
+        const title = root.querySelector('[data-block-title]')?.value.trim() || 'Time block';
+        state.localBlocks.push({ id: `${Date.now()}`, date: todayKey(), title, start: pendingBlock.start, end: pendingBlock.end, kind: target.dataset.saveKind });
+        pendingBlock = null; save(); render(); return;
+      }
       switch (target.dataset.action) {
         case 'collapse': state.collapsed = !state.collapsed; save(); render(); break;
         case 'scan': scanAllMessages(true); break;
         case 'todo-expand': state.todoExpanded = !state.todoExpanded; save(); render(); break;
+        case 'todo-top': root.querySelector('[data-flow]')?.scrollTo({top:0,behavior:'smooth'}); break;
+        case 'all-day-toggle': state.allDayExpanded = !state.allDayExpanded; save(); render(); break;
+        case 'cancel-block': pendingBlock = null; render(); break;
         case 'focus-toggle': focus.running ? (focus.running = false, clearInterval(focusTick), render()) : startFocus(); break;
         case 'focus-skip': focus.elapsed = PARTS[focus.part][1] * 60; focus.running = false; focus.finished = true; clearInterval(focusTick); render(); break;
         case 'focus-reset': focus = { part: 0, elapsed: 0, running: false, finished: false, last: 0 }; clearInterval(focusTick); render(); break;
         case 'focus-next': focus = focus.part === PARTS.length - 1 ? { part: 0, elapsed: 0, running: false, finished: false, last: 0 } : { part: focus.part + 1, elapsed: 0, running: false, finished: false, last: 0 }; render(); break;
-        case 'add-block': {
-          const title = prompt('Planning block title');
-          if (!title) break;
-          const time = prompt('Start time (for example, 2:30 PM)', new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}));
-          if (!time) break;
-          state.localBlocks.push({ id: `${Date.now()}`, date: todayKey(), title: title.trim(), time: time.trim() });
-          save(); render(); break;
-        }
       }
     });
-    root.addEventListener('dragstart', event => {
-      const card = event.target.closest('.eiw-card[draggable="true"]');
-      if (!card) return;
-      card.classList.add('dragging');
-      event.dataTransfer.effectAllowed = 'move';
-      event.dataTransfer.setData('text/plain', card.dataset.messageId);
+    root.addEventListener('dblclick', event => {
+      const title = event.target.closest('[data-edit-title]');
+      if (!title) return;
+      title.contentEditable = 'true'; title.focus(); document.getSelection()?.selectAllChildren(title);
+      const finish = () => { title.contentEditable = 'false'; state.titleEdits[title.dataset.editTitle] = title.textContent.trim() || cache.get(title.dataset.editTitle)?.subject; save(); title.removeEventListener('blur', finish); };
+      title.addEventListener('blur', finish);
+      title.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); title.blur(); } });
     });
-    root.addEventListener('dragover', event => { if (event.target.closest('.eiw-card[draggable="true"]')) event.preventDefault(); });
-    root.addEventListener('drop', event => {
-      const card = event.target.closest('.eiw-card[draggable="true"]');
-      if (!card) return;
-      event.preventDefault();
-      const from = event.dataTransfer.getData('text/plain'), to = card.dataset.messageId;
-      const ids = todoItems('self').map(x => x.id).sort((a,b) => (state.selfOrder.indexOf(a) + 1 || 9999) - (state.selfOrder.indexOf(b) + 1 || 9999));
-      const old = ids.indexOf(from), next = ids.indexOf(to);
-      if (old >= 0 && next >= 0) { ids.splice(next, 0, ids.splice(old, 1)[0]); state.selfOrder = ids; save(); render(); }
+    root.addEventListener('pointerdown', event => {
+      const strip = event.target.closest('[data-schedule-strip]');
+      if (strip && event.button === 0) {
+        const rect = strip.getBoundingClientRect(), startDay = +strip.dataset.start, endDay = +strip.dataset.end;
+        const snap = x => Math.round((startDay + Math.max(0, Math.min(1, (x - rect.left) / rect.width)) * (endDay - startDay)) / 15) * 15;
+        const start = snap(event.clientX), selection = strip.querySelector('.eiw-selection');
+        strip.setPointerCapture(event.pointerId); selection.hidden = false;
+        const draw = x => { const end = snap(x), a = Math.min(start,end), b = Math.max(start,end) + (end === start ? 30 : 0); selection.style.left = `${(a-startDay)/(endDay-startDay)*100}%`; selection.style.width = `${(b-a)/(endDay-startDay)*100}%`; return [a,b]; };
+        let range = draw(event.clientX);
+        const move = e => { range = draw(e.clientX); };
+        const up = e => { strip.removeEventListener('pointermove',move); strip.removeEventListener('pointerup',up); range = draw(e.clientX); pendingBlock = {start:range[0],end:Math.max(range[0]+15,range[1])}; render(); };
+        strip.addEventListener('pointermove',move); strip.addEventListener('pointerup',up); return;
+      }
+      const grip = event.target.closest('[data-grip]');
+      if (!grip || event.button !== 0) return;
+      const card = grip.closest('.eiw-card'), id = card.dataset.messageId;
+      grip.setPointerCapture(event.pointerId); card.classList.add('dragging');
+      const move = e => {
+        const over = document.elementFromPoint(e.clientX,e.clientY)?.closest('.eiw-card');
+        if (!over || over === card) return;
+        const ids = todoItems('self').map(x=>x.id).sort((a,b)=>(state.selfOrder.indexOf(a)+1||9999)-(state.selfOrder.indexOf(b)+1||9999));
+        const from=ids.indexOf(id), to=ids.indexOf(over.dataset.messageId); if(from<0||to<0)return;
+        ids.splice(to,0,ids.splice(from,1)[0]); state.selfOrder=ids; save();
+        over.parentElement.insertBefore(card, to>from ? over.nextSibling : over);
+      };
+      const up = () => { grip.removeEventListener('pointermove',move); grip.removeEventListener('pointerup',up); card.classList.remove('dragging'); render(); };
+      grip.addEventListener('pointermove',move); grip.addEventListener('pointerup',up);
     });
-    root.addEventListener('dragend', () => root.querySelector('.dragging')?.classList.remove('dragging'));
   }
 
   observer = new MutationObserver(mutations => {
