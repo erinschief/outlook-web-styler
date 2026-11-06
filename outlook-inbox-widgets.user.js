@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.1.5
+// @version      0.1.6
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAG4klEQVR4nO2dW4wURRSGDyreQNQQjfGWKKAxMRGviS8mJohoolG8RhIfffVJfRBlE0F5lIiY3amaXXYTCWs2UTRqAGOiDyYGkCjhsu7OqR5RXPCCLCASsc05vTO4Y0/T3VXd1bcvqRdmtqbr/HU5dep0AVBRUVFRUVFRUVFRUVFRUREF0bgRhPMSSNwKQu0BgUdBKreQReDRqTZuAalehL7xGywa3rkDBH5m3SjSdsGtUHNuT8/wK9xzQOJbIPAf+41X2ShkC4Fr2DaJ0o+XVL1eBQmxhW2UYM/far2RMgciJDISaNqx3TiZl4JvmjU+LTJBc75QEyDUcujHhTB4YBYUlcEDs0DgrdxWoQ4GCHCKv2eMoKlH4Hsg9lwEZWNodA5INRIgwmZzfn6Q8V13BpSVFe5ZgSLUxxbo/whvsrpNOyXs+Z30jl/cdToS6gXQxtv1+VW+XL/ygiDVq8lNQ1Lt86+8cYuJZy8EtOD6T0N79SuXOOlb+dqJ2SaevRDQVOw/Aib1K++2wFSkZKdKgIwKINRK9oXLztDoHLZF6gJ4c9yv7Kb24/lQNnq3zQTpPAdS/Rxoo2QFaI+GJj/MsHs2FB3XnQHCeQIEjoWyjTZhfuT0iNjFD1dUpLMIBG6PZJN0BbB1SpQwonkzCPwwli3sCDB1SiRxGGrN+ZBXesevBYG9HN2Mawdt4v7w6XKSG9GPV0BeWL9/LkhcDVKd0G6/Nl0rp/lQ7YwwIo5yo7Lsug5SvJ+Dj4cjGHk3r3upC9AKx/KPYyPC+nCIG7lm9DzICnzcSi4l/hShQ+2f5vlZEaDF8K5z+WECT4k6G6AQpPOs9fOEmvNQ94Cjbwf6jTvQcPOCafVYFaDFOudSnmYEHo/Qk74GgfdC2gi8GwR+GaHD/OUtyKOX+daXCQFa9P1wNT+swL8jpnQshKSp4U3snYXv8af4+33qusB6MyWAbmOlcz2YJulOkUkBpg/3LyIP98Gxy7WfP61pMdMCtOtyFoHE78KPCHUEJPb8b8ELAzkGwnmeF83wv7ePvbo4jkEuBNB1+VaEyDhrucbsZUV0jUm0uORGgBa9P14YedPDqeEBwT6bm8PcCaC37f8KROOedh218btAqs+thkdyK0CLAWceSLUhdNq79z1KihqJ+Dcb+LdMk3sBTIR+bYbICyOAzuGHzUOiwgnQ9mjUsmjBvrbhG/y3VEcadJsGcy1A1ANwm4kC5BTQaCukANMTYVeCxGM+hj/Gn9F3wkLZfXV8cGqnTOvO3qmN20mvUORT7QGJm0CoN0DiA4EZgRwVxpdBqD+LKUAL4VwJQq3j3s5Fvc3/Fgba5ZIhvRhV9BMvMq7AjVDDJV13zPXmne2NZiEFiIuXTvKt/sLeFmMn1HBpQPBvO2hTBAHqYwuSfcEQN/smH9BuH8ougFCPRTzjjVuOQA2fMd+AvArg8lzfk4LhO0fDarPHrHkUwCXjq3fSN357bVhnToQ8CiDIZbRk/NMj4bVyClBvPGXf+O2RsKxcAtTZ25nMkAB/6Ede8ySANOFq4kcw0LzK8+PVxwZE+LQcAkj1uJFeS4ZvUf/+GjOjAR8ttgAuvTRhaIfbiZmpaGd8r4gzE/wqzdBb8pJiOyZ6akICUKk37o/ZuC55k2lksYUlUvKXJQHoKNToVQVSvQLZeUn6ROYFoMSwWLEhuh3Qf147mIlcf2lw+gklgIaXJBqLozeQrmbsXulIakd+3fBSWtITQMdLEup1MDwNeSJEOYUyjTCcQdGJ0SkKP4jXyLq6LfhFNTzEV7bQ99K+xENGebnCsgB0vBkbuhfTZEPjlvX753Y81y+5EYA6amzoXSgTW3PdMtyRQEup7LkRQJ0AAxe3Bq0HyZfebTP1BDiDF5NpAQhKEefpSOPlZZ0y1OH6Rp2CzuTFZHYK8r2mCzenLkBfx7tanMsT4e91DawlgNoNicTg6XZAEsNLYko2Hi/+k5bOBsBNuRFAqPehcIiIx492R8AqKBwyYijCpgA15z4oHGsnZk/LxcysAHjMTKJWFhG4MfMCCPUuFJYaLsm+AHEioXnB5SPJcG/T2BBAqG+sX0qSODVcamQjpvu5rwDOw1AKZIiNIYUfyIie8T4x/rnf90tDrTm/axKBnXI4kYtHMo10nsyA4b2SSLp6HhABVwmnVrAHSotLXhG9Q2bJ+ALX2jZBNhBd/vuVZHv+atvNzp57KtTvKRj/CAh82nZzs8mAM4+zlBObcsg1PcOdchVAMaNHeFdqzvg7yrPJMrlAU6KsdzXO8RgL7HEOrFFsp/DhhaThW7saizljjU6r6MiQ75qgSwPpsJ/fwt899dkqjucXNqRcUVFRUQEp8y+HrrdrbFozEgAAAABJRU5ErkJggg==
@@ -52,33 +52,41 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   })[c]);
-  // Outlook sanitizes innerHTML created by extension userscripts. Parse the controlled template as
-  // XML, then construct every live node and attribute through DOM methods so the mockup classes,
-  // inline geometry, ARIA state, and data actions survive in both Outlook layouts.
+  const decodeEntities = value => value.replace(/&(amp|lt|gt|quot|#39|#x[0-9a-f]+|#\d+);/gi, (_, entity) => {
+    const named = { amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'" };
+    if (named[entity.toLowerCase()] !== undefined) return named[entity.toLowerCase()];
+    const hex = entity[0] === '#' && entity[1]?.toLowerCase() === 'x';
+    return String.fromCodePoint(parseInt(entity.slice(hex ? 2 : 1), hex ? 16 : 10));
+  });
+
+  // Outlook intercepts both innerHTML and DOMParser inside extension userscripts. Tokenize only our
+  // controlled templates and construct the live tree exclusively through DOM creation methods.
   function setMarkup(host, html) {
-    const source = `<eiw-root>${html.replace(/<br>/gi, '<br/>')}</eiw-root>`;
-    const parsed = new DOMParser().parseFromString(source, 'application/xml');
-    const error = parsed.querySelector('parsererror');
-    if (error) {
-      console.error('[Outlook Inbox Widgets] Template parse failed', error.textContent);
-      return;
-    }
-    const build = (node, inSvg = false) => {
-      if (node.nodeType === Node.TEXT_NODE) return document.createTextNode(node.nodeValue || '');
-      if (node.nodeType !== Node.ELEMENT_NODE) return null;
-      const svg = inSvg || node.localName === 'svg';
-      const element = svg ? document.createElementNS('http://www.w3.org/2000/svg', node.localName) : document.createElement(node.localName);
-      for (const attribute of node.attributes) element.setAttribute(attribute.name, attribute.value);
-      for (const child of node.childNodes) {
-        const built = build(child, svg);
-        if (built) element.appendChild(built);
-      }
-      return element;
-    };
     const fragment = document.createDocumentFragment();
-    for (const child of parsed.documentElement.childNodes) {
-      const built = build(child);
-      if (built) fragment.appendChild(built);
+    const stack = [fragment];
+    const voidElements = new Set(['br', 'hr', 'img', 'input', 'meta', 'link']);
+    const tokens = html.matchAll(/<\/(?:[a-z][\w-]*)\s*>|<[a-z][\w-]*(?:\s+[^>]*)?\/?>|[^<]+/gi);
+    for (const token of tokens) {
+      const source = token[0];
+      if (source.startsWith('</')) {
+        if (stack.length > 1) stack.pop();
+        continue;
+      }
+      if (!source.startsWith('<')) {
+        stack[stack.length - 1].appendChild(document.createTextNode(decodeEntities(source)));
+        continue;
+      }
+      const opening = source.match(/^<([a-z][\w-]*)([\s\S]*?)\/?\s*>$/i);
+      if (!opening) continue;
+      const tag = opening[1].toLowerCase();
+      const parent = stack[stack.length - 1];
+      const svg = tag === 'svg' || parent.namespaceURI === 'http://www.w3.org/2000/svg';
+      const element = svg ? document.createElementNS('http://www.w3.org/2000/svg', tag) : document.createElement(tag);
+      for (const attribute of opening[2].matchAll(/([:@\w-]+)(?:\s*=\s*"([^"]*)")?/g)) {
+        element.setAttribute(attribute[1], decodeEntities(attribute[2] ?? ''));
+      }
+      parent.appendChild(element);
+      if (!voidElements.has(tag) && !/\/\s*>$/.test(source)) stack.push(element);
     }
     host.replaceChildren(fragment);
   }
