@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Outlook Web Styler and QOL Improvements
-// @version      0.67
+// @version      0.68
 // @description  Outlook web: hides left rail, app launcher and Teams button; adds a collapsible apps menu (Mail/Calendar/To Do) in the top bar; floating full-width layout.
 // @author       Erin
 // @match        https://outlook.office.com/*
@@ -74,6 +74,9 @@
       border-radius: var(--erin-radius) var(--erin-radius) 0 0 !important;
     }
     #LeftRail { display: none !important; }
+
+    /* Applied only after the script verifies the MessageBar's complete visible label. */
+    [data-erin-never-delete-retention] { display: none !important; }
 
     /* Floating full-width layout. Pin the app area to the viewport (below the 48px title bar)
        so no ancestor padding/scrollbar gutter can leave a bigger gap on one side.
@@ -1280,6 +1283,22 @@ async function openSharedMailboxInbox() {
     });
 }
 
+    const NEVER_DELETE_RETENTION_TEXT = 'Retention: Default Never Delete';
+
+    function hideNeverDeleteRetention(root = document) {
+        if (root.nodeType !== Node.ELEMENT_NODE && root !== document) return;
+
+        const bodies = [];
+        if (root.matches?.('.fui-MessageBarBody')) bodies.push(root);
+        bodies.push(...root.querySelectorAll('.fui-MessageBarBody'));
+
+        for (const body of bodies) {
+            if (body.textContent?.trim() !== NEVER_DELETE_RETENTION_TEXT) continue;
+            body.closest('.fui-MessageBarGroup')
+                ?.setAttribute('data-erin-never-delete-retention', '');
+        }
+    }
+
     const mainObserver = new MutationObserver((mutations) => {
         let needsBuild = false;
 
@@ -1293,6 +1312,7 @@ async function openSharedMailboxInbox() {
                     checkAddedMenus(node);
                     checkAddedDropTargets(node);
                     removeDeleteMenuItems(node);
+                    hideNeverDeleteRetention(node);
 
                     // Auto-click Outlook sign-in banner if it appears
                     clickSessionExpiredSignIn();
@@ -1327,6 +1347,7 @@ async function openSharedMailboxInbox() {
         build();
         clickSessionExpiredSignIn();
         hideSenderCategories();
+        hideNeverDeleteRetention();
     });
 
     // Copilot's function to remove "Delete" menu items
