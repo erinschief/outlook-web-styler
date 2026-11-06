@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.2.3
+// @version      0.2.4
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -150,12 +150,12 @@
     #${ROOT_ID} .eiw-summary{flex:1;min-width:0;overflow:visible;text-overflow:clip;font-size:11px;line-height:1.1}
     #${ROOT_ID} .eiw-summary b{font-size:15px;color:var(--brand);font-weight:750}#${ROOT_ID} .eiw-summary b.eiw-inbox-total{color:var(--mute)}
     #${ROOT_ID} .eiw-tab[aria-selected="true"],#${ROOT_ID} .eiw-switch button[aria-pressed="true"]{color:var(--on-brand)!important}
-    #${ROOT_ID} .eiw-refresh{font-size:18px;font-weight:800;color:var(--ink)}
+    #${ROOT_ID} .eiw-refresh{font-size:18px;font-weight:600;color:var(--ink)}
     #${ROOT_ID} .eiw-collapse{position:relative;font-size:0;padding:0}
     #${ROOT_ID} .eiw-collapse:after{content:"";display:block;width:18px;height:18px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 5.5 8 10.5l5-5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .18s ease}
     #${ROOT_ID}[data-collapsed="true"] .eiw-collapse:after{transform:rotate(180deg)}
     #${ROOT_ID} .eiw-panel{overflow:hidden;padding:10px 12px 12px}
-    #${ROOT_ID} .eiw-timeline{height:103px;padding:12px 6px 0}.eiw-total{display:none}.eiw-bcount{display:block!important;left:50%;top:42px;transform:translateX(-50%);font-size:9px;white-space:nowrap}.eiw-bcount b{color:var(--brand)}.eiw-line{height:54px}.eiw-line:after{content:"";position:absolute;right:0;top:22px;height:20px;border-left:2px solid #9aa1ab}.eiw-oldest-bound{position:absolute;right:7px;top:-8px;height:38px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;color:var(--mute);white-space:nowrap}.eiw-no-unread{height:35px;padding-top:5px;display:flex;align-items:center;gap:8px;color:var(--brand);font-size:10px;font-weight:650}.eiw-no-unread:before,.eiw-no-unread:after{content:"";height:1px;background:var(--brand);flex:1}
+    #${ROOT_ID} .eiw-timeline{height:103px;padding:12px 6px 0}.eiw-total{display:none}.eiw-bcount{display:block!important;left:50%;top:42px;transform:translateX(-50%);font-size:9px;white-space:nowrap}.eiw-bcount b{color:var(--brand)}.eiw-line{height:54px}.eiw-line:after{content:"";position:absolute;right:0;top:22px;height:20px;border-left:2px solid #9aa1ab}.eiw-oldest-bound{position:absolute;right:6px;top:-10px;height:38px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;line-height:9px;font-weight:400;color:var(--mute)!important;white-space:nowrap}.eiw-dot{top:31px!important;margin:0!important;transform:translate(-50%,-50%);width:8px;height:8px}.eiw-dot.read{width:7px;height:7px;margin:0!important}.eiw-dot.newest,.eiw-dot.oldest{width:11px;height:11px;margin:0!important}.eiw-no-unread{height:35px;padding-top:5px;display:flex;align-items:center;gap:8px;color:var(--brand);font-size:10px;font-weight:650}.eiw-no-unread:before,.eiw-no-unread:after{content:"";height:1px;background:var(--brand);flex:1}
     #${ROOT_ID} .eiw-all-day{display:flex;align-items:flex-start;gap:6px;margin:4px 0 9px}
     #${ROOT_ID} .eiw-day{flex:1;display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px;padding:0;overflow:hidden;max-height:30px}
     #${ROOT_ID} .eiw-day.expanded{max-height:none}.eiw-pill{max-width:min(240px,100%)}
@@ -178,7 +178,7 @@
     #${ROOT_ID} .eiw-part{display:flex;flex-direction:column;align-items:center;justify-content:center}
     #${ROOT_ID} .eiw-bname.overlap-hidden{visibility:hidden}
     #${ROOT_ID} .eiw-tags{margin-top:2px}.eiw-tag{background:var(--tag-bg,color-mix(in srgb,var(--orange) 18%,var(--bg)));color:var(--tag-fg,color-mix(in srgb,var(--orange) 75%,var(--ink)));border:1px solid var(--tag-border,transparent)}
-    @container(max-width:519px){#${ROOT_ID} .eiw-summary{font-size:10px;max-width:none}#${ROOT_ID} .eiw-summary b{font-size:14px}#${ROOT_ID} .eiw-panel{padding-inline:8px}#${ROOT_ID} .eiw-composer{grid-template-columns:1fr}.eiw-card{height:96px;min-height:96px}.eiw-reply{max-width:96px}.eiw-bname{display:block}.eiw-bcount{display:block!important;top:32px}.eiw-line:after{top:14px}.eiw-oldest-bound{top:-10px}}
+    @container(max-width:519px){#${ROOT_ID} .eiw-summary{font-size:10px;max-width:none}#${ROOT_ID} .eiw-summary b{font-size:14px}#${ROOT_ID} .eiw-panel{padding-inline:8px}#${ROOT_ID} .eiw-composer{grid-template-columns:1fr}.eiw-card{height:96px;min-height:96px}.eiw-reply{max-width:96px}.eiw-bname{display:block}.eiw-bcount{display:block!important;top:32px}.eiw-line:after{top:14px}.eiw-oldest-bound{top:-10px}.eiw-dot{top:23px!important}}
   `);
 
   function classify(title) {
@@ -289,6 +289,15 @@
     return item.date.toLocaleString([], short ? { month: 'short', day: 'numeric' } : { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
   }
 
+  function formatUnreadEndpoint(item) {
+    if (!item?.date) return item?.group || 'Date unavailable';
+    const now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const day = new Date(item.date.getFullYear(), item.date.getMonth(), item.date.getDate());
+    const distance = Math.round((today - day) / 864e5);
+    const relative = distance === 0 ? 'Today' : distance === 1 ? 'Yesterday' : item.date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+    return `${relative}, ${item.date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`;
+  }
+
   function timelineHTML(items) {
     if (!items.length) return `<div class="eiw-empty">${scanning ? 'Scanning the inbox…' : 'No inbox messages loaded yet.'}</div>`;
     const names = ['Today', 'Yesterday', 'This week', 'This month', 'Last month', 'Earlier'];
@@ -304,7 +313,7 @@
       const countLabel = unreadCount ? `<b>${unreadCount}</b> / ${bucket.items.length}` : `${bucket.items.length}`;
       return `<div class="eiw-bucket" style="flex:${count}"><span class="eiw-bname">${bucket.name}</span><span class="eiw-bcount">${countLabel}</span>${dots}</div>`;
     }).join('');
-    const footer = unread.length ? `<div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatStamp(newest))}</span><span><b>Oldest unread</b><br>${esc(formatStamp(oldest, true))}</span></div>` : '<div class="eiw-no-unread">No unread emails, woo!</div>';
+    const footer = unread.length ? `<div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatUnreadEndpoint(newest))}</span><span><b>Oldest unread</b><br>${esc(formatUnreadEndpoint(oldest))}</span></div>` : '<div class="eiw-no-unread">No unread emails, woo!</div>';
     return `<div class="eiw-timeline">${oldestEmail ? `<span class="eiw-oldest-bound" title="Oldest inbox email">${esc(oldestEmail.date.toLocaleDateString([], {month:'short',day:'numeric'}))}</span>` : ''}<div class="eiw-line">${groups}</div>${footer}</div>`;
   }
 
