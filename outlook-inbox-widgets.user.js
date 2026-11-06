@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.2.1
+// @version      0.2.2
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -44,7 +44,6 @@
   let scanProgress = 0;
   let scannedScroller = null;
   let pendingBlock = null;
-  let flowCleanup = null;
   let focus = { part: 0, elapsed: 0, running: false, finished: false, last: 0 };
   const PARTS = [
     ['focus', 25, 'Focus 1 of 2'],
@@ -52,6 +51,19 @@
     ['focus', 25, 'Focus 2 of 2'],
     ['break', 20, 'Break']
   ];
+  const ICONS = {
+    meeting: '<circle cx="6" cy="5" r="2.3"/><path d="M1.8 13c0-2.5 2-4 4.2-4s4.2 1.5 4.2 4"/><circle cx="11.5" cy="5.8" r="1.8"/><path d="M12 9.2c1.6.2 2.8 1.4 2.8 3.3"/>',
+    focus: '<circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="2"/>',
+    admin: '<rect x="2.5" y="2.5" width="11" height="11" rx="2"/><path d="M5.5 8.2l1.8 1.8 3.2-3.8"/>',
+    break: '<path d="M3 6h8v3.5a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"/><path d="M11 7h1.3a1.7 1.7 0 0 1 0 3.4H11"/>'
+  };
+  const icon = kind => `<svg class="eiw-kind-icon" viewBox="0 0 16 16" aria-hidden="true">${ICONS[kind] || ICONS.meeting}</svg>`;
+  function reorderIds(ids, from, to) {
+    const reordered = ids.slice(), oldIndex = reordered.indexOf(from), newIndex = reordered.indexOf(to);
+    if (oldIndex < 0 || newIndex < 0 || oldIndex === newIndex) return reordered;
+    reordered.splice(newIndex, 0, reordered.splice(oldIndex, 1)[0]);
+    return reordered;
+  }
 
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -122,7 +134,9 @@
     .eiw-focus{position:relative;display:flex;gap:14px;align-items:center}.eiw-ring{position:relative;width:118px;height:118px;flex:none}.eiw-ring svg{width:100%;height:100%;transform:rotate(-90deg)}.eiw-ring circle{fill:none;stroke-width:9}.eiw-ring .back{stroke:var(--line)}.eiw-ring .fill{stroke:var(--green);stroke-linecap:round;stroke-dasharray:314;transition:stroke-dashoffset .2s linear}.eiw-clock{position:absolute;inset:0;display:grid;place-content:center;text-align:center}.eiw-clock b{font-size:25px;font-variant-numeric:tabular-nums}.eiw-clock span{font-size:10px;color:var(--mute)}.eiw-focus-side{flex:1;min-width:0}.eiw-parts{display:flex;gap:3px;height:42px;margin-bottom:10px}.eiw-part{display:grid;place-items:center;min-width:25px;border-radius:5px;background:var(--focus);color:var(--green);font-size:9px;opacity:.65}.eiw-part.break{background:var(--rest);color:var(--mute)}.eiw-part.current{outline:2px solid var(--brand);opacity:1}.eiw-controls{display:flex;gap:5px;flex-wrap:wrap}.eiw-finish{position:absolute;inset:-2px;background:var(--bg);display:grid;place-content:center;text-align:center;border-radius:8px;z-index:2}.eiw-finish b{font-size:18px}.eiw-finish p{color:var(--mute);margin:4px 0 8px}
     .eiw-switch{display:flex;gap:3px}.eiw-switch button{border:1px solid var(--line);background:var(--bg);padding:3px 9px;border-radius:999px}.eiw-switch button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}.eiw-cards{display:flex;flex-direction:column;gap:7px}.eiw-card{position:relative;height:76px;min-height:76px;display:flex;gap:7px;align-items:flex-start;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;background:var(--bg);padding:8px 8px 8px 10px;overflow:hidden}.eiw-card.waiting{border-left-color:var(--purple)}.eiw-card.overdue{border-left-color:var(--red);background:color-mix(in srgb,var(--red) 5%,var(--bg))}.eiw-card.dragging{opacity:.55}.eiw-card-main{flex:1;min-width:0}.eiw-card-title,.eiw-people,.eiw-tags{height:18px;line-height:18px;white-space:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;text-overflow:ellipsis}.eiw-card-title{font-size:13px;font-weight:650}.eiw-people{font-size:11px;color:var(--mute)}.eiw-tags{display:flex;gap:5px}.eiw-tag{flex:none;border-radius:999px;padding:0 7px;background:color-mix(in srgb,var(--orange) 18%,var(--bg));color:color-mix(in srgb,var(--orange) 75%,var(--ink));font-size:10px;font-weight:600}.eiw-card.waiting .eiw-tag.main{background:color-mix(in srgb,var(--purple) 18%,var(--bg));color:color-mix(in srgb,var(--purple) 75%,var(--ink))}.eiw-tag.extra{background:color-mix(in srgb,var(--blue) 14%,var(--bg));color:color-mix(in srgb,var(--blue) 75%,var(--ink))}.eiw-age{width:42px;flex:none;text-align:center}.eiw-age b{display:block;font-size:15px}.eiw-age span{font-size:9px;color:var(--mute)}.eiw-open{align-self:center;width:28px;height:28px;border:1px solid transparent;background:transparent;border-radius:6px}.eiw-open:hover{border-color:var(--line);color:var(--brand)}.eiw-more{width:100%;margin-top:7px}
     #${ROOT_ID}[data-collapsed="true"] .eiw-tabs,#${ROOT_ID}[data-collapsed="true"] .eiw-panel{display:none}
-    [data-testid="virtuoso-scroller"][data-erin-inbox-scan]{visibility:hidden!important;pointer-events:none!important}
+    [data-testid="virtuoso-scroller"][data-erin-inbox-scan]{position:relative!important;pointer-events:none!important}
+    [data-testid="virtuoso-scroller"][data-erin-inbox-scan]>*{visibility:hidden!important}
+    [data-testid="virtuoso-scroller"][data-erin-inbox-scan]:after{content:"Refreshing widget data…";visibility:visible!important;position:sticky;left:0;top:42%;width:100%;height:44px;display:grid;place-items:center;color:var(--colorNeutralForeground3,#616161);font:13px/1.35 "Segoe UI Variable","Segoe UI",sans-serif}
     @container(max-width:519px){.eiw-bname,.eiw-bcount{display:none}.eiw-line{height:48px}.eiw-line:before{top:23px}.eiw-dot{top:20px}.eiw-ends{margin-top:-6px}.eiw-focus{align-items:flex-start}.eiw-ring{width:96px;height:96px}.eiw-clock b{font-size:20px}.eiw-tab{font-size:11px}.eiw-event{padding:4px 2px}.eiw-summary{max-width:90px}}
     @media(prefers-reduced-motion:reduce){#${ROOT_ID} *{scroll-behavior:auto!important;transition:none!important}}
   `);
@@ -133,13 +147,13 @@
     #${ROOT_ID} .eiw-top{height:44px;gap:8px;padding:5px 7px 5px 12px}
     #${ROOT_ID} .eiw-title{flex:0 0 auto;font-size:14px}
     #${ROOT_ID} .eiw-summary{flex:1;min-width:0;overflow:visible;text-overflow:clip;font-size:11px;line-height:1.1}
-    #${ROOT_ID} .eiw-summary b{font-size:15px;color:var(--brand);font-weight:750}
+    #${ROOT_ID} .eiw-summary b{font-size:15px;color:var(--brand);font-weight:750}#${ROOT_ID} .eiw-summary b.eiw-inbox-total{color:var(--mute)}
     #${ROOT_ID} .eiw-tab[aria-selected="true"],#${ROOT_ID} .eiw-switch button[aria-pressed="true"]{color:var(--on-brand)!important}
     #${ROOT_ID} .eiw-collapse{position:relative;font-size:0}
     #${ROOT_ID} .eiw-collapse:after{content:"";display:block;width:18px;height:18px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 5.5 8 10.5l5-5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .18s ease}
     #${ROOT_ID}[data-collapsed="true"] .eiw-collapse:after{transform:rotate(180deg)}
     #${ROOT_ID} .eiw-panel{overflow:hidden;padding:10px 12px 12px}
-    #${ROOT_ID} .eiw-timeline{height:98px;padding-top:12px}.eiw-total,.eiw-bcount{display:none}.eiw-line{height:54px}
+    #${ROOT_ID} .eiw-timeline{height:98px;padding:12px 24px 0 0}.eiw-total{display:none}.eiw-bcount{display:block!important;left:50%;top:42px;transform:translateX(-50%);font-size:9px;white-space:nowrap}.eiw-bcount b{color:var(--brand)}.eiw-line{height:54px}.eiw-line:after{content:"";position:absolute;right:0;top:22px;height:20px;border-left:2px solid #9aa1ab}.eiw-oldest-bound{position:absolute;right:2px;top:-1px;height:38px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;color:var(--mute);white-space:nowrap}.eiw-no-unread{height:30px;display:flex;align-items:center;gap:8px;color:var(--brand);font-size:10px;font-weight:650}.eiw-no-unread:before,.eiw-no-unread:after{content:"";height:1px;background:var(--brand);flex:1}
     #${ROOT_ID} .eiw-all-day{display:flex;align-items:flex-start;gap:6px;margin:4px 0 9px}
     #${ROOT_ID} .eiw-day{flex:1;display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px;padding:0;overflow:hidden;max-height:30px}
     #${ROOT_ID} .eiw-day.expanded{max-height:none}.eiw-pill{max-width:min(240px,100%)}
@@ -149,17 +163,19 @@
     #${ROOT_ID} .eiw-composer{display:grid;grid-template-columns:minmax(110px,1fr) auto;gap:6px;align-items:center;padding:8px;border:1px solid var(--brand);border-radius:8px;background:var(--bg);margin:8px 0}
     #${ROOT_ID} .eiw-composer input{min-width:0;height:30px;border:1px solid var(--line);border-radius:5px;padding:0 8px;background:var(--bg)}
     #${ROOT_ID} .eiw-kinds{display:flex;gap:4px;flex-wrap:wrap}.eiw-kinds button{padding:3px 7px}
-    #${ROOT_ID} .eiw-cf{position:relative;height:min(355px,42vh);overflow:auto;overscroll-behavior:contain;padding:4px 3px 74px;scrollbar-width:thin}
-    #${ROOT_ID} .eiw-cfst{position:relative}.eiw-card{position:absolute;left:0;right:0;transform-origin:50% 0;transition:transform .16s ease,opacity .16s ease,box-shadow .16s ease;height:92px;min-height:92px;padding:9px 40px 8px 11px;display:block}
-    #${ROOT_ID} .eiw-card.expanded{position:relative!important;transform:none!important;margin-bottom:7px;opacity:1!important}
-    #${ROOT_ID} .eiw-cf.expanded{height:min(480px,55vh)}#${ROOT_ID} .eiw-cf.expanded .eiw-cfst{height:auto!important}
-    #${ROOT_ID} .eiw-card-title{height:auto;min-height:19px;line-height:19px;white-space:nowrap;padding-right:95px;cursor:default}
+    #${ROOT_ID} .eiw-cf{height:min(355px,42vh);overflow:auto;overscroll-behavior:contain;padding:4px 3px;scrollbar-width:thin}
+    #${ROOT_ID} .eiw-cfst{display:flex;flex-direction:column;gap:7px}.eiw-card{position:relative!important;transform:none!important;opacity:1!important;height:92px;min-height:92px;padding:9px 40px 8px 11px;display:block;flex:none}
+    #${ROOT_ID} .eiw-cf.expanded{height:min(480px,55vh)}
+    #${ROOT_ID} .eiw-card-title{height:auto;min-height:19px;line-height:19px;white-space:nowrap;padding-right:95px;cursor:text;outline:none}
     #${ROOT_ID} .eiw-reply{position:absolute;right:38px;top:8px;max-width:120px;text-align:right;color:var(--mute);font-size:9px;line-height:1.2;white-space:nowrap}.eiw-reply b{font-size:11px;color:var(--ink)}
-    #${ROOT_ID} .eiw-open{position:absolute;right:7px;top:31px}.eiw-grip{position:absolute;right:8px;bottom:7px;border:0;background:transparent;color:var(--mute);cursor:grab;font-size:16px;touch-action:none}
+    #${ROOT_ID} .eiw-open{position:absolute;right:7px;top:31px}.eiw-open svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}.eiw-grip{position:absolute;right:8px;bottom:7px;border:0;background:transparent;color:var(--mute);cursor:grab;font-size:16px;touch-action:none}
+    #${ROOT_ID} .eiw-age{position:absolute;left:9px;top:16px;width:54px;text-align:center}.eiw-age b{display:block;font-size:18px;line-height:1}.eiw-age span{font-size:9px;color:var(--mute)}.eiw-card.waiting{padding-left:70px}
     #${ROOT_ID} .eiw-people{display:flex;gap:0;height:18px;overflow:hidden}.eiw-person+.eiw-person:before{content:"·";padding:0 5px;color:var(--mute)}
-    #${ROOT_ID} .eiw-flow-foot{display:flex;gap:6px;justify-content:flex-end;align-items:center;margin-top:7px}.eiw-jump{opacity:0;pointer-events:none;transition:opacity .15s}.eiw-jump.visible{opacity:1;pointer-events:auto}
+    #${ROOT_ID} .eiw-flow-foot{display:flex;gap:6px;justify-content:flex-end;align-items:center;margin-top:7px}
+    #${ROOT_ID} .eiw-kind-icon{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px;flex:none;margin-right:4px}
+    #${ROOT_ID} .eiw-part{display:flex;flex-direction:column;align-items:center;justify-content:center}
     #${ROOT_ID} .eiw-tags{margin-top:2px}.eiw-tag{background:var(--tag-bg,color-mix(in srgb,var(--orange) 18%,var(--bg)));color:var(--tag-fg,color-mix(in srgb,var(--orange) 75%,var(--ink)));border:1px solid var(--tag-border,transparent)}
-    @container(max-width:519px){#${ROOT_ID} .eiw-summary{font-size:10px}#${ROOT_ID} .eiw-summary b{font-size:14px}#${ROOT_ID} .eiw-panel{padding-inline:8px}#${ROOT_ID} .eiw-composer{grid-template-columns:1fr}.eiw-card{height:96px;min-height:96px}.eiw-reply{max-width:96px}}
+    @container(max-width:519px){#${ROOT_ID} .eiw-summary{font-size:10px;max-width:none}#${ROOT_ID} .eiw-summary b{font-size:14px}#${ROOT_ID} .eiw-panel{padding-inline:8px}#${ROOT_ID} .eiw-composer{grid-template-columns:1fr}.eiw-card{height:96px;min-height:96px}.eiw-reply{max-width:96px}.eiw-bname{display:none}.eiw-bcount{display:block!important;top:32px}.eiw-line:after{top:14px}.eiw-oldest-bound{top:-5px}}
   `);
 
   function classify(title) {
@@ -276,12 +292,14 @@
     const buckets = names.map((name, index) => ({ name, items: items.filter(x => bucketFor(x) === index) }));
     const unread = items.filter(x => x.unread).sort((a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
     const newest = unread[0], oldest = unread[unread.length - 1];
+    const oldestEmail = items.filter(x => x.date).sort((a,b) => a.date-b.date)[0];
     const groups = buckets.map(bucket => {
       const count = bucket.items.length || 0.25;
       const dots = bucket.items.map((item, i) => item.unread ? `<i class="eiw-dot${item === newest ? ' newest' : ''}${item === oldest ? ' oldest' : ''}" style="left:${((i + .5) / bucket.items.length) * 100}%" title="${esc(item.subject)} — ${esc(formatStamp(item))}"></i>` : '').join('');
       return `<div class="eiw-bucket" style="flex:${count}"><span class="eiw-bname">${bucket.name}</span><span class="eiw-bcount"><b>${bucket.items.filter(x => x.unread).length}</b> / ${bucket.items.length}</span>${dots}</div>`;
     }).join('');
-    return `<div class="eiw-timeline"><div class="eiw-line">${groups}</div><div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatStamp(newest))}</span><span><b>Oldest unread</b><br>${esc(formatStamp(oldest, true))}</span></div></div>`;
+    const footer = unread.length ? `<div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatStamp(newest))}</span><span><b>Oldest unread</b><br>${esc(formatStamp(oldest, true))}</span></div>` : '<div class="eiw-no-unread">No unread emails, woo!</div>';
+    return `<div class="eiw-timeline">${oldestEmail ? `<span class="eiw-oldest-bound" title="Oldest inbox email">${esc(oldestEmail.date.toLocaleDateString([], {month:'short',day:'numeric'}))}</span>` : ''}<div class="eiw-line">${groups}</div>${footer}</div>`;
   }
 
   function scheduleHTML() {
@@ -291,12 +309,12 @@
     const dayStart = 8 * 60, dayEnd = 17 * 60, nowDate = new Date(), now = nowDate.getHours() * 60 + nowDate.getMinutes();
     const pos = m => Math.max(0, Math.min(100, (m - dayStart) / (dayEnd - dayStart) * 100));
     const hours = Array.from({length: 10}, (_, i) => `<i class="eiw-hour" style="left:${i / 9 * 100}%">${(i + 8) > 12 ? i - 4 : i + 8}</i>`).join('');
-    const blocks = timed.filter(x => x.end > dayStart && x.start < dayEnd).map(x => `<div class="eiw-event ${x.kind}" title="${esc(x.title)}" style="left:${pos(x.start)}%;width:${Math.max(1.5, pos(x.end) - pos(x.start))}%">${esc(x.title)}</div>`).join('');
+    const blocks = timed.filter(x => x.end > dayStart && x.start < dayEnd).map(x => `<div class="eiw-event ${x.kind}" title="${esc(x.title)}" style="left:${pos(x.start)}%;width:${Math.max(1.5, pos(x.end) - pos(x.start))}%">${icon(x.kind)}${esc(x.title)}</div>`).join('');
     const upcoming = timed.filter(x => x.end > now).sort((a,b) => a.start-b.start)[0];
     const mins = upcoming ? Math.max(0, upcoming.start - now) : 0;
-    const composer = pendingBlock ? `<div class="eiw-composer"><input data-block-title aria-label="Time block title" placeholder="What are you blocking time for?" value="${esc(pendingBlock.title || '')}"><div class="eiw-kinds">${[['meeting','Meeting'],['focus','Focus'],['admin','Admin'],['break','Break']].map(([k,l]) => `<button class="eiw-btn" data-save-kind="${k}">${l}</button>`).join('')}<button class="eiw-btn" data-action="cancel-block">Cancel</button></div></div>` : '';
+    const composer = pendingBlock ? `<div class="eiw-composer"><input data-block-title aria-label="Time block title" placeholder="What are you blocking time for?" value="${esc(pendingBlock.title || '')}"><div class="eiw-kinds">${[['meeting','Meeting'],['focus','Focus'],['admin','Admin'],['break','Break']].map(([k,l]) => `<button class="eiw-btn" data-save-kind="${k}">${icon(k)}${l}</button>`).join('')}<button class="eiw-btn" data-action="cancel-block">Cancel</button></div></div>` : '';
     return `<div class="eiw-hd"><b>Today · ${new Date().toLocaleDateString([], {month:'short',day:'numeric'})}</b><span class="eiw-note">Drag the timeline to block local time</span></div>
-      <div class="eiw-all-day"><div class="eiw-day ${state.allDayExpanded ? 'expanded' : ''}">${allDay.length ? allDay.map(x => `<span class="eiw-pill">${esc(x.title)}</span>`).join('') : '<span class="eiw-note">No all-day events</span>'}</div><button class="eiw-btn eiw-day-toggle" data-action="all-day-toggle">${state.allDayExpanded ? 'Collapse' : 'All'}</button></div>
+      <div class="eiw-all-day"><div class="eiw-day ${state.allDayExpanded ? 'expanded' : ''}">${allDay.length ? allDay.map(x => `<span class="eiw-pill">${icon(x.kind)}${esc(x.title)}</span>`).join('') : '<span class="eiw-note">No all-day events</span>'}</div><button class="eiw-btn eiw-day-toggle" data-action="all-day-toggle">${state.allDayExpanded ? 'Collapse' : 'All'}</button></div>
       <div class="eiw-strip" data-schedule-strip data-start="${dayStart}" data-end="${dayEnd}">${hours}${blocks}${now >= dayStart && now <= dayEnd ? `<i class="eiw-now" style="left:${pos(now)}%"></i>` : ''}<i class="eiw-selection" hidden></i></div>${composer}
       <div class="eiw-next">${upcoming ? `Next: ${esc(upcoming.title)} · ${mins ? `in ${mins}m` : 'now'}` : 'No upcoming timed event loaded'}</div>
       <div class="eiw-local-list">${state.localBlocks.filter(x => x.date === todayKey()).map(x => `<button data-remove-block="${esc(x.id)}" title="Remove local block">${esc(minutesLabel(x.start))} · ${esc(x.title)}</button>`).join('')}</div>`;
@@ -314,7 +332,7 @@
     const labels = ['Focus finished', 'Rest finished', 'Focus finished', 'Cycle complete'];
     const next = ['Start rest', 'Start focus 2', 'Start break', 'Start new cycle'];
     return `<div class="eiw-focus"><div class="eiw-ring"><svg viewBox="0 0 120 120"><circle class="back" cx="60" cy="60" r="50"/><circle class="fill" cx="60" cy="60" r="50" style="stroke-dashoffset:${offset}"/></svg><div class="eiw-clock"><b>${mm}:${ss}</b><span>${part[2]}</span></div></div>
-      <div class="eiw-focus-side"><div class="eiw-parts">${PARTS.map((x,i) => `<div class="eiw-part ${x[0] === 'break' ? 'break' : ''} ${i === focus.part ? 'current' : ''}" style="flex:${x[1]}">${x[1]}m</div>`).join('')}</div><div class="eiw-controls"><button class="eiw-btn" data-action="focus-toggle">${focus.running ? 'Pause' : 'Start'}</button><button class="eiw-btn" data-action="focus-skip">Skip</button><button class="eiw-btn" data-action="focus-reset">Reset</button></div></div>
+      <div class="eiw-focus-side"><div class="eiw-parts">${PARTS.map((x,i) => `<div class="eiw-part ${x[0] === 'break' ? 'break' : ''} ${i === focus.part ? 'current' : ''}" style="flex:${x[1]}">${icon(x[0])}${x[1]}m</div>`).join('')}</div><div class="eiw-controls"><button class="eiw-btn" data-action="focus-toggle">${focus.running ? 'Pause' : 'Start'}</button><button class="eiw-btn" data-action="focus-skip">Skip</button><button class="eiw-btn" data-action="focus-reset">Reset</button></div></div>
       ${focus.finished ? `<div class="eiw-finish"><b>${labels[focus.part]}</b><p>The timer is paused and waiting for you.</p><button class="eiw-btn" data-action="focus-next">${next[focus.part]}</button></div>` : ''}</div>`;
   }
 
@@ -331,16 +349,17 @@
     if (state.todo === 'waiting') items.sort((a,b) => b.days-a.days);
     else if (state.selfOrder.length) items.sort((a,b) => (state.selfOrder.indexOf(a.id) + 1 || 9999) - (state.selfOrder.indexOf(b.id) + 1 || 9999));
     const limit = matchMedia('(max-width:700px)').matches ? 3 : 5;
-    const shown = state.todoExpanded ? items : items;
+    const shown = state.todoExpanded ? items : items.slice(0, limit);
     const cards = shown.map(x => {
       const title = state.titleEdits[x.id] || x.subject;
       const people = x.sender.split(/\s*;\s*/).filter(Boolean).map(p => `<span class="eiw-person">${esc(p)}</span>`).join('');
       const styleFor = name => x.categoryStyles?.find(s => s.name === name) || {};
       const tag = (name, cls = '') => { const s = styleFor(name); return `<span class="eiw-tag ${cls}" style="--tag-bg:${esc(s.bg || '')};--tag-fg:${esc(s.color || '')};--tag-border:${esc(s.border || '')}">${esc(name)}</span>`; };
       const reply = x.date ? `<span class="eiw-reply"><i>Last reply:</i> ${x.date.toLocaleDateString([], {month:'short',day:'numeric'})} · <b>${x.days}</b> days ago</span>` : '';
-      return `<article class="eiw-card ${state.todoExpanded ? 'expanded' : ''} ${state.todo === 'waiting' ? 'waiting' : ''} ${x.days > 30 ? 'overdue' : ''}" data-message-id="${esc(x.id)}"><div class="eiw-card-title" data-edit-title="${esc(x.id)}">${esc(title)}</div>${reply}<div class="eiw-people">${people}</div><div class="eiw-tags">${tag(x.categories.find(c => /^Self|^Waiting/i.test(c)) || x.action, 'main')}${x.extras.map(t => tag(t, 'extra')).join('')}</div><button class="eiw-open" data-open-message="${esc(x.id)}" title="View message" aria-label="View message: ${esc(title)}">→</button>${state.todo === 'self' && state.todoExpanded ? '<button class="eiw-grip" data-grip title="Drag to reorder" aria-label="Drag to reorder">⋮⋮</button>' : ''}</article>`;
+      const age = state.todo === 'waiting' ? `<span class="eiw-age"><b>${x.days}d</b><span>days ago</span></span>` : '';
+      return `<article class="eiw-card ${state.todo === 'waiting' ? 'waiting' : ''} ${x.days > 30 ? 'overdue' : ''}" data-message-id="${esc(x.id)}">${age}<div class="eiw-card-title" data-edit-title="${esc(x.id)}" contenteditable="true" spellcheck="false">${esc(title)}</div>${reply}<div class="eiw-people">${people}</div><div class="eiw-tags">${tag(x.categories.find(c => /^Self|^Waiting/i.test(c)) || x.action, 'main')}${x.extras.map(t => tag(t, 'extra')).join('')}</div><button class="eiw-open" data-open-message="${esc(x.id)}" title="View message" aria-label="View message: ${esc(title)}"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4H4.5A1.5 1.5 0 0 0 3 5.5v8A1.5 1.5 0 0 0 4.5 15h8a1.5 1.5 0 0 0 1.5-1.5V11"/><path d="M9 3h6v6M15 3 8 10"/></svg></button>${state.todo === 'self' ? '<button class="eiw-grip" data-grip title="Drag to reorder" aria-label="Drag to reorder">⋮⋮</button>' : ''}</article>`;
     }).join('');
-    return `<div class="eiw-hd"><div class="eiw-switch"><button data-todo="self" aria-pressed="${state.todo === 'self'}">Self ${todoItems('self').length}</button><button data-todo="waiting" aria-pressed="${state.todo === 'waiting'}">Waiting ${todoItems('waiting').length}</button></div></div><div class="eiw-cf ${state.todoExpanded ? 'expanded' : ''}" data-flow data-limit="${limit}"><div class="eiw-cfst">${cards || `<div class="eiw-empty">No inbox messages have this category.</div>`}</div></div><div class="eiw-flow-foot"><button class="eiw-btn eiw-jump" data-action="todo-top">↑ Top</button>${items.length > limit ? `<button class="eiw-btn" data-action="todo-expand">${state.todoExpanded ? `Collapse to top ${limit}` : `Show all ${items.length}`}</button>` : ''}</div>`;
+    return `<div class="eiw-hd"><div class="eiw-switch"><button data-todo="self" aria-pressed="${state.todo === 'self'}">Self ${todoItems('self').length}</button><button data-todo="waiting" aria-pressed="${state.todo === 'waiting'}">Waiting ${todoItems('waiting').length}</button></div></div><div class="eiw-cf ${state.todoExpanded ? 'expanded' : ''}" data-flow data-limit="${limit}"><div class="eiw-cfst">${cards || `<div class="eiw-empty">No inbox messages have this category.</div>`}</div></div><div class="eiw-flow-foot">${items.length > limit ? `<button class="eiw-btn" data-action="todo-expand">${state.todoExpanded ? `Collapse to top ${limit}` : `Show all ${items.length}`}</button>` : ''}</div>`;
   }
 
   function panelHTML() {
@@ -355,8 +374,8 @@
     if (!root) return;
     const unread = [...cache.values()].filter(x => x.unread).length;
     root.dataset.collapsed = String(state.collapsed);
-    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b>${unread}</b> unread / ${cache.size} in inbox</span><button class="eiw-iconbtn" data-action="scan" title="Refresh inbox data" aria-label="Refresh inbox data">↻</button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
-    requestAnimationFrame(() => { syncGeometryAndTheme(); initAllDay(); initFlow(); });
+    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b>${unread}</b> unread / <b class="eiw-inbox-total">${cache.size}</b> in inbox</span><button class="eiw-iconbtn" data-action="scan" title="Refresh inbox data" aria-label="Refresh inbox data">↻</button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
+    requestAnimationFrame(() => { syncGeometryAndTheme(); initAllDay(); });
   }
 
   function syncGeometryAndTheme() {
@@ -374,29 +393,6 @@
   function initAllDay() {
     const day = root?.querySelector('.eiw-day'), toggle = root?.querySelector('.eiw-day-toggle');
     if (day && toggle && (day.scrollHeight > day.clientHeight + 2 || state.allDayExpanded)) toggle.classList.add('visible');
-  }
-
-  function initFlow() {
-    flowCleanup?.(); flowCleanup = null;
-    const flow = root?.querySelector('[data-flow]');
-    if (!flow || state.todoExpanded) return;
-    const cards = [...flow.querySelectorAll('.eiw-card')], stage = flow.querySelector('.eiw-cfst'), jump = root.querySelector('.eiw-jump');
-    if (!cards.length) return;
-    const gap = 13, base = 92, limit = Number(flow.dataset.limit) || 5;
-    stage.style.height = `${Math.max(flow.clientHeight, base + (cards.length - 1) * 45)}px`;
-    const update = () => {
-      const y = flow.scrollTop;
-      cards.forEach((card, i) => {
-        const natural = i * 45, distance = natural - y, rank = Math.max(0, Math.min(limit - 1, distance / 45));
-        const scale = .78 + .22 * (1 - rank / Math.max(1, limit - 1));
-        card.style.transform = `translateY(${natural}px) scale(${scale})`;
-        card.style.opacity = String(.48 + .52 * (1 - rank / Math.max(1, limit - 1)));
-        card.style.zIndex = String(cards.length - i);
-      });
-      jump?.classList.toggle('visible', y > 50);
-    };
-    flow.addEventListener('scroll', update, {passive:true}); update();
-    flowCleanup = () => flow.removeEventListener('scroll', update);
   }
 
   function scheduleRender() {
@@ -537,13 +533,15 @@
         case 'focus-next': focus = focus.part === PARTS.length - 1 ? { part: 0, elapsed: 0, running: false, finished: false, last: 0 } : { part: focus.part + 1, elapsed: 0, running: false, finished: false, last: 0 }; render(); break;
       }
     });
-    root.addEventListener('dblclick', event => {
-      const title = event.target.closest('[data-edit-title]');
+    root.addEventListener('focusout', event => {
+      const title = event.target.closest?.('[data-edit-title]');
       if (!title) return;
-      title.contentEditable = 'true'; title.focus(); document.getSelection()?.selectAllChildren(title);
-      const finish = () => { title.contentEditable = 'false'; state.titleEdits[title.dataset.editTitle] = title.textContent.trim() || cache.get(title.dataset.editTitle)?.subject; save(); title.removeEventListener('blur', finish); };
-      title.addEventListener('blur', finish);
-      title.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); title.blur(); } });
+      state.titleEdits[title.dataset.editTitle] = title.textContent.trim() || cache.get(title.dataset.editTitle)?.subject;
+      save();
+    });
+    root.addEventListener('keydown', event => {
+      const title = event.target.closest?.('[data-edit-title]');
+      if (title && event.key === 'Enter') { event.preventDefault(); title.blur(); }
     });
     root.addEventListener('pointerdown', event => {
       const strip = event.target.closest('[data-schedule-strip]');
@@ -567,7 +565,7 @@
         if (!over || over === card) return;
         const ids = todoItems('self').map(x=>x.id).sort((a,b)=>(state.selfOrder.indexOf(a)+1||9999)-(state.selfOrder.indexOf(b)+1||9999));
         const from=ids.indexOf(id), to=ids.indexOf(over.dataset.messageId); if(from<0||to<0)return;
-        ids.splice(to,0,ids.splice(from,1)[0]); state.selfOrder=ids; save();
+        state.selfOrder=reorderIds(ids,id,over.dataset.messageId); save();
         over.parentElement.insertBefore(card, to>from ? over.nextSibling : over);
       };
       const up = () => { grip.removeEventListener('pointermove',move); grip.removeEventListener('pointerup',up); card.classList.remove('dragging'); render(); };
