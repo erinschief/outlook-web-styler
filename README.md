@@ -1,6 +1,9 @@
 # Outlook Web Styler and QOL Improvements
 
-A Tampermonkey userscript that restyles Outlook on the web and adds several quality-of-life improvements.
+Two independent Tampermonkey userscripts for Outlook on the web:
+
+- `outlook-web-styler.user.js` restyles Outlook and adds the existing quality-of-life improvements.
+- `outlook-inbox-widgets.user.js` adds the collapsible Unread, Schedule, Focus, and To-do widget above the personal inbox. It does not run in shared mailboxes and does not require the styler.
 
 ## Install
 
@@ -10,6 +13,14 @@ A Tampermonkey userscript that restyles Outlook on the web and adds several qual
 4. Choose **Install**.
 
 Repeat those steps once on each browser or device where you use Outlook.
+
+### Install the optional inbox widgets
+
+1. Open the raw [`outlook-inbox-widgets.user.js`](https://raw.githubusercontent.com/erinschief/outlook-web-styler/main/outlook-inbox-widgets.user.js) file.
+2. Choose **Install** on Tampermonkey's installation screen.
+3. Reload the personal Outlook inbox.
+
+The widget reads the Outlook rows that have been loaded while you browse. Open Outlook's native **My Day** pane once when you want to refresh the Schedule page. The focus timer, display preferences, Self ordering, and planning blocks are stored locally by Tampermonkey. The script does not write to mail categories or the Outlook calendar.
 
 ## Configure a shared mailbox
 
@@ -34,6 +45,8 @@ For every release:
 Tampermonkey will offer or install the newer version according to each browser's update settings. You can also open Tampermonkey's dashboard and run **Check for userscript updates** to fetch it immediately.
 
 Do not rename or move `outlook-web-styler.user.js` without also updating the two metadata URLs and reinstalling the script on each device.
+
+The widget script updates independently from its own raw URL. Increase its `@version` whenever `outlook-inbox-widgets.user.js` changes.
 
 ## Supported Outlook hosts
 
