@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.1.1
+// @version      0.1.2
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFEUlEQVR4nO2dS68URRTHjxcWrtxBgJUPFpooCMRHwhrYoK7wc/CIIawGRAzhA0igq2YMz5trTAT9AMZEYKvLKzOneiIaFj4ikGguUObU3Jnbc6fvTPdM9dSjzy+pZALp01X/f3dVdd+qPgAMwzAMwzAMwzBMQMjObpB4FoS6BxJ/A4FPQSoddRHURnwAUt0FgZ9C0t41f+G/TF8Dqb4Ggc+dCyKdG/IcBH4FMn11PuKLzkEQ6i/nDZfelX9AqsPVit/sHAKJK2snxWcg1XVz4ktqOyzpTRA7S3qTaWuSfgBC3VjVoK/HCiTpgeq6neyVL/A+tPBtqDsC94DAdsaEP+GyesX+iajPz4ovl7fYP0mgkBbDJixZPkFn92DApVkAX/mjNNXeQXdEWjW7b4E1aKq5Nthctxc4MqS6meklztgLbOb5AwMqHukDRqQfZnS6YzGw+n0QuIXb7AWODJHuyIwDDywGzjzh1mGqOS2kzVoX9BSskX3gYBxoxQYUhw1wDBvgGDbAMd4YIDvvgcRjINKTQReJx0xbqtTKatCryy+BxO88eD2srRaB35q22dSqMGWCxii+7Be8ZVWrwhQNehnfz6n43yDxAkg8H1i50Kv7uvYk7Xf9NUDiiQ2uHgkNvQCh0NALps75XdFxnw04nbld/wjShEae+Nm24OkwDKDXsUJ9MXz1qKbXJmj9Akh1ceTCobYEZwD9pgaFYoLeQHxzR6xrVzAG9Bvmuwl6jPhE0Ab4boKeIH4UBvhqgi4gfjQG+GaCLih+VAb4YoIuIX50Brg2QZcUP0oDXJmgpxA/WgPmbYKeUvyoDZiXCbOIH70BG7/8svPuyEbs6A0gGnozCFy2akKe+HQOOlcZojdA53YRs3VHNmNGbUAj9/XvLzPdCbZjRmuA3mBwpCV+0w7MVcSM0oBJg2Mjr/82gm0eP46oZqmYtXwOKCpEI9eE73O3hvY2kfwwVcxaPQmXFaChF0BgkjOY/gQSr5ki8OfRgRaTsTHL1CEaA2aZkwtaKFVkIziugFCfTIxXpi5RGGDjgSjBN1a3hj7JueIfm+1TLXy9cLyidQreANtPui18ERK1H2T6MYj0iPlN/zYNReoWtAGzvoeZB5PeRwVrQAjiFzEhSAN6a2nCEH+SCfRVlOAM4JVx2l6ligaldZP508MwxC+yNpT2C/h7B9CmjPXTQ/UQEjzlfKOFKFlMndXDkfY0u+/4awBBGxny74IICnq+P2Bth8xt92Ipu0Wob8LYIdOHblWJRz3YaHF+xnJ0Yrczq1ZugkYKG+AYNsAxbIBj2ADHsAGOYQMcwwY4hg1wDBtQNwOS7k7zJV0q9Hs9Qn2++gfzc7U4Vs7dADw1+D/6PdqY/1b//99aHCvnbcCkv5fysRbwsTEywGMr+XCrr12BcHBsdR9uNTlTeoEpecFQhbo7zdp72nlCOQZGjlXnQOIjEOqz0cZ04zo2++ligb9CJR/vpswRTD7NzkcVfbw7sy6G1mYy+Qi1OHZ8mBpajz/ImITPTNoOZpgk3TeUwEF03wSrmFRNg/6tzSlMMly5vxUkdjK9xCJYh/JkDSfxaZu0HXUnMVd+Z2gVXQtfri6H2Ggaq5smcwTNAOqQW2CJNvulO8yAa/r8eaWx6kMnoFRN2QcOLtpc+ZWL34fyZFGqJk5lqHsDrlqsrtsZB6Vq6i1Dv2Me1uqUzFPgj2aqaX22wzAMwzAMwzAMw0CV/A/uwEX3AsFDWQAAAABJRU5ErkJggg==
@@ -48,6 +48,35 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   })[c]);
+  const attrDecoder = document.createElement('textarea');
+  const decodeAttribute = value => {
+    attrDecoder.innerHTML = value;
+    return attrDecoder.value;
+  };
+
+  // Outlook's page-level HTML policy preserves elements/text inserted by a userscript but can
+  // remove class, style, and data attributes from an innerHTML assignment. Reapply the attributes
+  // from our controlled template after the browser has created the element tree. This keeps the
+  // widget scoped and avoids weakening Outlook's policy for any other content.
+  function setMarkup(host, html) {
+    host.innerHTML = html;
+    const elements = [...host.querySelectorAll('*')];
+    const startTags = [...html.matchAll(/<(?!\/|!)([a-z][\w-]*)([^>]*)>/gi)];
+    if (elements.length !== startTags.length) {
+      console.warn('[Outlook Inbox Widgets] Markup hydration mismatch', { elements: elements.length, tags: startTags.length });
+    }
+    startTags.slice(0, elements.length).forEach((match, index) => {
+      const element = elements[index];
+      const sourceTag = match[1].toLowerCase();
+      if (element.localName !== sourceTag) return;
+      const attributes = match[2];
+      for (const attribute of attributes.matchAll(/([:@\w-]+)(?:\s*=\s*"([^"]*)")?/g)) {
+        const name = attribute[1];
+        if (name === '/') continue;
+        element.setAttribute(name, decodeAttribute(attribute[2] ?? ''));
+      }
+    });
+  }
   const save = () => GM_setValue(STORE, state);
   const todayKey = () => new Date().toLocaleDateString('en-CA');
   const personalInbox = () => /^\/mail\/inbox(?:\/|$)/i.test(location.pathname);
@@ -239,7 +268,7 @@
     if (!root) return;
     const unread = [...cache.values()].filter(x => x.unread).length;
     root.dataset.collapsed = String(state.collapsed);
-    root.innerHTML = `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Inbox add-ons</span><span class="eiw-summary">${unread} unread · ${cache.size} loaded</span><button class="eiw-iconbtn" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Expand' : 'Collapse'} inbox add-ons">${state.collapsed ? '⌄' : '⌃'}</button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`;
+    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Inbox add-ons</span><span class="eiw-summary">${unread} unread · ${cache.size} loaded</span><button class="eiw-iconbtn" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Expand' : 'Collapse'} inbox add-ons">${state.collapsed ? '⌄' : '⌃'}</button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
   }
 
   function scheduleRender() {
