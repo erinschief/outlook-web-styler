@@ -20,7 +20,7 @@ Repeat those steps once on each browser or device where you use Outlook.
 2. Choose **Install** on Tampermonkey's installation screen.
 3. Reload the personal Outlook inbox.
 
-The widget reads the Outlook rows that have been loaded while you browse. Open Outlook's native **My Day** pane once when you want to refresh the Schedule page. The focus timer, display preferences, Self ordering, and planning blocks are stored locally by Tampermonkey. The script does not write to mail categories or the Outlook calendar.
+The widget automatically sweeps Outlook's virtualized personal-inbox list, caches the complete set of message rows, and restores the original list position. Use the widget's refresh button to rescan after large mailbox changes. It follows the visible message-list container in both single-pane and multi-pane layouts. Open Outlook's native **My Day** pane once when you want to refresh the Schedule page. The focus timer, display preferences, Self ordering, and planning blocks are stored locally by Tampermonkey. The script does not write to mail categories or the Outlook calendar.
 
 ## Configure a shared mailbox
 

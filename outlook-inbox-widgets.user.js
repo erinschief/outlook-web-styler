@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.1.2
+// @version      0.1.3
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFEUlEQVR4nO2dS68URRTHjxcWrtxBgJUPFpooCMRHwhrYoK7wc/CIIawGRAzhA0igq2YMz5trTAT9AMZEYKvLKzOneiIaFj4ikGguUObU3Jnbc6fvTPdM9dSjzy+pZALp01X/f3dVdd+qPgAMwzAMwzAMwzBMQMjObpB4FoS6BxJ/A4FPQSoddRHURnwAUt0FgZ9C0t41f+G/TF8Dqb4Ggc+dCyKdG/IcBH4FMn11PuKLzkEQ6i/nDZfelX9AqsPVit/sHAKJK2snxWcg1XVz4ktqOyzpTRA7S3qTaWuSfgBC3VjVoK/HCiTpgeq6neyVL/A+tPBtqDsC94DAdsaEP+GyesX+iajPz4ovl7fYP0mgkBbDJixZPkFn92DApVkAX/mjNNXeQXdEWjW7b4E1aKq5Nthctxc4MqS6meklztgLbOb5AwMqHukDRqQfZnS6YzGw+n0QuIXb7AWODJHuyIwDDywGzjzh1mGqOS2kzVoX9BSskX3gYBxoxQYUhw1wDBvgGDbAMd4YIDvvgcRjINKTQReJx0xbqtTKatCryy+BxO88eD2srRaB35q22dSqMGWCxii+7Be8ZVWrwhQNehnfz6n43yDxAkg8H1i50Kv7uvYk7Xf9NUDiiQ2uHgkNvQCh0NALps75XdFxnw04nbld/wjShEae+Nm24OkwDKDXsUJ9MXz1qKbXJmj9Akh1ceTCobYEZwD9pgaFYoLeQHxzR6xrVzAG9Bvmuwl6jPhE0Ab4boKeIH4UBvhqgi4gfjQG+GaCLih+VAb4YoIuIX50Brg2QZcUP0oDXJmgpxA/WgPmbYKeUvyoDZiXCbOIH70BG7/8svPuyEbs6A0gGnozCFy2akKe+HQOOlcZojdA53YRs3VHNmNGbUAj9/XvLzPdCbZjRmuA3mBwpCV+0w7MVcSM0oBJg2Mjr/82gm0eP46oZqmYtXwOKCpEI9eE73O3hvY2kfwwVcxaPQmXFaChF0BgkjOY/gQSr5ki8OfRgRaTsTHL1CEaA2aZkwtaKFVkIziugFCfTIxXpi5RGGDjgSjBN1a3hj7JueIfm+1TLXy9cLyidQreANtPui18ERK1H2T6MYj0iPlN/zYNReoWtAGzvoeZB5PeRwVrQAjiFzEhSAN6a2nCEH+SCfRVlOAM4JVx2l6ligaldZP508MwxC+yNpT2C/h7B9CmjPXTQ/UQEjzlfKOFKFlMndXDkfY0u+/4awBBGxny74IICnq+P2Bth8xt92Ipu0Wob8LYIdOHblWJRz3YaHF+xnJ0Yrczq1ZugkYKG+AYNsAxbIBj2ADHsAGOYQMcwwY4hg1wDBtQNwOS7k7zJV0q9Hs9Qn2++gfzc7U4Vs7dADw1+D/6PdqY/1b//99aHCvnbcCkv5fysRbwsTEywGMr+XCrr12BcHBsdR9uNTlTeoEpecFQhbo7zdp72nlCOQZGjlXnQOIjEOqz0cZ04zo2++ligb9CJR/vpswRTD7NzkcVfbw7sy6G1mYy+Qi1OHZ8mBpajz/ImITPTNoOZpgk3TeUwEF03wSrmFRNg/6tzSlMMly5vxUkdjK9xCJYh/JkDSfxaZu0HXUnMVd+Z2gVXQtfri6H2Ggaq5smcwTNAOqQW2CJNvulO8yAa/r8eaWx6kMnoFRN2QcOLtpc+ZWL34fyZFGqJk5lqHsDrlqsrtsZB6Vq6i1Dv2Me1uqUzFPgj2aqaX22wzAMwzAMwzAMw0CV/A/uwEX3AsFDWQAAAABJRU5ErkJggg==
@@ -37,6 +37,10 @@
   let renderTimer = 0;
   let observer = null;
   let focusTick = 0;
+  let scanning = false;
+  let scanComplete = false;
+  let scanProgress = 0;
+  let scannedScroller = null;
   let focus = { part: 0, elapsed: 0, running: false, finished: false, last: 0 };
   const PARTS = [
     ['focus', 25, 'Focus 1 of 2'],
@@ -80,8 +84,12 @@
   const save = () => GM_setValue(STORE, state);
   const todayKey = () => new Date().toLocaleDateString('en-CA');
   const personalInbox = () => /^\/mail\/inbox(?:\/|$)/i.test(location.pathname);
-  const messageList = () => document.querySelector('[data-app-section="MessageList"]');
   const visible = el => !!el && el.getClientRects().length > 0;
+  const messageList = () => {
+    const lists = [...document.querySelectorAll('[data-app-section="MessageList"]')];
+    return lists.find(list => visible(list) && list.querySelector('[role="complementary"], [role="listbox"]')) ||
+      lists.find(visible) || lists[0] || null;
+  };
 
   GM_addStyle(`
     #${ROOT_ID}{--bg:var(--colorNeutralBackground1,#fff);--ink:var(--colorNeutralForeground1,#242424);--mute:var(--colorNeutralForeground3,#616161);--line:var(--colorNeutralStroke2,#e0e0e0);--brand:var(--colorBrandBackground,#0f6cbd);--red:#d13438;--orange:#e8820c;--purple:#8764b8;--blue:#4aa3f0;--green:#2e8b6e;--meet:#d6e8f8;--focus:#d5efe4;--admin:#f6e8c8;--rest:#e8e9ec;flex:0 0 auto;width:100%;box-sizing:border-box;padding:0 8px 8px;color:var(--ink);font:13px/1.35 "Segoe UI Variable","Segoe UI",sans-serif;container-type:inline-size;z-index:3}
@@ -97,6 +105,7 @@
     .eiw-focus{position:relative;display:flex;gap:14px;align-items:center}.eiw-ring{position:relative;width:118px;height:118px;flex:none}.eiw-ring svg{width:100%;height:100%;transform:rotate(-90deg)}.eiw-ring circle{fill:none;stroke-width:9}.eiw-ring .back{stroke:var(--line)}.eiw-ring .fill{stroke:var(--green);stroke-linecap:round;stroke-dasharray:314;transition:stroke-dashoffset .2s linear}.eiw-clock{position:absolute;inset:0;display:grid;place-content:center;text-align:center}.eiw-clock b{font-size:25px;font-variant-numeric:tabular-nums}.eiw-clock span{font-size:10px;color:var(--mute)}.eiw-focus-side{flex:1;min-width:0}.eiw-parts{display:flex;gap:3px;height:42px;margin-bottom:10px}.eiw-part{display:grid;place-items:center;min-width:25px;border-radius:5px;background:var(--focus);color:var(--green);font-size:9px;opacity:.65}.eiw-part.break{background:var(--rest);color:var(--mute)}.eiw-part.current{outline:2px solid var(--brand);opacity:1}.eiw-controls{display:flex;gap:5px;flex-wrap:wrap}.eiw-finish{position:absolute;inset:-2px;background:var(--bg);display:grid;place-content:center;text-align:center;border-radius:8px;z-index:2}.eiw-finish b{font-size:18px}.eiw-finish p{color:var(--mute);margin:4px 0 8px}
     .eiw-switch{display:flex;gap:3px}.eiw-switch button{border:1px solid var(--line);background:var(--bg);padding:3px 9px;border-radius:999px}.eiw-switch button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}.eiw-cards{display:flex;flex-direction:column;gap:7px}.eiw-card{position:relative;height:76px;min-height:76px;display:flex;gap:7px;align-items:flex-start;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;background:var(--bg);padding:8px 8px 8px 10px;overflow:hidden}.eiw-card.waiting{border-left-color:var(--purple)}.eiw-card.overdue{border-left-color:var(--red);background:color-mix(in srgb,var(--red) 5%,var(--bg))}.eiw-card.dragging{opacity:.55}.eiw-card-main{flex:1;min-width:0}.eiw-card-title,.eiw-people,.eiw-tags{height:18px;line-height:18px;white-space:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;text-overflow:ellipsis}.eiw-card-title{font-size:13px;font-weight:650}.eiw-people{font-size:11px;color:var(--mute)}.eiw-tags{display:flex;gap:5px}.eiw-tag{flex:none;border-radius:999px;padding:0 7px;background:color-mix(in srgb,var(--orange) 18%,var(--bg));color:color-mix(in srgb,var(--orange) 75%,var(--ink));font-size:10px;font-weight:600}.eiw-card.waiting .eiw-tag.main{background:color-mix(in srgb,var(--purple) 18%,var(--bg));color:color-mix(in srgb,var(--purple) 75%,var(--ink))}.eiw-tag.extra{background:color-mix(in srgb,var(--blue) 14%,var(--bg));color:color-mix(in srgb,var(--blue) 75%,var(--ink))}.eiw-age{width:42px;flex:none;text-align:center}.eiw-age b{display:block;font-size:15px}.eiw-age span{font-size:9px;color:var(--mute)}.eiw-open{align-self:center;width:28px;height:28px;border:1px solid transparent;background:transparent;border-radius:6px}.eiw-open:hover{border-color:var(--line);color:var(--brand)}.eiw-more{width:100%;margin-top:7px}
     #${ROOT_ID}[data-collapsed="true"] .eiw-tabs,#${ROOT_ID}[data-collapsed="true"] .eiw-panel{display:none}
+    [data-testid="virtuoso-scroller"][data-erin-inbox-scan]{visibility:hidden!important;pointer-events:none!important}
     @container(max-width:519px){.eiw-bname,.eiw-bcount{display:none}.eiw-line{height:48px}.eiw-line:before{top:23px}.eiw-dot{top:20px}.eiw-ends{margin-top:-6px}.eiw-focus{align-items:flex-start}.eiw-ring{width:96px;height:96px}.eiw-clock b{font-size:20px}.eiw-tab{font-size:11px}.eiw-event{padding:4px 2px}.eiw-summary{max-width:90px}}
     @media(prefers-reduced-motion:reduce){#${ROOT_ID} *{scroll-behavior:auto!important;transition:none!important}}
   `);
@@ -196,7 +205,7 @@
   }
 
   function timelineHTML(items) {
-    if (!items.length) return '<div class="eiw-empty">Scroll the inbox to collect message rows for the timeline.</div>';
+    if (!items.length) return `<div class="eiw-empty">${scanning ? 'Scanning the complete inbox…' : 'Refresh the inbox scan to collect message rows.'}</div>`;
     const names = ['Today', 'Yesterday', 'This week', 'This month', 'Last month', 'Earlier'];
     const buckets = names.map((name, index) => ({ name, items: items.filter(x => bucketFor(x) === index) }));
     const unread = items.filter(x => x.unread).sort((a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
@@ -206,7 +215,7 @@
       const dots = bucket.items.map((item, i) => item.unread ? `<i class="eiw-dot${item === newest ? ' newest' : ''}${item === oldest ? ' oldest' : ''}" style="left:${((i + .5) / bucket.items.length) * 100}%" title="${esc(item.subject)} — ${esc(formatStamp(item))}"></i>` : '').join('');
       return `<div class="eiw-bucket" style="flex:${count}"><span class="eiw-bname">${bucket.name}</span><span class="eiw-bcount"><b>${bucket.items.filter(x => x.unread).length}</b> / ${bucket.items.length}</span>${dots}</div>`;
     }).join('');
-    return `<div class="eiw-timeline"><div class="eiw-total"><b>${unread.length}</b> / ${items.length}<br>unread / loaded</div><div class="eiw-line">${groups}</div><div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatStamp(newest))}</span><span><b>Oldest unread</b><br>${esc(formatStamp(oldest, true))}</span></div></div>`;
+    return `<div class="eiw-timeline"><div class="eiw-total"><b>${unread.length}</b> / ${items.length}<br>unread / ${scanComplete ? 'inbox' : 'loaded'}</div><div class="eiw-line">${groups}</div><div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatStamp(newest))}</span><span><b>Oldest unread</b><br>${esc(formatStamp(oldest, true))}</span></div></div>`;
   }
 
   function scheduleHTML() {
@@ -253,12 +262,12 @@
     else if (state.selfOrder.length) items.sort((a,b) => (state.selfOrder.indexOf(a.id) + 1 || 9999) - (state.selfOrder.indexOf(b.id) + 1 || 9999));
     const shown = state.todoExpanded ? items : items.slice(0, 5);
     const cards = shown.map(x => `<div class="eiw-card ${state.todo === 'waiting' ? 'waiting' : ''} ${x.days > 30 ? 'overdue' : ''}" draggable="${state.todo === 'self' && state.todoExpanded}" data-message-id="${esc(x.id)}">${state.todo === 'waiting' ? `<div class="eiw-age"><b>${x.days}d</b><span>since reply</span></div>` : ''}<div class="eiw-card-main"><div class="eiw-card-title">${esc(x.subject)}</div><div class="eiw-people">${esc(x.sender)}</div><div class="eiw-tags"><span class="eiw-tag main">${esc(x.action.charAt(0).toUpperCase() + x.action.slice(1))}</span>${x.extras.map(t => `<span class="eiw-tag extra">${esc(t)}</span>`).join('')}</div></div><button class="eiw-open" data-open-message="${esc(x.id)}" title="Open email" aria-label="Open email: ${esc(x.subject)}">↗</button></div>`).join('');
-    return `<div class="eiw-hd"><div class="eiw-switch"><button data-todo="self" aria-pressed="${state.todo === 'self'}">Self ${todoItems('self').length}</button><button data-todo="waiting" aria-pressed="${state.todo === 'waiting'}">Waiting ${todoItems('waiting').length}</button></div><span class="eiw-note">${state.todo === 'self' ? 'Expand to drag into your order.' : 'Longest wait first; red is over 30 days.'}</span></div><div class="eiw-cards">${cards || '<div class="eiw-empty">No loaded messages have this category. Scroll the inbox to collect more rows.</div>'}</div>${items.length > 5 ? `<button class="eiw-btn eiw-more" data-action="todo-expand">${state.todoExpanded ? 'Collapse to top 5' : `Show all ${items.length}`}</button>` : ''}`;
+    return `<div class="eiw-hd"><div class="eiw-switch"><button data-todo="self" aria-pressed="${state.todo === 'self'}">Self ${todoItems('self').length}</button><button data-todo="waiting" aria-pressed="${state.todo === 'waiting'}">Waiting ${todoItems('waiting').length}</button></div><span class="eiw-note">${state.todo === 'self' ? 'Expand to drag into your order.' : 'Longest wait first; red is over 30 days.'}</span></div><div class="eiw-cards">${cards || `<div class="eiw-empty">${scanning ? 'Scanning the complete inbox…' : 'No inbox messages have this category.'}</div>`}</div>${items.length > 5 ? `<button class="eiw-btn eiw-more" data-action="todo-expand">${state.todoExpanded ? 'Collapse to top 5' : `Show all ${items.length}`}</button>` : ''}`;
   }
 
   function panelHTML() {
     const items = [...cache.values()];
-    if (state.tab === 'timeline') return `<p class="eiw-note">Dots are unread messages; red is oldest and ringed is newest. Counts cover rows Outlook has loaded while you browse.</p>${timelineHTML(items)}`;
+    if (state.tab === 'timeline') return `<p class="eiw-note">Dots are unread messages; red is oldest and ringed is newest. The inbox is scanned automatically and can be refreshed with ↻.</p>${timelineHTML(items)}`;
     if (state.tab === 'schedule') return scheduleHTML();
     if (state.tab === 'focus') return focusHTML();
     return todoHTML();
@@ -268,10 +277,11 @@
     if (!root) return;
     const unread = [...cache.values()].filter(x => x.unread).length;
     root.dataset.collapsed = String(state.collapsed);
-    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Inbox add-ons</span><span class="eiw-summary">${unread} unread · ${cache.size} loaded</span><button class="eiw-iconbtn" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Expand' : 'Collapse'} inbox add-ons">${state.collapsed ? '⌄' : '⌃'}</button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
+    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Inbox add-ons</span><span class="eiw-summary">${scanning ? `Scanning inbox ${scanProgress}%` : `${unread} unread · ${cache.size} ${scanComplete ? 'complete' : 'loaded'}`}</span><button class="eiw-iconbtn" data-action="scan" title="Refresh all inbox data" aria-label="Refresh all inbox data">↻</button><button class="eiw-iconbtn" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Expand' : 'Collapse'} inbox add-ons">${state.collapsed ? '⌄' : '⌃'}</button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
   }
 
   function scheduleRender() {
+    if (scanning) return;
     clearTimeout(renderTimer);
     renderTimer = setTimeout(() => {
       const messagesChanged = scrapeMessages();
@@ -284,23 +294,72 @@
     if (!personalInbox()) {
       document.getElementById(ROOT_ID)?.remove();
       root = null;
+      scannedScroller = null;
+      scanComplete = false;
+      cache.clear();
       return;
     }
     const list = messageList();
-    const region = list?.querySelector(':scope > [role="complementary"]');
+    const region = list ? [...list.querySelectorAll('[role="complementary"]')].find(visible) ||
+      list.querySelector('[role="complementary"]') : null;
     if (!list || !region) return;
+    const host = region.parentElement;
+    if (!host) return;
     let created = false;
     if (!root || !root.isConnected) {
       root = document.createElement('section');
       root.id = ROOT_ID;
       root.setAttribute('aria-label', 'Inbox add-ons');
-      list.insertBefore(root, region);
+      host.insertBefore(root, region);
       bind();
       created = true;
-    } else if (root.nextElementSibling !== region) list.insertBefore(root, region);
+    } else if (root.parentElement !== host || root.nextElementSibling !== region) host.insertBefore(root, region);
     const messagesChanged = scrapeMessages();
     const scheduleChanged = scrapeMyDay();
     if (created || messagesChanged || scheduleChanged) render();
+    const scroller = list.querySelector('[data-testid="virtuoso-scroller"]');
+    if (scroller && scroller !== scannedScroller && !scanning) setTimeout(() => scanAllMessages(false), 350);
+  }
+
+  const settleVirtualList = () => new Promise(resolve => {
+    requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(resolve, 70)));
+  });
+
+  async function scanAllMessages(force) {
+    if (scanning || !personalInbox()) return;
+    const scroller = messageList()?.querySelector('[data-testid="virtuoso-scroller"]');
+    if (!scroller || (!force && scroller === scannedScroller)) return;
+    scannedScroller = scroller;
+    scanning = true;
+    scanComplete = false;
+    scanProgress = 0;
+    cache.clear();
+    render();
+    const originalTop = scroller.scrollTop;
+    scroller.setAttribute('data-erin-inbox-scan', '');
+    try {
+      const max = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+      const step = Math.max(220, Math.floor(scroller.clientHeight * .82));
+      const positions = [];
+      for (let top = 0; top < max; top += step) positions.push(top);
+      positions.push(max);
+      for (let index = 0; index < positions.length; index++) {
+        scroller.scrollTop = positions[index];
+        await settleVirtualList();
+        scrapeMessages();
+        scanProgress = Math.round((index + 1) / positions.length * 100);
+        if (index % 4 === 0 || index === positions.length - 1) render();
+      }
+    } finally {
+      scroller.scrollTop = originalTop;
+      await settleVirtualList();
+      scrapeMessages();
+      scroller.removeAttribute('data-erin-inbox-scan');
+      scanning = false;
+      scanComplete = true;
+      scanProgress = 100;
+      render();
+    }
   }
 
   function startFocus() {
@@ -338,6 +397,7 @@
       if (target.dataset.removeBlock) { state.localBlocks = state.localBlocks.filter(x => x.id !== target.dataset.removeBlock); save(); render(); return; }
       switch (target.dataset.action) {
         case 'collapse': state.collapsed = !state.collapsed; save(); render(); break;
+        case 'scan': scanAllMessages(true); break;
         case 'todo-expand': state.todoExpanded = !state.todoExpanded; save(); render(); break;
         case 'focus-toggle': focus.running ? (focus.running = false, clearInterval(focusTick), render()) : startFocus(); break;
         case 'focus-skip': focus.elapsed = PARTS[focus.part][1] * 60; focus.running = false; focus.finished = true; clearInterval(focusTick); render(); break;
@@ -375,6 +435,7 @@
 
   observer = new MutationObserver(mutations => {
     if (root && mutations.every(mutation => root.contains(mutation.target))) return;
+    if (scanning) return;
     mount();
     scheduleRender();
   });
