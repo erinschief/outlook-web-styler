@@ -87,6 +87,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 
 ## Releases
 
+- **Widgets 0.3.3:** restores the mockup's curved dashed connector from the center of the oldest-unread timeline dot to its endpoint label, with the connector layered behind all timeline text.
 - **Styler 0.72:** explicitly clips the outer Inbox paint surface to its top-corner radii, preventing Outlook's translucent header layer from visually squaring off the left corner.
 - **Styler 0.71:** mirrors Outlook's native right-side message-list inset on the left in list-only mode, giving both top corners equal room to render their rounding.
 - **Styler 0.70:** keeps the multi-pane alignment shift but disables it in list-only mode, preventing `#MainModule` from moving outside the viewport and clipping the message-list and widget left corners.
