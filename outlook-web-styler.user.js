@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Outlook Web Styler and QOL Improvements
-// @version      0.70
+// @version      0.71
 // @description  Outlook web: hides left rail, app launcher and Teams button; adds a collapsible apps menu (Mail/Calendar/To Do) in the top bar; floating full-width layout.
 // @author       Erin
 // @match        https://outlook.office.com/*
@@ -199,6 +199,11 @@
        clipped the rounded left corners of both the message list and the widget inserted above it. */
     html[data-erin-layout="list"]:has(#OwaTitleBar) #MainModule {
       margin-left: 0 !important;
+    }
+    /* Outlook leaves a native 2px reveal only on the message surface's right side. Mirror that
+       inset in list-only mode so the clipped surface exposes both rounded top corners equally. */
+    html[data-erin-layout="list"] [data-app-section="MessageList"] > [role="complementary"] {
+      margin-inline: 2px !important;
     }
 
     /* Message list header: Filter stays visible; only the sort-direction toggle is hidden (below). */
