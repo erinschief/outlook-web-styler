@@ -20,7 +20,17 @@ Repeat those steps once on each browser or device where you use Outlook.
 2. Choose **Install** on Tampermonkey's installation screen.
 3. Reload the personal Outlook inbox.
 
-The widget automatically sweeps Outlook's virtualized personal-inbox list, caches the complete set of message rows, and restores the original list position. Use the widget's refresh button to rescan after large mailbox changes. It follows the visible message-list container in both single-pane and multi-pane layouts. Open Outlook's native **My Day** pane once when you want to refresh the Schedule page. The focus timer, display preferences, Self ordering, and planning blocks are stored locally by Tampermonkey. The script does not write to mail categories or the Outlook calendar.
+The widget sweeps Outlook's virtualized personal-inbox list and restores the original scroll position. It follows a growing list until its bottom settles, then replaces its message cache. Removed rows trigger a rescan after the list is idle; manual **Refresh inbox data** is also available. Scans stop safely if you navigate away, collapse the widget, or hide the tab. An interrupted scan keeps the previous cache and is never labelled complete. The summary's tooltip shows scan progress or whether data may be incomplete. A scan covers the currently displayed inbox view, including any native Outlook filter.
+
+It follows the visible message-list container in both single-pane and multi-pane layouts. Open Outlook's native **My Day** pane when you want to refresh Schedule. Calendar parsing supports English all-day labels, 12/24-hour clocks, time ranges, and compound hour/minute durations. If no end time or duration is exposed, the event tooltip explicitly labels the 30-minute estimate. Schedule's time indicators update while visible; the script does not write to mail categories or the Outlook calendar.
+
+The focus timer, display preferences, Self ordering, title edits, and local planning blocks are stored by Tampermonkey. Storage is separated by Outlook host and the account email exposed by Outlook's account control. Until an email is available, storage uses a separate tab-session key (survives reloads in that tab). Legacy settings migrate once to the first active scope. Expired local blocks are removed; title/order customizations absent from the inbox are retained for 90 days, so a temporary inbox filter does not erase them. The focus timer uses elapsed wall-clock time across reloads and sleep, stops at each phase boundary, and waits for you to start the next phase.
+
+Background changes defer widget replacement while you edit a title, enter a time-block name, or drag. Scroll positions are retained on other refreshes. The timer updates its clock and ring in place instead of rebuilding the entire widget.
+
+### Apps menu keyboard controls
+
+Focus the header apps button and press **Space**, **Arrow Down**, or **Arrow Right** to open the flyout. Use arrow keys, **Home**, and **End** to select an app; **Enter** activates it. **Escape** closes the flyout and returns focus to the header button. Enter on the header button keeps its existing Back to inbox action. Closed flyout buttons are excluded from keyboard navigation.
 
 ## Configure a shared mailbox
 
@@ -55,6 +65,32 @@ The widget script updates independently from its own raw URL. Increase its `@ver
 - `outlook.live.com`
 - `outlook.cloud.microsoft`
 
+## Validation
+
+Run the dependency-free automated checks with Node.js 20 or newer:
+
+```sh
+node --check outlook-web-styler.user.js
+node --check outlook-inbox-widgets.user.js
+node --test tests/regression.test.cjs
+```
+
+GitHub Actions runs syntax and regression checks on pushes and pull requests. The tests exercise both full-script startup paths with a mocked loading shell, plus scanning, cancellation, cache reconciliation, message routing, calendar boundaries, time parsing, storage isolation, editing protection, pointer cancellation, timer updates, observer filtering, and flyout accessibility state.
+
+For manual Chromium smoke testing against a synthetic Outlook DOM:
+
+```sh
+node tests/build-browser-fixture.cjs
+```
+
+Open the printed local file URL in Chromium; it displays its own pass/fail results. The fixture uses the actual script sources with test-only exports and a simulated Outlook URL and Tampermonkey storage. It does not access a real mailbox. Live Outlook selectors, visual layout, and browser-specific behavior still need verification in Outlook; isolated checks do not establish live compatibility.
+
+## Releases
+
+- **Styler 0.69:** targeted observers, batched and rate-limited sign-in handling, idempotent promotion hiding, stable app IDs, keyboard flyout controls, and cleanup of listeners when Outlook replaces the header.
+- **Widgets 0.3.0:** safe cached-message opening, transactional growing-list scans, calendar-correct buckets, incremental timer updates and persistence, batched scraping, edit/drag protection, account-scoped storage, and bounded customization retention.
+
 ## License
 
 [MIT](LICENSE)
+

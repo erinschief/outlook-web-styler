@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.2.4
+// @version      0.3.0
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -23,7 +23,7 @@
   const ROOT_ID = 'erin-inbox-widgets';
   const STORE = 'erinInboxWidgets.v1';
   const cache = new Map();
-  const state = Object.assign({
+  const defaultState = () => ({
     collapsed: false,
     tab: 'timeline',
     todo: 'self',
@@ -35,7 +35,26 @@
     scheduleDate: '',
     schedule: [],
     localBlocks: []
-  }, GM_getValue(STORE, {}));
+  });
+  let state = defaultState();
+  let storageKey = '';
+  let sessionKey = '';
+  try {
+    sessionKey = sessionStorage.getItem('erinWidgetsSession') || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    sessionStorage.setItem('erinWidgetsSession', sessionKey);
+  } catch (_) { sessionKey = `${Date.now()}-${Math.random().toString(36).slice(2)}`; }
+  let accountId = '';
+  let saveTimer = 0;
+  let renderPending = false;
+  let activeDrag = null;
+  let scanTimer = 0;
+  let scanGeneration = 0;
+  let lastUserScroll = 0;
+  let observedScroller = null;
+  let scanTarget = null;
+  let geometryFrame = 0;
+  let themeDirty = true;
+  let lastMinute = '';
   let root = null;
   let renderTimer = 0;
   let observer = null;
@@ -107,8 +126,82 @@
     }
     host.replaceChildren(fragment);
   }
-  const save = () => GM_setValue(STORE, state);
-  const todayKey = () => new Date().toLocaleDateString('en-CA');
+  const dateKey = date => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  const todayKey = () => dateKey(new Date());
+  function normalizeState(value) {
+    const next = Object.assign(defaultState(), value && typeof value === 'object' ? value : {});
+    if (!['timeline', 'schedule', 'focus', 'todo'].includes(next.tab)) next.tab = 'timeline';
+    if (!['self', 'waiting'].includes(next.todo)) next.todo = 'self';
+    if (!['custom', 'recent'].includes(next.selfSort)) next.selfSort = 'custom';
+    for (const key of ['selfOrder', 'schedule', 'localBlocks']) if (!Array.isArray(next[key])) next[key] = [];
+    if (!next.idLastSeen || typeof next.idLastSeen !== 'object' || Array.isArray(next.idLastSeen)) next.idLastSeen = {};
+    if (!next.titleEdits || typeof next.titleEdits !== 'object' || Array.isArray(next.titleEdits)) next.titleEdits = {};
+    next.localBlocks = next.localBlocks.filter(x => x && /^\d{4}-\d{2}-\d{2}$/.test(x.date) && x.date >= todayKey() && Number.isFinite(x.start) && Number.isFinite(x.end));
+    return next;
+  }
+  function readAccount() {
+    // Only inspect the account control: message senders must never select the storage account.
+    const control = document.querySelector('#mectrl_currentAccount_secondary') || document.querySelector('#owa-me-control-container, #mectrl_main_body, #mectrl_headerPicture');
+    const text = control ? [control.textContent, control.getAttribute('aria-label'), control.getAttribute('title'),
+      ...[...control.querySelectorAll('[title], [aria-label], [data-email]')].flatMap(el => [el.title, el.getAttribute('aria-label'), el.getAttribute('data-email')])].join(' ') : '';
+    return text.match(/[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0].toLowerCase() || '';
+  }
+  function syncAccount() {
+    const id = readAccount();
+    // Until identified, persist only within this tab's session, never a host-wide shared bucket.
+    if (storageKey && (!id || id === accountId)) return;
+    flushSave();
+    const previous = accountId;
+    state.focus = { ...focus };
+    accountId = id;
+    storageKey = id ? `${STORE}:${location.host}:${id}` : `${STORE}:${location.host}:session:${sessionKey}`;
+    let saved = GM_getValue(storageKey, null);
+    if (!saved && !GM_getValue(`${STORE}:migrated`, false)) {
+      saved = GM_getValue(STORE, null);
+      if (saved) GM_setValue(`${STORE}:migrated`, true);
+    }
+    // Keep this tab's unsaved session preferences when the account control appears late.
+    state = normalizeState(saved || (!previous ? state : null));
+    const storedFocus = state.focus;
+    focus = storedFocus && Number.isInteger(storedFocus.part) && storedFocus.part >= 0 && storedFocus.part < PARTS.length
+      ? { part: storedFocus.part, elapsed: Math.max(0, Number(storedFocus.elapsed) || 0), running: !!storedFocus.running, finished: !!storedFocus.finished, last: Number(storedFocus.last) || Date.now() }
+      : { part: 0, elapsed: 0, running: false, finished: false, last: 0 };
+    activeDrag?.(); pendingBlock = null; renderPending = false; resizeObserver?.disconnect();
+    scanGeneration++;
+    cache.clear(); scannedScroller = null; scanComplete = false;
+    if (root) { root.remove(); root = null; }
+    if (focus.running) startFocus(true);
+    else clearInterval(focusTick);
+    save();
+  }
+  function flushSave() {
+    clearTimeout(saveTimer); saveTimer = 0;
+    if (!storageKey) return;
+    state.focus = { ...focus };
+    GM_setValue(storageKey, state);
+  }
+  function save() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(flushSave, 180);
+  }
+  function pruneState() {
+    state.localBlocks = state.localBlocks.filter(x => x.date >= todayKey());
+    // Keep a bounded history of title/order customizations. A native inbox filter is not
+    // evidence that an off-screen message was deleted, so retain absent IDs until aged out.
+    state.idLastSeen ||= {};
+    const today = todayKey(), cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 90);
+    for (const id of cache.keys()) state.idLastSeen[id] = today;
+    const expired = id => {
+      if (!state.idLastSeen[id]) { state.idLastSeen[id] = today; return false; }
+      return state.idLastSeen[id] < dateKey(cutoff);
+    };
+    state.selfOrder = state.selfOrder.filter(id => !expired(id));
+    for (const id of Object.keys(state.titleEdits)) if (expired(id)) delete state.titleEdits[id];
+    for (const id of Object.keys(state.idLastSeen)) if (state.idLastSeen[id] < dateKey(cutoff)) delete state.idLastSeen[id];
+    save();
+  }
+  const interactionActive = () => !!activeDrag || !!root?.contains(document.activeElement) &&
+    !!document.activeElement?.matches('input, [contenteditable="true"]');
   const personalInbox = () => /^\/mail(?:\/?$|\/inbox\/?$)/i.test(location.pathname);
   const searchActive = () => document.documentElement.dataset.erinSearch === 'open' ||
     !!document.querySelector('button[aria-label="Exit search"]') || /\/search(?:\/|$)/i.test(location.pathname);
@@ -197,14 +290,26 @@
   }
 
   function rowDate(row, group) {
+    const timestamp = row.querySelector('time[datetime]')?.getAttribute('datetime');
+    if (timestamp) { const date = parseDateTitle(timestamp); if (date) return date; }
     const tokens = [...row.querySelectorAll('span,time')].map(n => n.textContent.trim()).filter(Boolean);
     const clock = tokens.find(t => /^\d{1,2}:\d{2}\s*[AP]M$/i.test(t));
-    if (clock && /today|pinned/i.test(group || '')) return new Date(`${todayKey()} ${clock}`);
+    if (clock && /^(today|yesterday)$/i.test(group || '')) {
+      const date = new Date(`${todayKey()} ${clock}`);
+      if (/yesterday/i.test(group)) date.setDate(date.getDate() - 1);
+      return date;
+    }
     const dated = tokens.find(t => /^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\s*(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}/i.test(t));
-    return dated ? parseDateTitle(dated) : null;
+    if (!dated) return null;
+    const date = parseDateTitle(dated);
+    if (date && !/\b20\d{2}\b/.test(dated)) {
+      date.setFullYear(new Date().getFullYear());
+      if (date > new Date()) date.setFullYear(date.getFullYear() - 1);
+    }
+    return date;
   }
 
-  function scrapeMessages() {
+  function scrapeMessages(target = scanTarget || cache) {
     const list = messageList();
     if (!list) return false;
     let changed = false;
@@ -227,19 +332,49 @@
         return { name, bg: style.backgroundColor, color: style.color, border: style.borderColor };
       }).filter(x => x.name);
       const categories = [...new Set(categoryStyles.map(x => x.name))];
+      const spans = [...el.querySelectorAll('span')];
+      const styles = new Map();
+      const fontSize = n => { if (!styles.has(n)) styles.set(n, getComputedStyle(n).fontSize); return styles.get(n); };
       const sender = el.querySelector('span[title*="@"]')?.textContent.trim() ||
         el.querySelector('.ESO13 span')?.textContent.trim() ||
-        [...el.querySelectorAll('span')].find(n => visible(n) && getComputedStyle(n).fontSize === '14px' && !n.className.includes('Avatar'))?.textContent.trim() || 'Unknown sender';
+        spans.find(n => visible(n) && fontSize(n) === '14px' && !n.className.includes('Avatar'))?.textContent.trim() || 'Unknown sender';
       const subject = el.querySelector('.TtcXM')?.textContent.trim() ||
-        [...el.querySelectorAll('span')].find(n => visible(n) && getComputedStyle(n).fontSize === '13px' && n.textContent.trim().length > 4)?.textContent.trim() || '(no subject)';
+        spans.find(n => visible(n) && fontSize(n) === '13px' && n.textContent.trim().length > 4)?.textContent.trim() || '(no subject)';
       const dated = [...el.querySelectorAll('[title]')].find(n => /\b20\d{2}\b/.test(n.title) && /\d{1,2}:\d{2}/.test(n.title));
       const date = parseDateTitle(dated?.title) || rowDate(el, currentGroup);
-      const old = cache.get(id) || {};
+      const old = target.get(id) || cache.get(id) || {};
       const next = { id, unread, categories, categoryStyles, sender, subject, date: date || old.date || null, group: currentGroup || old.group || '', row: el };
-      if (!old.id || old.unread !== next.unread || old.subject !== next.subject || old.sender !== next.sender || old.group !== next.group || String(old.date) !== String(next.date) || old.categories?.join('\n') !== next.categories.join('\n')) changed = true;
-      cache.set(id, next);
+      if (!old.id || old.unread !== next.unread || old.subject !== next.subject || old.sender !== next.sender || old.group !== next.group || String(old.date) !== String(next.date) || old.categories?.join('\n') !== next.categories.join('\n') || JSON.stringify(old.categoryStyles) !== JSON.stringify(next.categoryStyles)) changed = true;
+      target.set(id, next);
     });
     return changed;
+  }
+
+  function parseClock(text) {
+    const match = String(text).trim().match(/^(\d{1,2})(?::(\d{2}))?\s*([AP]M)?$/i);
+    if (!match) return null;
+    let hour = +match[1]; const minute = +(match[2] || 0), period = match[3]?.toUpperCase();
+    if (minute > 59 || (period ? hour < 1 || hour > 12 : hour > 23)) return null;
+    if (period) hour = hour % 12 + (period === 'PM' ? 12 : 0);
+    return hour * 60 + minute;
+  }
+  function parseTimeRange(text) {
+    const parts = String(text).replace(/[\u00a0\u202f]/g, ' ').split(/\s*[–—-]\s*/);
+    if (parts.length > 2) return null;
+    // In "9:00 – 10:00 AM", Outlook may print the period only on the second clock.
+    if (parts.length === 2 && /[AP]M$/i.test(parts[1]) && !/[AP]M$/i.test(parts[0])) parts[0] += ' ' + parts[1].match(/[AP]M$/i)[0];
+    const start = parseClock(parts[0]);
+    if (start === null) return null;
+    const end = parts.length === 2 ? parseClock(parts[1]) : null;
+    if (parts.length === 2 && (end === null || end <= start)) return null;
+    return { start, end };
+  }
+  function parseDuration(text) {
+    const value = String(text).trim().toLowerCase();
+    if (!/^(?:(?:\d+(?:\.\d+)?)\s*(?:hours?|hrs?|h|minutes?|mins?|m)\s*)+$/.test(value)) return null;
+    let minutes = 0;
+    for (const match of value.matchAll(/(\d+(?:\.\d+)?)\s*(hours?|hrs?|h|minutes?|mins?|m)/g)) minutes += +match[1] * (/^h/.test(match[2]) ? 60 : 1);
+    return minutes > 0 ? minutes : null;
   }
 
   function scrapeMyDay() {
@@ -255,13 +390,13 @@
     for (let i = 0; i < slice.length; i++) {
       if (slice[i] === 'All day' && slice[i + 1]) {
         events.push({ allDay: true, title: slice[++i], kind: classify(slice[i]) });
-      } else if (/^\d{1,2}:\d{2}\s[AP]M$/.test(slice[i]) && slice[i + 1]) {
-        const date = new Date(`${todayKey()} ${slice[i]}`);
-        const title = slice[++i];
-        const duration = /^\d+(?:\.\d+)?\s*(?:min|mins|hr|hrs)$/.test(slice[i + 1] || '') ? slice[++i] : '30 min';
-        const amount = parseFloat(duration) || 30;
-        const minutes = /hr/.test(duration) ? amount * 60 : amount;
-        events.push({ allDay: false, title, start: date.getHours() * 60 + date.getMinutes(), end: date.getHours() * 60 + date.getMinutes() + minutes, kind: classify(title) });
+      } else {
+        const range = parseTimeRange(slice[i]);
+        if (!range || !slice[i + 1]) continue;
+        const title = slice[++i], duration = parseDuration(slice[i + 1] || '');
+        if (duration !== null) i++;
+        const estimated = range.end === null && duration === null;
+        events.push({ allDay: false, title, start: range.start, end: range.end ?? range.start + (duration ?? 30), durationEstimated: estimated, kind: classify(title) });
       }
     }
     const changed = state.scheduleDate !== todayKey() || JSON.stringify(state.schedule) !== JSON.stringify(events);
@@ -273,15 +408,19 @@
     return changed;
   }
 
-  function bucketFor(item) {
+  function bucketFor(item, now = new Date()) {
     if (!item.date) {
       const g = item.group.toLowerCase();
       if (g.includes('today')) return 0;
       if (g.includes('yesterday')) return 1;
       return 5;
     }
-    const days = Math.max(0, (Date.now() - item.date.getTime()) / 864e5);
-    return days < 1 ? 0 : days < 2 ? 1 : days < 7 ? 2 : days < 31 ? 3 : days < 62 ? 4 : 5;
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const yesterday = new Date(today); yesterday.setDate(yesterday.getDate() - 1);
+    const week = new Date(today); week.setDate(week.getDate() - (week.getDay() + 6) % 7);
+    const month = new Date(now.getFullYear(), now.getMonth(), 1);
+    const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    return item.date >= today ? 0 : item.date >= yesterday ? 1 : item.date >= week ? 2 : item.date >= month ? 3 : item.date >= lastMonth ? 4 : 5;
   }
 
   function formatStamp(item, short = false) {
@@ -301,7 +440,9 @@
   function timelineHTML(items) {
     if (!items.length) return `<div class="eiw-empty">${scanning ? 'Scanning the inbox…' : 'No inbox messages loaded yet.'}</div>`;
     const names = ['Today', 'Yesterday', 'This week', 'This month', 'Last month', 'Earlier'];
-    const buckets = names.map((name, index) => ({ name, items: items.filter(x => bucketFor(x) === index) }));
+    const buckets = names.map(name => ({ name, items: [] }));
+    const now = new Date();
+    for (const item of items) buckets[bucketFor(item, now)].items.push(item);
     const unread = items.filter(x => x.unread).sort((a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
     const newest = unread[0], oldest = unread[unread.length - 1];
     const oldestEmail = items.filter(x => x.date).sort((a,b) => a.date-b.date)[0];
@@ -324,7 +465,7 @@
     const dayStart = 8 * 60, dayEnd = 17 * 60, nowDate = new Date(), now = nowDate.getHours() * 60 + nowDate.getMinutes();
     const pos = m => Math.max(0, Math.min(100, (m - dayStart) / (dayEnd - dayStart) * 100));
     const hours = Array.from({length: 10}, (_, i) => `<i class="eiw-hour" style="left:${i / 9 * 100}%">${(i + 8) > 12 ? i - 4 : i + 8}</i>`).join('');
-    const blocks = timed.filter(x => x.end > dayStart && x.start < dayEnd).map(x => `<div class="eiw-event ${x.kind}" title="${esc(x.title)}" style="left:${pos(x.start)}%;width:${Math.max(1.5, pos(x.end) - pos(x.start))}%">${icon(x.kind)}${esc(x.title)}</div>`).join('');
+    const blocks = timed.filter(x => x.end > dayStart && x.start < dayEnd).map(x => `<div class="eiw-event ${x.kind}" title="${esc(x.title)}${x.durationEstimated ? ' · estimated duration: 30 min' : ''}" style="left:${pos(x.start)}%;width:${Math.max(1.5, pos(x.end) - pos(x.start))}%">${icon(x.kind)}${esc(x.title)}</div>`).join('');
     const upcoming = timed.filter(x => x.end > now).sort((a,b) => a.start-b.start)[0];
     const mins = upcoming ? Math.max(0, upcoming.start - now) : 0;
     const composer = pendingBlock ? `<div class="eiw-composer"><input data-block-title aria-label="Time block title" placeholder="What are you blocking time for?" value="${esc(pendingBlock.title || '')}"><div class="eiw-kinds">${[['meeting','Meeting'],['focus','Focus'],['admin','Admin'],['break','Break']].map(([k,l]) => `<button class="eiw-btn" data-save-kind="${k}">${icon(k)}${l}</button>`).join('')}<button class="eiw-btn" data-action="cancel-block">Cancel</button></div></div>` : '';
@@ -355,15 +496,19 @@
     const prefix = kind === 'self' ? /^Self\s*:\s*/i : /^Waiting(?:\s+on)?\s*:\s*/i;
     return [...cache.values()].filter(x => x.categories.some(c => prefix.test(c))).map(x => {
       const main = x.categories.find(c => prefix.test(c)) || (kind === 'self' ? 'Self' : 'Waiting');
-      return Object.assign({}, x, { action: main.replace(prefix, '').trim() || (kind === 'self' ? 'Follow up' : 'Reply'), extras: x.categories.filter(c => c !== main), days: x.date ? Math.max(0, Math.floor((Date.now() - x.date) / 864e5)) : 0 });
+      return Object.assign({}, x, { mainCategory: main, action: main.replace(prefix, '').trim() || (kind === 'self' ? 'Follow up' : 'Reply'), extras: x.categories.filter(c => c !== main), days: x.date ? Math.max(0, Math.floor((Date.now() - x.date) / 864e5)) : 0 });
     });
   }
 
   function todoHTML() {
-    let items = todoItems(state.todo);
+    const selfItems = todoItems('self'), waitingItems = todoItems('waiting');
+    let items = state.todo === 'self' ? selfItems : waitingItems;
     if (state.todo === 'waiting') items.sort((a,b) => b.days-a.days);
     else if (state.selfSort === 'recent') items.sort((a,b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
-    else if (state.selfOrder.length) items.sort((a,b) => (state.selfOrder.indexOf(a.id) + 1 || 9999) - (state.selfOrder.indexOf(b.id) + 1 || 9999));
+    else if (state.selfOrder.length) {
+      const rank = new Map(state.selfOrder.map((id, i) => [id, i]));
+      items.sort((a,b) => (rank.get(a.id) ?? Infinity) - (rank.get(b.id) ?? Infinity));
+    }
     const limit = matchMedia('(max-width:700px)').matches ? 3 : 5;
     const shown = state.todo === 'waiting' || state.todoExpanded ? items : items.slice(0, limit);
     const cards = shown.map(x => {
@@ -373,11 +518,11 @@
       const tag = (name, cls = '') => { const s = styleFor(name); return `<span class="eiw-tag ${cls}" style="--tag-bg:${esc(s.bg || '')};--tag-fg:${esc(s.color || '')};--tag-border:${esc(s.border || '')}">${esc(name)}</span>`; };
       const reply = x.date ? `<span class="eiw-reply"><i>Last reply:</i> ${x.date.toLocaleDateString([], {month:'short',day:'numeric'})} · <b>${x.days}</b> days ago</span>` : '';
       const age = state.todo === 'waiting' ? `<span class="eiw-age"><b>${x.days}d</b><span>days ago</span></span>` : '';
-      return `<article class="eiw-card ${state.todo === 'waiting' ? 'waiting' : ''} ${x.days > 30 ? 'overdue' : ''}" data-message-id="${esc(x.id)}">${state.todo === 'self' && state.selfSort === 'custom' ? '<span class="eiw-drag-edge" data-drag-edge title="Drag the left edge to reorder"></span>' : ''}${age}<div class="eiw-card-title" data-edit-title="${esc(x.id)}" contenteditable="true" spellcheck="false">${esc(title)}</div>${reply}<div class="eiw-people">${people}</div><div class="eiw-tags">${tag(x.categories.find(c => /^Self|^Waiting/i.test(c)) || x.action, 'main')}${x.extras.map(t => tag(t, 'extra')).join('')}</div><button class="eiw-open" data-open-message="${esc(x.id)}" title="View message" aria-label="View message: ${esc(title)}"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4H4.5A1.5 1.5 0 0 0 3 5.5v8A1.5 1.5 0 0 0 4.5 15h8a1.5 1.5 0 0 0 1.5-1.5V11"/><path d="M9 3h6v6M15 3 8 10"/></svg></button></article>`;
+      return `<article class="eiw-card ${state.todo === 'waiting' ? 'waiting' : ''} ${x.days > 30 ? 'overdue' : ''}" data-message-id="${esc(x.id)}">${state.todo === 'self' && state.selfSort === 'custom' ? '<span class="eiw-drag-edge" data-drag-edge title="Drag the left edge to reorder"></span>' : ''}${age}<div class="eiw-card-title" data-edit-title="${esc(x.id)}" contenteditable="true" spellcheck="false">${esc(title)}</div>${reply}<div class="eiw-people">${people}</div><div class="eiw-tags">${tag(x.mainCategory || x.action, 'main')}${x.extras.map(t => tag(t, 'extra')).join('')}</div><button class="eiw-open" data-open-message="${esc(x.id)}" title="View message" aria-label="View message: ${esc(title)}"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4H4.5A1.5 1.5 0 0 0 3 5.5v8A1.5 1.5 0 0 0 4.5 15h8a1.5 1.5 0 0 0 1.5-1.5V11"/><path d="M9 3h6v6M15 3 8 10"/></svg></button></article>`;
     }).join('');
     const sortToggle = state.todo === 'self' ? `<div class="eiw-switch eiw-sort"><button data-self-sort="custom" aria-pressed="${state.selfSort === 'custom'}">Custom</button><button data-self-sort="recent" aria-pressed="${state.selfSort === 'recent'}">Recent</button></div>` : '';
     const showAll = state.todo === 'self' && items.length > limit ? `<button class="eiw-btn" data-action="todo-expand">${state.todoExpanded ? `Collapse to top ${limit}` : `Show all ${items.length}`}</button>` : '';
-    return `<div class="eiw-hd"><div class="eiw-switch"><button data-todo="self" aria-pressed="${state.todo === 'self'}">Self ${todoItems('self').length}</button><button data-todo="waiting" aria-pressed="${state.todo === 'waiting'}">Waiting ${todoItems('waiting').length}</button></div>${sortToggle}</div><div class="eiw-cf ${state.todoExpanded ? 'expanded' : ''}" data-flow data-limit="${limit}"><div class="eiw-cfst">${cards || `<div class="eiw-empty">No inbox messages have this category.</div>`}</div></div><div class="eiw-flow-foot">${showAll}</div>`;
+    return `<div class="eiw-hd"><div class="eiw-switch"><button data-todo="self" aria-pressed="${state.todo === 'self'}">Self ${selfItems.length}</button><button data-todo="waiting" aria-pressed="${state.todo === 'waiting'}">Waiting ${waitingItems.length}</button></div>${sortToggle}</div><div class="eiw-cf ${state.todoExpanded ? 'expanded' : ''}" data-flow data-limit="${limit}"><div class="eiw-cfst">${cards || `<div class="eiw-empty">No inbox messages have this category.</div>`}</div></div><div class="eiw-flow-foot">${showAll}</div>`;
   }
 
   function panelHTML() {
@@ -388,12 +533,26 @@
     return todoHTML();
   }
 
-  function render() {
+  function render(force = false) {
     if (!root) return;
+    if (!force && interactionActive()) { renderPending = true; return; }
+    renderPending = false;
+    const scrolls = ['.eiw-panel', '[data-flow]'].map(selector => [selector, root.querySelector(selector)?.scrollTop || 0]);
+    const active = root.contains(document.activeElement) ? document.activeElement : null;
+    const focusKey = active ? ['data-action', 'data-tab', 'data-todo', 'data-self-sort', 'data-open-message'].find(k => active.hasAttribute(k)) : null;
+    const focusValue = focusKey ? active.getAttribute(focusKey) : null;
     const unread = [...cache.values()].filter(x => x.unread).length;
     root.dataset.collapsed = String(state.collapsed);
     setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b>${unread}</b> unread / <b class="eiw-inbox-total">${cache.size}</b> in inbox</span><button class="eiw-iconbtn eiw-refresh" data-action="scan" title="Refresh inbox data" aria-label="Refresh inbox data">↻</button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
-    requestAnimationFrame(() => { syncGeometryAndTheme(); initAllDay(); hideOverlappingTimelineLabels(); });
+    for (const [selector, top] of scrolls) { const el = root.querySelector(selector); if (el) el.scrollTop = top; }
+    if (focusKey) [...root.querySelectorAll(`[${focusKey}]`)].find(el => el.getAttribute(focusKey) === focusValue)?.focus({ preventScroll: true });
+    updateSummary();
+    queueGeometry();
+  }
+
+  function queueGeometry() {
+    if (geometryFrame || document.hidden) return;
+    geometryFrame = requestAnimationFrame(() => { geometryFrame = 0; syncGeometryAndTheme(); initAllDay(); hideOverlappingTimelineLabels(); });
   }
 
   function syncGeometryAndTheme() {
@@ -402,11 +561,13 @@
     if (region) {
       const rr = region.getBoundingClientRect(), hr = root.parentElement.getBoundingClientRect();
       const left = Math.max(0, rr.left - hr.left);
-      root.style.width = `${Math.max(0, Math.min(rr.width, hr.width - left))}px`;
-      root.style.marginLeft = `${left}px`;
+      const width = `${Math.max(0, Math.min(rr.width, hr.width - left))}px`, margin = `${left}px`;
+      if (root.style.width !== width) root.style.width = width;
+      if (root.style.marginLeft !== margin) root.style.marginLeft = margin;
     }
-    const newMail = [...document.querySelectorAll('button')].find(b => (b.getAttribute('aria-label') || b.textContent.trim()) === 'New mail');
-    if (newMail) { const s = getComputedStyle(newMail); root.style.setProperty('--brand', s.backgroundColor); root.style.setProperty('--on-brand', s.color); }
+    if (!themeDirty) return;
+    const newMail = [...document.querySelectorAll('[data-app-section="Ribbon"] button')].find(b => (b.getAttribute('aria-label') || b.textContent.trim()) === 'New mail');
+    if (newMail) { const s = getComputedStyle(newMail); root.style.setProperty('--brand', s.backgroundColor); root.style.setProperty('--on-brand', s.color); themeDirty = false; }
   }
 
   function initAllDay() {
@@ -426,106 +587,160 @@
   }
 
   function scheduleRender() {
-    if (scanning || !dataLoadingAllowed()) return;
-    clearTimeout(renderTimer);
+    if (renderTimer || scanning || document.hidden) return;
     renderTimer = setTimeout(() => {
-      const messagesChanged = scrapeMessages();
-      const scheduleChanged = scrapeMyDay();
-      if (messagesChanged || scheduleChanged) render();
+      renderTimer = 0;
+      mount(true);
     }, 120);
   }
 
-  function mount() {
+  function queueScan(force = false, delay = 600) {
+    clearTimeout(scanTimer);
+    scanTimer = setTimeout(() => {
+      scanTimer = 0;
+      if (interactionActive() || Date.now() - lastUserScroll < 1200) { queueScan(force, 1500); return; }
+      void scanAllMessages(force);
+    }, delay);
+  }
+
+  function mount(scrape = true) {
+    syncAccount();
     if (!widgetContext()) {
+      activeDrag?.();
+      resizeObserver?.disconnect();
       document.getElementById(ROOT_ID)?.remove();
       root = null;
-      scannedScroller = null;
-      scanComplete = false;
+      scanGeneration++;
+      scannedScroller = null; scanComplete = false;
       cache.clear();
       return;
     }
     const list = messageList();
-    const region = list ? [...list.querySelectorAll('[role="complementary"]')].find(visible) ||
-      list.querySelector('[role="complementary"]') : null;
+    const region = list ? [...list.querySelectorAll('[role="complementary"]')].find(visible) || list.querySelector('[role="complementary"]') : null;
     if (!list || !region) return;
     const host = region.parentElement;
     if (!host) return;
     let created = false;
     if (!root || !root.isConnected) {
-      root = document.createElement('section');
-      root.id = ROOT_ID;
-      root.setAttribute('aria-label', 'Widgets');
-      host.insertBefore(root, region);
-      bind();
-      created = true;
+      resizeObserver?.disconnect();
+      root = document.createElement('section'); root.id = ROOT_ID; root.setAttribute('aria-label', 'Widgets');
+      host.insertBefore(root, region); bind(); resizeObserver?.observe(root); created = true;
     } else if (root.parentElement !== host || root.nextElementSibling !== region) host.insertBefore(root, region);
-    const messagesChanged = state.collapsed ? false : scrapeMessages();
-    const scheduleChanged = state.collapsed ? false : scrapeMyDay();
-    if (created || messagesChanged || scheduleChanged) render(); else syncGeometryAndTheme();
     const scroller = list.querySelector('[data-testid="virtuoso-scroller"]');
-    if (!state.collapsed && scroller && scroller !== scannedScroller && !scanning) setTimeout(() => scanAllMessages(false), 350);
+    if (scroller !== observedScroller) {
+      observedScroller?.removeEventListener('scroll', onListScroll);
+      observedScroller = scroller;
+      scroller?.addEventListener('scroll', onListScroll, { passive: true });
+    }
+    const messagesChanged = scrape && !state.collapsed && !scanning ? scrapeMessages() : false;
+    const scheduleChanged = scrape && !state.collapsed ? scrapeMyDay() : false;
+    if (created || messagesChanged || scheduleChanged) render(); else queueGeometry();
+    if (!state.collapsed && scroller && scroller !== scannedScroller && !scanning && !scanTimer) queueScan();
+  }
+  function onListScroll() {
+    if (scanning) return;
+    lastUserScroll = Date.now(); scheduleRender();
   }
 
-  const settleVirtualList = () => new Promise(resolve => {
-    requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(resolve, 70)));
-  });
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const listSignature = scroller => [...scroller.querySelectorAll('[role="option"][data-convid]')].map(el => el.dataset.convid).join('|');
+  async function settleVirtualList(scroller, valid) {
+    let previous = '', stable = 0;
+    for (let pass = 0; pass < 20 && valid(); pass++) {
+      await delay(60);
+      const signature = `${scroller.scrollHeight}:${listSignature(scroller)}`;
+      const busy = scroller.querySelector('[aria-busy="true"], [role="progressbar"]');
+      stable = signature === previous && !busy ? stable + 1 : 0;
+      if (stable >= 2) return true;
+      previous = signature;
+    }
+    return false;
+  }
 
   async function scanAllMessages(force) {
-    if (scanning || !dataLoadingAllowed()) return;
+    if (scanning || !dataLoadingAllowed() || document.hidden || interactionActive()) return;
     const scroller = messageList()?.querySelector('[data-testid="virtuoso-scroller"]');
     if (!scroller || (!force && scroller === scannedScroller)) return;
-    scannedScroller = scroller;
-    scanning = true;
-    scanComplete = false;
-    scanProgress = 0;
-    cache.clear();
-    render();
+    const generation = ++scanGeneration, path = location.pathname, scope = storageKey;
+    const valid = () => generation === scanGeneration && scope === storageKey && path === location.pathname &&
+      dataLoadingAllowed() && !document.hidden && scroller.isConnected && messageList()?.querySelector('[data-testid="virtuoso-scroller"]') === scroller;
+    scanning = true; scanComplete = false; scanProgress = 0;
+    scanTarget = new Map();
     const originalTop = scroller.scrollTop;
     scroller.setAttribute('data-erin-inbox-scan', '');
+    let completed = false;
+    const deadline = Date.now() + 90000;
     try {
-      const max = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
-      const step = Math.max(220, Math.floor(scroller.clientHeight * .82));
-      const positions = [];
-      for (let top = 0; top < max; top += step) positions.push(top);
-      positions.push(max);
-      for (let index = 0; index < positions.length; index++) {
-        if (!dataLoadingAllowed()) break;
-        scroller.scrollTop = positions[index];
-        await settleVirtualList();
+      scroller.scrollTop = 0;
+      let bottomPasses = 0, previousBottom = -1;
+      while (valid() && Date.now() < deadline) {
+        if (!await settleVirtualList(scroller, valid) || !valid()) break;
         scrapeMessages();
-        scanProgress = Math.round((index + 1) / positions.length * 100);
-        if (index % 4 === 0 || index === positions.length - 1) render();
+        const max = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+        scanProgress = max ? Math.min(99, Math.round(scroller.scrollTop / max * 100)) : 99;
+        updateSummary(scanTarget);
+        if (scroller.scrollTop >= max - 2) {
+          bottomPasses = previousBottom === max ? bottomPasses + 1 : 0;
+          previousBottom = max;
+          if (bottomPasses >= 2) { completed = true; break; }
+          await delay(250);
+        } else bottomPasses = 0;
+        scroller.scrollTop = Math.min(max, scroller.scrollTop + Math.max(100, Math.floor(scroller.clientHeight * .75)));
       }
+      if (completed && valid()) {
+        cache.clear(); for (const [id, item] of scanTarget) cache.set(id, item);
+        scannedScroller = scroller; scanComplete = true; scanProgress = 100;
+        pruneState();
+      }
+    } catch (error) {
+      console.warn('Outlook widgets: inbox scan interrupted', error);
     } finally {
-      scroller.scrollTop = originalTop;
-      await settleVirtualList();
-      scrapeMessages();
+      scanTarget = null;
+      // Never scroll a different folder after navigating away during a scan.
+      if (path === location.pathname && scroller.isConnected) scroller.scrollTop = originalTop;
       scroller.removeAttribute('data-erin-inbox-scan');
       scanning = false;
-      scanComplete = dataLoadingAllowed();
-      scanProgress = 100;
-      if (widgetContext()) render(); else mount();
+      if (widgetContext()) render(); else mount(false);
+      if (!scanComplete && valid()) scannedScroller = scroller;
     }
   }
 
-  function startFocus() {
-    focus.running = true;
-    focus.finished = false;
-    focus.last = Date.now();
+  function updateSummary(items = cache) {
+    const summary = root?.querySelector('.eiw-summary');
+    if (!summary) return;
+    const unread = [...items.values()].filter(x => x.unread).length;
+    const values = summary.querySelectorAll('b');
+    if (values[0]) values[0].textContent = String(unread);
+    if (values[1]) values[1].textContent = String(items.size);
+    const label = scanning ? `Scanning inbox: ${scanProgress}%` : scanComplete ? 'Inbox scan complete' : 'Inbox data may be incomplete; refresh to rescan';
+    if (summary.title !== label) summary.title = label;
+  }
+
+  function advanceFocus(now = Date.now()) {
+    if (!focus.running) return false;
+    focus.elapsed = Math.min(PARTS[focus.part][1] * 60, focus.elapsed + Math.max(0, now - focus.last) / 1000);
+    focus.last = now;
+    if (focus.elapsed >= PARTS[focus.part][1] * 60) { focus.running = false; focus.finished = true; clearInterval(focusTick); return true; }
+    return false;
+  }
+  function updateFocusDisplay() {
+    if (!root || state.collapsed || state.tab !== 'focus' || document.hidden) return;
+    const total = PARTS[focus.part][1] * 60, remaining = Math.max(0, Math.ceil(total - focus.elapsed));
+    const clock = root.querySelector('.eiw-clock b');
+    const value = `${String(Math.floor(remaining / 60)).padStart(2, '0')}:${String(remaining % 60).padStart(2, '0')}`;
+    if (clock && clock.textContent !== value) clock.textContent = value;
+    root.querySelector('.eiw-ring .fill')?.style.setProperty('stroke-dashoffset', String(314 * (1 - Math.min(1, focus.elapsed / total))));
+  }
+  function startFocus(resume = false) {
+    if (!resume) { focus.running = true; focus.finished = false; focus.last = Date.now(); }
     clearInterval(focusTick);
-    focusTick = setInterval(() => {
-      if (!focus.running) return;
-      const now = Date.now();
-      focus.elapsed += (now - focus.last) / 1000;
-      focus.last = now;
-      if (focus.elapsed >= PARTS[focus.part][1] * 60) {
-        focus.elapsed = PARTS[focus.part][1] * 60;
-        focus.running = false;
-        focus.finished = true;
-        clearInterval(focusTick);
-      }
-      if (state.tab === 'focus') render();
-    }, 250);
+    const finished = advanceFocus();
+    if (!finished && focus.running) focusTick = setInterval(() => {
+      const ended = advanceFocus();
+      if (ended) { save(); render(); }
+      else updateFocusDisplay();
+    }, 1000);
+    save(); render();
   }
 
   function bind() {
@@ -537,7 +752,7 @@
       if (target.dataset.selfSort) { state.selfSort = target.dataset.selfSort; save(); render(); return; }
       if (target.dataset.openMessage) {
         const item = cache.get(target.dataset.openMessage);
-        if (item?.row?.isConnected) item.row.click();
+        if (item?.row?.isConnected && item.row.dataset.convid === target.dataset.openMessage) item.row.click();
         else location.assign(`/mail/inbox/id/${encodeURIComponent(target.dataset.openMessage)}`);
         return;
       }
@@ -550,29 +765,33 @@
       switch (target.dataset.action) {
         case 'collapse': {
           state.collapsed = !state.collapsed; save(); render();
-          if (!state.collapsed) { scannedScroller = null; setTimeout(() => scanAllMessages(true), 120); }
+          if (!state.collapsed) { scannedScroller = null; queueScan(true, 120); }
           break;
         }
-        case 'scan': scanAllMessages(true); break;
+        case 'scan': queueScan(true, 0); break;
         case 'todo-expand': state.todoExpanded = !state.todoExpanded; save(); render(); break;
         case 'todo-top': root.querySelector('[data-flow]')?.scrollTo({top:0,behavior:'smooth'}); break;
         case 'all-day-toggle': state.allDayExpanded = !state.allDayExpanded; save(); render(); break;
         case 'cancel-block': pendingBlock = null; render(); break;
-        case 'focus-toggle': focus.running ? (focus.running = false, clearInterval(focusTick), render()) : startFocus(); break;
-        case 'focus-skip': focus.elapsed = PARTS[focus.part][1] * 60; focus.running = false; focus.finished = true; clearInterval(focusTick); render(); break;
-        case 'focus-reset': focus = { part: 0, elapsed: 0, running: false, finished: false, last: 0 }; clearInterval(focusTick); render(); break;
-        case 'focus-next': focus = focus.part === PARTS.length - 1 ? { part: 0, elapsed: 0, running: false, finished: false, last: 0 } : { part: focus.part + 1, elapsed: 0, running: false, finished: false, last: 0 }; render(); break;
+        case 'focus-toggle': focus.running ? (advanceFocus(), focus.running = false, clearInterval(focusTick), save(), render()) : startFocus(); break;
+        case 'focus-skip': focus.elapsed = PARTS[focus.part][1] * 60; focus.running = false; focus.finished = true; clearInterval(focusTick); save(); render(); break;
+        case 'focus-reset': focus = { part: 0, elapsed: 0, running: false, finished: false, last: 0 }; clearInterval(focusTick); save(); render(); break;
+        case 'focus-next': focus = focus.part === PARTS.length - 1 ? { part: 0, elapsed: 0, running: false, finished: false, last: 0 } : { part: focus.part + 1, elapsed: 0, running: false, finished: false, last: 0 }; save(); render(); break;
       }
     });
     root.addEventListener('focusout', event => {
       const title = event.target.closest?.('[data-edit-title]');
-      if (!title) return;
+      if (!title) { setTimeout(() => { if (renderPending && !interactionActive()) render(); }, 0); return; }
       state.titleEdits[title.dataset.editTitle] = title.textContent.trim() || cache.get(title.dataset.editTitle)?.subject;
       save();
+      setTimeout(() => { if (renderPending && !interactionActive()) render(); }, 0);
+    });
+    root.addEventListener('input', event => {
+      if (event.target.matches('[data-block-title]') && pendingBlock) pendingBlock.title = event.target.value;
     });
     root.addEventListener('keydown', event => {
       const title = event.target.closest?.('[data-edit-title]');
-      if (title && event.key === 'Enter') { event.preventDefault(); title.blur(); }
+      if (title && ['Enter', 'Escape'].includes(event.key)) { event.preventDefault(); title.blur(); }
     });
     root.addEventListener('pointerdown', event => {
       const strip = event.target.closest('[data-schedule-strip]');
@@ -581,10 +800,13 @@
         const snap = x => Math.round((startDay + Math.max(0, Math.min(1, (x - rect.left) / rect.width)) * (endDay - startDay)) / 15) * 15;
         const start = snap(event.clientX), selection = strip.querySelector('.eiw-selection');
         strip.setPointerCapture(event.pointerId); selection.hidden = false;
-        const draw = x => { const end = snap(x), a = Math.min(start,end), b = Math.max(start,end) + (end === start ? 30 : 0); selection.style.left = `${(a-startDay)/(endDay-startDay)*100}%`; selection.style.width = `${(b-a)/(endDay-startDay)*100}%`; return [a,b]; };
+        const draw = x => { const end = snap(x), a = Math.min(start,end), b = Math.min(endDay, Math.max(start,end) + (end === start ? 30 : 0)); selection.style.left = `${(a-startDay)/(endDay-startDay)*100}%`; selection.style.width = `${(b-a)/(endDay-startDay)*100}%`; return [a,b]; };
         let range = draw(event.clientX);
         const move = e => { range = draw(e.clientX); };
-        const up = e => { strip.removeEventListener('pointermove',move); strip.removeEventListener('pointerup',up); range = draw(e.clientX); pendingBlock = {start:range[0],end:Math.max(range[0]+15,range[1])}; render(); };
+        const cleanup = () => { strip.removeEventListener('pointermove', move); strip.removeEventListener('pointerup', up); strip.removeEventListener('pointercancel', cancel); strip.removeEventListener('lostpointercapture', cancel); activeDrag = null; };
+        const cancel = () => { cleanup(); selection.hidden = true; if (renderPending) render(); };
+        const up = e => { range = draw(e.clientX); cleanup(); pendingBlock = {start:range[0],end:Math.min(endDay,Math.max(range[0]+15,range[1]))}; if (pendingBlock.start >= endDay) pendingBlock.start = endDay - 15; render(); };
+        activeDrag = cancel; strip.addEventListener('pointercancel', cancel); strip.addEventListener('lostpointercapture', cancel);
         strip.addEventListener('pointermove',move); strip.addEventListener('pointerup',up); return;
       }
       const grip = event.target.closest('[data-drag-edge]');
@@ -594,24 +816,55 @@
       const move = e => {
         const over = document.elementFromPoint(e.clientX,e.clientY)?.closest('.eiw-card');
         if (!over || over === card) return;
-        const ids = todoItems('self').map(x=>x.id).sort((a,b)=>(state.selfOrder.indexOf(a)+1||9999)-(state.selfOrder.indexOf(b)+1||9999));
+        const rank = new Map(state.selfOrder.map((id, i) => [id, i]));
+        const ids = todoItems('self').map(x=>x.id).sort((a,b) => (rank.get(a) ?? Infinity) - (rank.get(b) ?? Infinity));
         const from=ids.indexOf(id), to=ids.indexOf(over.dataset.messageId); if(from<0||to<0)return;
-        state.selfOrder=reorderIds(ids,id,over.dataset.messageId); save();
+        state.selfOrder=reorderIds(ids,id,over.dataset.messageId);
         over.parentElement.insertBefore(card, to>from ? over.nextSibling : over);
       };
-      const up = () => { grip.removeEventListener('pointermove',move); grip.removeEventListener('pointerup',up); card.classList.remove('dragging'); render(); };
+      const up = () => { grip.removeEventListener('pointermove',move); grip.removeEventListener('pointerup',up); grip.removeEventListener('pointercancel',up); grip.removeEventListener('lostpointercapture',up); activeDrag = null; card.classList.remove('dragging'); save(); render(); };
+      activeDrag = up; grip.addEventListener('pointercancel', up); grip.addEventListener('lostpointercapture', up);
       grip.addEventListener('pointermove',move); grip.addEventListener('pointerup',up);
     });
   }
 
+  const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(queueGeometry) : null;
+  const outsideWidget = node => node instanceof Element && !node.closest(`#${ROOT_ID}`);
   observer = new MutationObserver(mutations => {
-    if (root && mutations.every(mutation => root.contains(mutation.target))) return;
     if (scanning) return;
-    mount();
-    scheduleRender();
+    let relevant = false, removedRows = false;
+    for (const mutation of mutations) {
+      const target = mutation.target.nodeType === Node.TEXT_NODE ? mutation.target.parentElement : mutation.target;
+      if (!outsideWidget(target)) continue;
+      if (target.closest('[data-app-section="Ribbon"], #OwaTitleBar, .fui-FluentProvider')) themeDirty = true;
+      if (target.closest('[data-app-section="MessageList"], [data-app-section="DrawerPane"], #OwaTitleBar, #owa-me-control-container') ||
+          [...mutation.addedNodes].some(node => outsideWidget(node) && (node.matches('[data-app-section="MessageList"], #OwaTitleBar') || node.querySelector('[data-app-section="MessageList"], #OwaTitleBar')))) relevant = true;
+      if (mutation.type === 'childList' && target.closest('[data-testid="virtuoso-item-list"]')) {
+        removedRows ||= [...mutation.removedNodes].some(node => node.nodeType === 1 && (node.matches('[data-convid]') || node.querySelector('[data-convid]')));
+      }
+    }
+    if (relevant) scheduleRender();
+    if (removedRows && Date.now() - lastUserScroll > 1200 && dataLoadingAllowed()) queueScan(true, 2000);
   });
-  observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-label', 'title'] });
-  window.addEventListener('popstate', mount);
-  setInterval(mount, 1500);
+  observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true,
+    attributeFilter: ['aria-label', 'title', 'aria-selected', 'data-convid', 'data-erin-search', 'class'] });
+  window.addEventListener('popstate', () => { scanGeneration++; scheduleRender(); });
+  window.addEventListener('resize', queueGeometry);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { scanGeneration++; activeDrag?.(); advanceFocus(); flushSave(); }
+    else { themeDirty = true; const ended = advanceFocus(); if (ended) save(); mount(); if (state.tab === 'focus') render(); }
+  });
+  window.addEventListener('pagehide', () => { advanceFocus(); flushSave(); });
+  // A low-frequency fallback handles Outlook pushState navigation and account-control replacement.
+  setInterval(() => {
+    if (document.hidden || scanning) return;
+    mount(false);
+    const minute = `${todayKey()}:${new Date().getHours()}:${new Date().getMinutes()}`;
+    if (minute !== lastMinute) {
+      lastMinute = minute;
+      state.localBlocks = state.localBlocks.filter(x => x.date >= todayKey());
+      if (!state.collapsed && ['schedule', 'timeline', 'todo'].includes(state.tab)) render();
+    }
+  }, 5000);
   mount();
 })();

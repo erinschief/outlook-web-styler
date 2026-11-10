@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Outlook Web Styler and QOL Improvements
-// @version      0.68
+// @version      0.69
 // @description  Outlook web: hides left rail, app launcher and Teams button; adds a collapsible apps menu (Mail/Calendar/To Do) in the top bar; floating full-width layout.
 // @author       Erin
 // @match        https://outlook.office.com/*
@@ -407,7 +407,10 @@
       width: 0; opacity: 0; pointer-events: none;
       transition: width .18s ease, opacity .12s ease, padding .18s ease;
     }
-    #erin-apps-panel.open { width: 178px; opacity: 1; pointer-events: auto; }
+    #erin-apps-panel.open { width: max-content; max-width: calc(100vw - 56px); opacity: 1; pointer-events: auto; }
+    #erin-apps-btn:focus-visible, #erin-apps-panel button:focus-visible { outline: 2px solid var(--erin-brand, #0f6cbd); outline-offset: 2px; }
+    #erin-apps-panel button:focus-visible { outline-color: currentColor; outline-offset: -3px; }
+    @media (prefers-reduced-motion: reduce) { #erin-apps-panel, #erin-apps-btn svg { transition: none !important; animation: none !important; } }
     #erin-apps-panel button {
       all: unset; box-sizing: border-box; cursor: pointer; flex: 0 0 auto;
       width: 40px; height: 32px; border-radius: 16px;
@@ -472,7 +475,10 @@
         location.reload();
     });
 
-    const APPS = ['Mail', 'Calendar', 'To Do', ...(sharedMailbox.address ? [sharedMailbox.label] : [])];
+    const APPS = [
+        { id: 'Mail', label: 'Mail' }, { id: 'Calendar', label: 'Calendar' }, { id: 'To Do', label: 'To Do' },
+        ...(sharedMailbox.address ? [{ id: 'shared-mailbox', label: sharedMailbox.label, shared: true }] : [])
+    ];
 
 async function openSharedMailboxInbox() {
     const waitFor = async (get, timeout = 4000) => {
@@ -539,7 +545,7 @@ async function openSharedMailboxInbox() {
     } catch (e) {}
 
     const railBtn = (label) =>
-    document.querySelector(`#LeftRail button[aria-label="${label}"]`);
+    [...document.querySelectorAll('#LeftRail button[aria-label]')].find(button => button.getAttribute('aria-label') === label);
 
     let tip;
     let tipAnchor = null;
@@ -594,8 +600,10 @@ async function openSharedMailboxInbox() {
             panel.style.top = r.top + (r.height - 40) / 2 + 'px';
             showTip(btn);
         }
-        panel.classList.toggle('open', open);
-        btn.setAttribute('aria-expanded', String(open));
+        if (panel.classList.contains('open') !== open) panel.classList.toggle('open', open);
+        panel.inert = !open;
+        panel.setAttribute('aria-hidden', String(!open));
+        if (btn.getAttribute('aria-expanded') !== String(open)) btn.setAttribute('aria-expanded', String(open));
         if (!open && !btn.matches(':hover') && !panel.matches(':hover')) hideTip();
     }
 
@@ -1101,6 +1109,7 @@ async function openSharedMailboxInbox() {
         if (root.dataset.erinLayout !== v) root.dataset.erinLayout = v;
     }
 
+    let appsEvents = null;
     function build() {
         syncBrand();
         tagBar();
@@ -1119,13 +1128,20 @@ async function openSharedMailboxInbox() {
         const waffle = document.getElementById('owaAppLauncherBtn_container');
         if (!waffle || !document.getElementById('LeftRail')) return;
 
-        if (!document.getElementById('erin-apps-btn')) {
+        if (!document.getElementById('erin-apps-btn') || !document.getElementById('erin-apps-panel')) {
+            appsEvents?.abort();
+            appsEvents = new AbortController();
+            const eventOptions = { signal: appsEvents.signal };
+            document.getElementById('erin-apps-btn')?.remove();
+            document.getElementById('erin-apps-panel')?.remove();
             const btn = document.createElement('button');
             btn.id = 'erin-apps-btn';
             btn.type = 'button';
             btn.dataset.tip = 'Back to inbox';
             btn.setAttribute('aria-label', 'Back to inbox');
             btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-controls', 'erin-apps-panel');
+            btn.setAttribute('aria-haspopup', 'true');
             // Two icons stacked in one grid cell (inline styles, so this never depends on a selector matching):
             // the boxes, and a mail icon that fades in over them on click.
             btn.innerHTML = ICONS.grid + ICONS.Mail;
@@ -1151,19 +1167,22 @@ async function openSharedMailboxInbox() {
 
             const panel = document.createElement('div');
             panel.id = 'erin-apps-panel';
-            for (const label of APPS) {
+            panel.inert = true; panel.setAttribute('aria-hidden', 'true');
+            panel.setAttribute('role', 'group'); panel.setAttribute('aria-label', 'Outlook apps');
+            for (const app of APPS) {
+                const { id, label } = app;
                 const b = document.createElement('button');
-                const isSharedMailbox = Boolean(sharedMailbox.address && label === sharedMailbox.label);
+                const isSharedMailbox = !!app.shared;
                 const appUrl = ({
                     Mail: location.origin + '/mail/',
                     Calendar: location.origin + '/calendar/',
                     'To Do': 'https://to-do.office.com/tasks/'
-                })[label] || (isSharedMailbox ? `${location.origin}/mail/${sharedMailbox.address}/` : location.origin);
+                })[id] || (isSharedMailbox ? `${location.origin}/mail/${sharedMailbox.address}/` : location.origin);
                 b.type = 'button';
-                b.dataset.for = label;
+                b.dataset.for = id;
                 b.dataset.tip = label;
                 b.setAttribute('aria-label', label);
-                b.innerHTML = isSharedMailbox ? ICONS.Mail : ICONS[label];
+                b.innerHTML = isSharedMailbox ? ICONS.Mail : ICONS[id];
 
                 const openSeparate = () => window.open(appUrl, '_blank', 'noopener');
                 b.addEventListener('auxclick', (event) => {
@@ -1182,13 +1201,32 @@ async function openSharedMailboxInbox() {
                     if (isSharedMailbox) {
                         void openSharedMailboxInbox();
                     } else {
-                        railBtn(label)?.click();
+                        railBtn(id)?.click();
                     }
                     setOpen(false);
                 });
                 panel.appendChild(b);
             }
             document.body.appendChild(panel);
+            btn.addEventListener('keydown', event => {
+                if (!['ArrowDown', 'ArrowRight', ' '].includes(event.key)) return;
+                event.preventDefault(); event.stopPropagation(); setOpen(true);
+                if (!panel.inert) panel.querySelector('button')?.focus();
+            });
+            panel.addEventListener('keydown', event => {
+                const buttons = [...panel.querySelectorAll('button')], index = buttons.indexOf(document.activeElement);
+                let next = index;
+                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % buttons.length;
+                else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + buttons.length) % buttons.length;
+                else if (event.key === 'Home') next = 0;
+                else if (event.key === 'End') next = buttons.length - 1;
+                else if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); setOpen(false); btn.focus(); return; }
+                else return;
+                event.preventDefault(); event.stopPropagation(); buttons[next]?.focus();
+            });
+            panel.addEventListener('focusout', () => requestAnimationFrame(() => {
+                if (!panel.contains(document.activeElement) && document.activeElement !== btn && !panel.matches(':hover')) setOpen(false);
+            }));
 
             for (const host of [btn, panel]) {
                 host.addEventListener('mouseover', (e) => {
@@ -1212,25 +1250,25 @@ async function openSharedMailboxInbox() {
             });
             btn.addEventListener('pointerleave', () => { clearTimeout(openT); hideTip(); });
             document.addEventListener('pointermove', (e) => {
-                if (!panel.classList.contains('open')) return;
+                if (!panel.classList.contains('open') || panel.contains(document.activeElement)) return;
                 // Extra room on the right of the pill so overshooting toward the search box does not close it.
                 const near = (r, right = 6) => e.clientX >= r.left - 6 && e.clientX <= r.right + right &&
                       e.clientY >= r.top - 6 && e.clientY <= r.bottom + 6;
                 if (!near(btn.getBoundingClientRect()) && !near(panel.getBoundingClientRect(), 56)) setOpen(false);
-            }, { passive: true });
-            document.documentElement.addEventListener('mouseleave', () => setOpen(false));
+            }, { passive: true, signal: appsEvents.signal });
+            document.documentElement.addEventListener('mouseleave', () => { if (!panel.contains(document.activeElement)) setOpen(false); }, eventOptions);
 
             document.addEventListener('click', (e) => {
                 if (!panel.contains(e.target)) setOpen(false);
-            });
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
-            window.addEventListener('resize', () => setOpen(false));
+            }, eventOptions);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); }, eventOptions);
+            window.addEventListener('resize', () => setOpen(false), eventOptions);
         }
 
         // Mirror active app
-        for (const label of APPS) {
-            const mine = document.querySelector(`#erin-apps-panel [data-for="${label}"]`);
-            const v = railBtn(label)?.getAttribute('aria-pressed') || 'false';
+        for (const app of APPS) {
+            const mine = [...document.querySelectorAll('#erin-apps-panel [data-for]')].find(button => button.dataset.for === app.id);
+            const v = app.shared ? 'false' : railBtn(app.id)?.getAttribute('aria-pressed') || 'false';
             if (mine && mine.getAttribute('aria-pressed') !== v) mine.setAttribute('aria-pressed', v);
         }
     }
@@ -1261,27 +1299,26 @@ async function openSharedMailboxInbox() {
         });
     };
 
-    function clickSessionExpiredSignIn() {
-        const banner = [...document.querySelectorAll('[role="group"]')]
-        .find(el => el.textContent.includes('You need to sign in.'));
-
-        const btn = banner?.querySelector('button');
-
-        if (btn) {
-            btn.click();
-            return true;
+    const signInClicks = new WeakMap();
+    function clickSessionExpiredSignIn(scope = document) {
+        const groups = within(scope, '[role="group"]');
+        for (const banner of groups) {
+            if (!banner.textContent.includes('You need to sign in.')) continue;
+            const btn = [...banner.querySelectorAll('button')].find(button => /sign in/i.test(button.getAttribute('aria-label') || button.textContent));
+            if (!btn || Date.now() - (signInClicks.get(btn) || 0) < 5000) continue;
+            signInClicks.set(btn, Date.now()); btn.click(); return true;
         }
-
         return false;
     }
 
     function hideSenderCategories() {
-    document.querySelectorAll('span.t1Kw7').forEach(label => {
-        if (label.textContent?.trim() === 'Promotions') {
-            label.closest('.BNwHL')?.style.setProperty('display', 'none', 'important');
+        // Avoid writing the same style attribute from inside an observer that watches styles.
+        for (const label of document.querySelectorAll('span.t1Kw7')) {
+            const host = label.closest('.BNwHL');
+            if (host) host.toggleAttribute('data-erin-promotions', label.textContent?.trim() === 'Promotions');
         }
-    });
-}
+    }
+    GM_addStyle('[data-erin-promotions] { display: none !important; }');
 
     const NEVER_DELETE_RETENTION_TEXT = 'Retention: Default Never Delete';
 
@@ -1294,40 +1331,37 @@ async function openSharedMailboxInbox() {
 
         for (const body of bodies) {
             if (body.textContent?.trim() !== NEVER_DELETE_RETENTION_TEXT) continue;
-            body.closest('.fui-MessageBarGroup')
-                ?.setAttribute('data-erin-never-delete-retention', '');
+            const group = body.closest('.fui-MessageBarGroup');
+            if (group && !group.hasAttribute('data-erin-never-delete-retention')) group.setAttribute('data-erin-never-delete-retention', '');
         }
     }
 
+    const ownedUI = node => node.nodeType === Node.ELEMENT_NODE && !!node.closest?.('#erin-inbox-widgets, #erin-apps-panel, #erin-apps-btn, #erin-tip');
+    const shellSelector = '#OwaTitleBar, #LeftRail, #mainApp, #ConversationReadingPaneContainer, .fui-Toaster, [role="menu"], [data-app-section="DrawerPane"], [data-app-section="Ribbon"]';
     const mainObserver = new MutationObserver((mutations) => {
         let needsBuild = false;
-
+        const signInScopes = new Set();
         for (const mutation of mutations) {
+            if (ownedUI(mutation.target)) continue;
             if (mutation.type === 'childList') {
-                needsBuild = true;
-
-                for (const node of mutation.addedNodes) {
-                    if (node.nodeType !== Node.ELEMENT_NODE) continue;
-
-                    checkAddedMenus(node);
-                    checkAddedDropTargets(node);
-                    removeDeleteMenuItems(node);
-                    hideNeverDeleteRetention(node);
-
-                    // Auto-click Outlook sign-in banner if it appears
-                    clickSessionExpiredSignIn();
+                const added = [...mutation.addedNodes].filter(node => node.nodeType === Node.ELEMENT_NODE && !ownedUI(node));
+                const removed = [...mutation.removedNodes].filter(node => node.nodeType === Node.ELEMENT_NODE && !ownedUI(node));
+                if (!added.length && !removed.length) continue;
+                // A widget refresh must not rebuild the entire Outlook shell.
+                const significant = node => !node.matches?.('#erin-inbox-widgets') &&
+                    (node.matches?.(shellSelector) || node.querySelector?.(shellSelector));
+                if (relevantAttrTarget(mutation.target) || added.some(significant) || removed.some(significant)) needsBuild = true;
+                for (const node of added) {
+                    checkAddedMenus(node); checkAddedDropTargets(node);
+                    removeDeleteMenuItems(node); hideNeverDeleteRetention(node);
+                    signInScopes.add(node.closest('[role="group"]') || node);
                 }
-            } else if (relevantAttrTarget(mutation.target)) {
-                needsBuild = true;
-            }
+            } else if (relevantAttrTarget(mutation.target)) needsBuild = true;
         }
-
-        if (needsBuild) {
-            scheduleBuild();
-            clickSessionExpiredSignIn();
-        }
+        // Search each added scope once, rather than rescanning the whole document per added node.
+        for (const scope of signInScopes) clickSessionExpiredSignIn(scope);
+        if (needsBuild) scheduleBuild();
     });
-
 
     mainObserver.observe(document.documentElement, {
         childList: true,
@@ -1352,7 +1386,7 @@ async function openSharedMailboxInbox() {
 
     // Copilot's function to remove "Delete" menu items
     function removeDeleteMenuItems(root = document) {
-        root.querySelectorAll('.fui-MenuItem__content').forEach(label => {
+        within(root, '.fui-MenuItem__content').forEach(label => {
             if (label.textContent.trim() === 'Delete') {
                 const menuItem = label.closest('div[role="menuitem"]');
                 if (menuItem) menuItem.remove();
@@ -1362,3 +1396,4 @@ async function openSharedMailboxInbox() {
     // Initial scan; later menu additions are handled by the main observer above.
     removeDeleteMenuItems();
 })();
+

@@ -1,0 +1,21 @@
+name: Check userscripts
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: |
+          node --check outlook-web-styler.user.js
+          node --check outlook-inbox-widgets.user.js
+          node --check tests/browser-tests.js
+          node --check tests/build-browser-fixture.cjs
+      - name: Run regression checks
+        run: node --test tests/regression.test.cjs
+      - name: Build browser smoke-test fixture
+        run: node tests/build-browser-fixture.cjs
