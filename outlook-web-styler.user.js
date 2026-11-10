@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Outlook Web Styler and QOL Improvements
-// @version      0.69
+// @version      0.70
 // @description  Outlook web: hides left rail, app launcher and Teams button; adds a collapsible apps menu (Mail/Calendar/To Do) in the top bar; floating full-width layout.
 // @author       Erin
 // @match        https://outlook.office.com/*
@@ -193,6 +193,12 @@
     html[data-erin-layout="list"] [data-app-section="MessageList"],
     html[data-erin-layout="list"] [data-app-section="MessageList"] > [role="complementary"] {
       width: auto !important; max-width: none !important; flex: 1 1 auto !important;
+    }
+    /* In list-only mode the mail column already begins at the app's equal 8px viewport inset. The
+       multi-pane -11px alignment shift moved MainModule to x=-3px, where its own overflow:hidden
+       clipped the rounded left corners of both the message list and the widget inserted above it. */
+    html[data-erin-layout="list"]:has(#OwaTitleBar) #MainModule {
+      margin-left: 0 !important;
     }
 
     /* Message list header: Filter stays visible; only the sort-direction toggle is hidden (below). */
