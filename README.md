@@ -87,6 +87,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 
 ## Releases
 
+- **Widgets 0.3.5:** preserves the inbox snapshot across search, folder navigation, visibility changes, and collapse/reopen; full virtual-list traversal now occurs only for an empty first load or an explicit refresh.
 - **Widgets 0.3.4:** changes the oldest-unread connector to a straight vertical drop, one compact rounded right-angle turn, and a straight horizontal run to the label.
 - **Widgets 0.3.3:** restores the mockup's curved dashed connector from the center of the oldest-unread timeline dot to its endpoint label, with the connector layered behind all timeline text.
 - **Styler 0.72:** explicitly clips the outer Inbox paint surface to its top-corner radii, preventing Outlook's translucent header layer from visually squaring off the left corner.
