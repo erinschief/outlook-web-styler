@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Outlook Web Styler and QOL Improvements
-// @version      0.71
+// @version      0.72
 // @description  Outlook web: hides left rail, app launcher and Teams button; adds a collapsible apps menu (Mail/Calendar/To Do) in the top bar; floating full-width layout.
 // @author       Erin
 // @match        https://outlook.office.com/*
@@ -72,6 +72,9 @@
     #searchBoxColumnContainerId :is(form, div, input, button) { border-radius: var(--erin-radius) !important; }
     [data-app-section="MessageList"] [role="complementary"] {
       border-radius: var(--erin-radius) var(--erin-radius) 0 0 !important;
+      /* Outlook's translucent header paint can remain square at the left edge even though this
+         surface computes the correct radius. Clip the painted layer itself, not only its box. */
+      clip-path: inset(0 round var(--erin-radius) var(--erin-radius) 0 0);
     }
     #LeftRail { display: none !important; }
 

@@ -87,6 +87,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 
 ## Releases
 
+- **Styler 0.72:** explicitly clips the outer Inbox paint surface to its top-corner radii, preventing Outlook's translucent header layer from visually squaring off the left corner.
 - **Styler 0.71:** mirrors Outlook's native right-side message-list inset on the left in list-only mode, giving both top corners equal room to render their rounding.
 - **Styler 0.70:** keeps the multi-pane alignment shift but disables it in list-only mode, preventing `#MainModule` from moving outside the viewport and clipping the message-list and widget left corners.
 - **Styler 0.69:** targeted observers, batched and rate-limited sign-in handling, idempotent promotion hiding, stable app IDs, keyboard flyout controls, and cleanup of listeners when Outlook replaces the header.
