@@ -20,7 +20,7 @@ Repeat those steps once on each browser or device where you use Outlook.
 2. Choose **Install** on Tampermonkey's installation screen.
 3. Reload the personal Outlook inbox.
 
-The widget sweeps Outlook's virtualized personal-inbox list and restores the original scroll position. It follows a growing list until its bottom settles, then replaces its message cache. Removed rows trigger a rescan after the list is idle; manual **Refresh inbox data** is also available. Scans stop safely if you navigate away, collapse the widget, or hide the tab. An interrupted scan keeps the previous cache and is never labelled complete. The summary's tooltip shows scan progress or whether data may be incomplete. A scan covers the currently displayed inbox view, including any native Outlook filter.
+The widget sweeps Outlook's virtualized personal-inbox list and restores the original scroll position. It follows a growing list until its bottom settles, then replaces its message cache. Inbox changes do not trigger automatic rescans while you triage; use **Refresh inbox data** when you want to rebuild the full widget cache. Scans stop safely if you navigate away, collapse the widget, or hide the tab. An interrupted scan keeps the previous cache and is never labelled complete. While collapsed, the summary reads Outlook's lightweight Inbox-folder totals instead of scanning the message list. A scan covers the currently displayed inbox view, including any native Outlook filter.
 
 It follows the visible message-list container in both single-pane and multi-pane layouts. Open Outlook's native **My Day** pane when you want to refresh Schedule. Calendar parsing supports English all-day labels, 12/24-hour clocks, time ranges, and compound hour/minute durations. If no end time or duration is exposed, the event tooltip explicitly labels the 30-minute estimate. Schedule's time indicators update while visible; the script does not write to mail categories or the Outlook calendar.
 
@@ -88,6 +88,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 ## Releases
 
 - **Styler 0.69:** targeted observers, batched and rate-limited sign-in handling, idempotent promotion hiding, stable app IDs, keyboard flyout controls, and cleanup of listeners when Outlook replaces the header.
+- **Widgets 0.3.1:** preserves the 0.3.0 stability work while making full inbox scans manual during triage, using live folder-tree counts while collapsed, simplifying the refresh glyph, and softening the oldest-unread marker.
 - **Widgets 0.3.0:** safe cached-message opening, transactional growing-list scans, calendar-correct buckets, incremental timer updates and persistence, batched scraping, edit/drag protection, account-scoped storage, and bounded customization retention.
 
 ## License

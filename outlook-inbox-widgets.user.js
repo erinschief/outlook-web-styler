@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.3.0
+// @version      0.3.1
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -207,6 +207,12 @@
     !!document.querySelector('button[aria-label="Exit search"]') || /\/search(?:\/|$)/i.test(location.pathname);
   const widgetContext = () => personalInbox() && !searchActive();
   const dataLoadingAllowed = () => widgetContext() && !state.collapsed;
+  function inboxFolderCounts() {
+    const folders = [...document.querySelectorAll('[role="treeitem"][title^="Inbox -"]')];
+    const folder = folders.find(el => el.getAttribute('aria-selected') === 'true' || /selected/i.test(el.textContent || '')) || folders[0];
+    const match = folder?.getAttribute('title')?.match(/^Inbox\s*-\s*([\d,]+)\s+items?\s*\(([\d,]+)\s+unread\)/i);
+    return match ? { total: Number(match[1].replaceAll(',', '')), unread: Number(match[2].replaceAll(',', '')) } : null;
+  }
   const visible = el => !!el && el.getClientRects().length > 0;
   const messageList = () => {
     const lists = [...document.querySelectorAll('[data-app-section="MessageList"]')];
@@ -227,7 +233,7 @@
     .eiw-day{display:flex;gap:6px;align-items:center;overflow-x:auto;padding:5px 0}.eiw-pill{flex:none;border-left:4px solid var(--blue);background:color-mix(in srgb,var(--blue) 12%,var(--bg));border-radius:6px;padding:5px 8px;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.eiw-strip{position:relative;height:56px;border-top:1px solid var(--line);margin:18px 0 8px}.eiw-hour{position:absolute;top:-16px;bottom:0;border-left:1px solid var(--line);font-size:9px;color:var(--mute);padding-left:2px}.eiw-event{position:absolute;top:7px;height:40px;min-width:2px;border-left:4px solid var(--brand);border-radius:5px;background:var(--meet);padding:4px 6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:10px}.eiw-event.focus{background:var(--focus);border-color:var(--green)}.eiw-event.admin{background:var(--admin);border-color:#b07d12}.eiw-event.break{background:var(--rest);border-color:#7b8190}.eiw-now{position:absolute;top:-5px;bottom:0;border-left:2px solid var(--red)}.eiw-now:before{content:"Now";position:absolute;top:-13px;left:-10px;background:var(--red);color:#fff;font-size:8px;padding:0 3px;border-radius:2px}.eiw-next{font-size:11px;font-weight:650;color:var(--red);min-height:15px}.eiw-local{font-size:10px;color:var(--mute);margin-top:8px}.eiw-local-list{display:flex;gap:5px;overflow-x:auto}.eiw-local-list button{flex:none;border:1px dashed var(--brand);background:transparent;border-radius:5px;padding:4px 7px}
     .eiw-focus{position:relative;display:flex;gap:14px;align-items:center}.eiw-ring{position:relative;width:118px;height:118px;flex:none}.eiw-ring svg{width:100%;height:100%;transform:rotate(-90deg)}.eiw-ring circle{fill:none;stroke-width:9}.eiw-ring .back{stroke:var(--line)}.eiw-ring .fill{stroke:var(--green);stroke-linecap:round;stroke-dasharray:314;transition:stroke-dashoffset .2s linear}.eiw-clock{position:absolute;inset:0;display:grid;place-content:center;text-align:center}.eiw-clock b{font-size:25px;font-variant-numeric:tabular-nums}.eiw-clock span{font-size:10px;color:var(--mute)}.eiw-focus-side{flex:1;min-width:0}.eiw-parts{display:flex;gap:3px;height:42px;margin-bottom:10px}.eiw-part{display:grid;place-items:center;min-width:25px;border-radius:5px;background:var(--focus);color:var(--green);font-size:9px;opacity:.65}.eiw-part.break{background:var(--rest);color:var(--mute)}.eiw-part.current{outline:2px solid var(--brand);opacity:1}.eiw-controls{display:flex;gap:5px;flex-wrap:wrap}.eiw-finish{position:absolute;inset:-2px;background:var(--bg);display:grid;place-content:center;text-align:center;border-radius:8px;z-index:2}.eiw-finish b{font-size:18px}.eiw-finish p{color:var(--mute);margin:4px 0 8px}
     .eiw-switch{display:flex;gap:3px}.eiw-switch button{border:1px solid var(--line);background:var(--bg);padding:3px 9px;border-radius:999px}.eiw-switch button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}.eiw-cards{display:flex;flex-direction:column;gap:7px}.eiw-card{position:relative;height:76px;min-height:76px;display:flex;gap:7px;align-items:flex-start;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;background:var(--bg);padding:8px 8px 8px 10px;overflow:hidden}.eiw-card.waiting{border-left-color:var(--purple)}.eiw-card.overdue{border-left-color:var(--red);background:color-mix(in srgb,var(--red) 5%,var(--bg))}.eiw-card.dragging{opacity:.55}.eiw-card-main{flex:1;min-width:0}.eiw-card-title,.eiw-people,.eiw-tags{height:18px;line-height:18px;white-space:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;text-overflow:ellipsis}.eiw-card-title{font-size:13px;font-weight:650}.eiw-people{font-size:11px;color:var(--mute)}.eiw-tags{display:flex;gap:5px}.eiw-tag{flex:none;border-radius:999px;padding:0 7px;background:color-mix(in srgb,var(--orange) 18%,var(--bg));color:color-mix(in srgb,var(--orange) 75%,var(--ink));font-size:10px;font-weight:600}.eiw-card.waiting .eiw-tag.main{background:color-mix(in srgb,var(--purple) 18%,var(--bg));color:color-mix(in srgb,var(--purple) 75%,var(--ink))}.eiw-tag.extra{background:color-mix(in srgb,var(--blue) 14%,var(--bg));color:color-mix(in srgb,var(--blue) 75%,var(--ink))}.eiw-age{width:42px;flex:none;text-align:center}.eiw-age b{display:block;font-size:15px}.eiw-age span{font-size:9px;color:var(--mute)}.eiw-open{align-self:center;width:28px;height:28px;border:1px solid transparent;background:transparent;border-radius:6px}.eiw-open:hover{border-color:var(--line);color:var(--brand)}.eiw-more{width:100%;margin-top:7px}
-    #${ROOT_ID}[data-collapsed="true"] .eiw-tabs,#${ROOT_ID}[data-collapsed="true"] .eiw-panel{display:none}
+    #${ROOT_ID}[data-collapsed="true"] .eiw-tabs,#${ROOT_ID}[data-collapsed="true"] .eiw-panel,#${ROOT_ID}[data-collapsed="true"] .eiw-title,#${ROOT_ID}[data-collapsed="true"] .eiw-refresh{display:none}
     [data-testid="virtuoso-scroller"][data-erin-inbox-scan]{position:relative!important;pointer-events:none!important}
     [data-testid="virtuoso-scroller"][data-erin-inbox-scan]>*{visibility:hidden!important}
     [data-testid="virtuoso-scroller"][data-erin-inbox-scan]:after{content:"Refreshing widget data…";visibility:visible!important;position:sticky;left:0;top:42%;width:100%;height:44px;display:grid;place-items:center;color:var(--colorNeutralForeground3,#616161);font:13px/1.35 "Segoe UI Variable","Segoe UI",sans-serif}
@@ -243,12 +249,12 @@
     #${ROOT_ID} .eiw-summary{flex:1;min-width:0;overflow:visible;text-overflow:clip;font-size:11px;line-height:1.1}
     #${ROOT_ID} .eiw-summary b{font-size:15px;color:var(--brand);font-weight:750}#${ROOT_ID} .eiw-summary b.eiw-inbox-total{color:var(--mute)}
     #${ROOT_ID} .eiw-tab[aria-selected="true"],#${ROOT_ID} .eiw-switch button[aria-pressed="true"]{color:var(--on-brand)!important}
-    #${ROOT_ID} .eiw-refresh{font-size:18px;font-weight:600;color:var(--ink)}
+    #${ROOT_ID} .eiw-refresh{color:var(--ink)}#${ROOT_ID} .eiw-refresh svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
     #${ROOT_ID} .eiw-collapse{position:relative;font-size:0;padding:0}
     #${ROOT_ID} .eiw-collapse:after{content:"";display:block;width:18px;height:18px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 5.5 8 10.5l5-5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .18s ease}
     #${ROOT_ID}[data-collapsed="true"] .eiw-collapse:after{transform:rotate(180deg)}
     #${ROOT_ID} .eiw-panel{overflow:hidden;padding:10px 12px 12px}
-    #${ROOT_ID} .eiw-timeline{height:103px;padding:12px 6px 0}.eiw-total{display:none}.eiw-bcount{display:block!important;left:50%;top:42px;transform:translateX(-50%);font-size:9px;white-space:nowrap}.eiw-bcount b{color:var(--brand)}.eiw-line{height:54px}.eiw-line:after{content:"";position:absolute;right:0;top:22px;height:20px;border-left:2px solid #9aa1ab}.eiw-oldest-bound{position:absolute;right:6px;top:-10px;height:38px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;line-height:9px;font-weight:400;color:var(--mute)!important;white-space:nowrap}.eiw-dot{top:31px!important;margin:0!important;transform:translate(-50%,-50%);width:8px;height:8px}.eiw-dot.read{width:7px;height:7px;margin:0!important}.eiw-dot.newest,.eiw-dot.oldest{width:11px;height:11px;margin:0!important}.eiw-no-unread{height:35px;padding-top:5px;display:flex;align-items:center;gap:8px;color:var(--brand);font-size:10px;font-weight:650}.eiw-no-unread:before,.eiw-no-unread:after{content:"";height:1px;background:var(--brand);flex:1}
+    #${ROOT_ID} .eiw-timeline{height:103px;padding:12px 6px 0}.eiw-total{display:none}.eiw-bcount{display:block!important;left:50%;top:42px;transform:translateX(-50%);font-size:9px;white-space:nowrap}.eiw-bcount b{color:var(--brand)}.eiw-line{height:54px}.eiw-line:after{content:"";position:absolute;right:0;top:22px;height:20px;border-left:2px solid #9aa1ab}.eiw-oldest-bound{position:absolute;right:6px;top:-10px;height:38px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;line-height:9px;font-weight:400;color:var(--mute)!important;white-space:nowrap}.eiw-dot{top:31px!important;margin:0!important;transform:translate(-50%,-50%);width:8px;height:8px}.eiw-dot.read{width:7px;height:7px;margin:0!important}.eiw-dot.newest,.eiw-dot.oldest{width:11px;height:11px;margin:0!important}.eiw-dot.oldest{background:color-mix(in srgb,var(--brand) 72%,#000)}.eiw-no-unread{height:35px;padding-top:5px;display:flex;align-items:center;gap:8px;color:var(--brand);font-size:10px;font-weight:650}.eiw-no-unread:before,.eiw-no-unread:after{content:"";height:1px;background:var(--brand);flex:1}
     #${ROOT_ID} .eiw-all-day{display:flex;align-items:flex-start;gap:6px;margin:4px 0 9px}
     #${ROOT_ID} .eiw-day{flex:1;display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px;padding:0;overflow:hidden;max-height:30px}
     #${ROOT_ID} .eiw-day.expanded{max-height:none}.eiw-pill{max-width:min(240px,100%)}
@@ -541,9 +547,11 @@
     const active = root.contains(document.activeElement) ? document.activeElement : null;
     const focusKey = active ? ['data-action', 'data-tab', 'data-todo', 'data-self-sort', 'data-open-message'].find(k => active.hasAttribute(k)) : null;
     const focusValue = focusKey ? active.getAttribute(focusKey) : null;
-    const unread = [...cache.values()].filter(x => x.unread).length;
+    const folderCounts = state.collapsed ? inboxFolderCounts() : null;
+    const unread = folderCounts?.unread ?? [...cache.values()].filter(x => x.unread).length;
+    const total = folderCounts?.total ?? cache.size;
     root.dataset.collapsed = String(state.collapsed);
-    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b>${unread}</b> unread / <b class="eiw-inbox-total">${cache.size}</b> in inbox</span><button class="eiw-iconbtn eiw-refresh" data-action="scan" title="Refresh inbox data" aria-label="Refresh inbox data">↻</button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
+    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b>${unread}</b> unread / <b class="eiw-inbox-total">${total}</b> in inbox</span><button class="eiw-iconbtn eiw-refresh" data-action="scan" title="Refresh inbox data" aria-label="Refresh inbox data"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1"/><path d="M13.5 2v4h-4"/></svg></button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
     for (const [selector, top] of scrolls) { const el = root.querySelector(selector); if (el) el.scrollTop = top; }
     if (focusKey) [...root.querySelectorAll(`[${focusKey}]`)].find(el => el.getAttribute(focusKey) === focusValue)?.focus({ preventScroll: true });
     updateSummary();
@@ -590,7 +598,7 @@
     if (renderTimer || scanning || document.hidden) return;
     renderTimer = setTimeout(() => {
       renderTimer = 0;
-      mount(true);
+      mount(false);
     }, 120);
   }
 
@@ -634,12 +642,12 @@
     }
     const messagesChanged = scrape && !state.collapsed && !scanning ? scrapeMessages() : false;
     const scheduleChanged = scrape && !state.collapsed ? scrapeMyDay() : false;
-    if (created || messagesChanged || scheduleChanged) render(); else queueGeometry();
+    if (created || messagesChanged || scheduleChanged) render(); else { if (state.collapsed) updateSummary(); queueGeometry(); }
     if (!state.collapsed && scroller && scroller !== scannedScroller && !scanning && !scanTimer) queueScan();
   }
   function onListScroll() {
     if (scanning) return;
-    lastUserScroll = Date.now(); scheduleRender();
+    lastUserScroll = Date.now();
   }
 
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -708,11 +716,13 @@
   function updateSummary(items = cache) {
     const summary = root?.querySelector('.eiw-summary');
     if (!summary) return;
-    const unread = [...items.values()].filter(x => x.unread).length;
+    const folderCounts = state.collapsed ? inboxFolderCounts() : null;
+    const unread = folderCounts?.unread ?? [...items.values()].filter(x => x.unread).length;
+    const total = folderCounts?.total ?? items.size;
     const values = summary.querySelectorAll('b');
     if (values[0]) values[0].textContent = String(unread);
-    if (values[1]) values[1].textContent = String(items.size);
-    const label = scanning ? `Scanning inbox: ${scanProgress}%` : scanComplete ? 'Inbox scan complete' : 'Inbox data may be incomplete; refresh to rescan';
+    if (values[1]) values[1].textContent = String(total);
+    const label = state.collapsed && folderCounts ? 'Live counts from the Inbox folder' : scanning ? `Scanning inbox: ${scanProgress}%` : scanComplete ? 'Inbox scan complete' : 'Inbox data may be incomplete; refresh to rescan';
     if (summary.title !== label) summary.title = label;
   }
 
@@ -832,19 +842,18 @@
   const outsideWidget = node => node instanceof Element && !node.closest(`#${ROOT_ID}`);
   observer = new MutationObserver(mutations => {
     if (scanning) return;
-    let relevant = false, removedRows = false;
+    let relevant = false, folderCountChanged = false;
     for (const mutation of mutations) {
       const target = mutation.target.nodeType === Node.TEXT_NODE ? mutation.target.parentElement : mutation.target;
       if (!outsideWidget(target)) continue;
       if (target.closest('[data-app-section="Ribbon"], #OwaTitleBar, .fui-FluentProvider')) themeDirty = true;
+      if (target.closest('[role="treeitem"][title^="Inbox -"]') ||
+          [...mutation.addedNodes].some(node => node.nodeType === Node.ELEMENT_NODE && (node.matches?.('[role="treeitem"][title^="Inbox -"]') || node.querySelector?.('[role="treeitem"][title^="Inbox -"]')))) folderCountChanged = true;
       if (target.closest('[data-app-section="MessageList"], [data-app-section="DrawerPane"], #OwaTitleBar, #owa-me-control-container') ||
           [...mutation.addedNodes].some(node => outsideWidget(node) && (node.matches('[data-app-section="MessageList"], #OwaTitleBar') || node.querySelector('[data-app-section="MessageList"], #OwaTitleBar')))) relevant = true;
-      if (mutation.type === 'childList' && target.closest('[data-testid="virtuoso-item-list"]')) {
-        removedRows ||= [...mutation.removedNodes].some(node => node.nodeType === 1 && (node.matches('[data-convid]') || node.querySelector('[data-convid]')));
-      }
     }
+    if (folderCountChanged && state.collapsed) updateSummary();
     if (relevant) scheduleRender();
-    if (removedRows && Date.now() - lastUserScroll > 1200 && dataLoadingAllowed()) queueScan(true, 2000);
   });
   observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true,
     attributeFilter: ['aria-label', 'title', 'aria-selected', 'data-convid', 'data-erin-search', 'class'] });
