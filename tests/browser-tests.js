@@ -36,6 +36,16 @@
     assert(oldest && bucket,'Timeline labels missing');
     assert(getComputedStyle(oldest).color===getComputedStyle(bucket).color,'Oldest date color drifted from bucket labels');
   });
+  await test('Read micro ticks share equal slots with unread dots', () => {
+    const saved=[...w.cache],now=new Date();w.cache.clear();
+    for(let i=0;i<4;i++)w.cache.set(`slot-${i}`,{id:`slot-${i}`,subject:`Slot ${i}`,date:new Date(now.getTime()-i*60000),unread:i%2===0,categories:[]});
+    w.state.tab='timeline';w.render();
+    const marks=[...w.root.querySelector('.eiw-bucket').querySelectorAll('.eiw-dot')];
+    assert(marks.map(mark=>parseFloat(mark.style.left)).join(',')==='12.5,37.5,62.5,87.5','Timeline marks are not evenly spaced');
+    const ticks=marks.filter(mark=>mark.classList.contains('read'));
+    assert(ticks.length===2 && ticks.every(mark=>getComputedStyle(mark).width==='1px' && getComputedStyle(mark).height==='9px'),'Read messages did not render as micro ticks');
+    w.cache.clear();saved.forEach(([key,value])=>w.cache.set(key,value));w.render();
+  });
   await test('Promotions tag stays hidden when Outlook recycles a message row', async () => {
     const label=document.querySelector('[data-promotion-label]'),host=label.parentElement;
     assert(host.hasAttribute('data-erin-promotions'),'Initial Promotions tag was not hidden');
