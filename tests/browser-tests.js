@@ -29,13 +29,15 @@
     w.state.tab='todo';w.render();
     assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'To-do filler text is still visible');
   });
-  await test('Oldest timeline date matches the bucket-label color', () => {
+  await test('Oldest timeline date uses the bucket-label typography', () => {
     w.cache.set('label-color',{id:'label-color',subject:'Color check',date:new Date(),unread:true,categories:[]});
     w.state.tab='timeline';w.render();
     const oldest=w.root.querySelector('.eiw-oldest-bound'),bucket=w.root.querySelector('.eiw-bname');
     assert(oldest && bucket,'Timeline labels missing');
     assert(getComputedStyle(oldest).color===getComputedStyle(bucket).color,'Oldest date color drifted from bucket labels');
-    assert(Number(getComputedStyle(oldest).opacity)<1,'Vertical oldest date still has full visual weight');
+    assert(getComputedStyle(oldest).fontFamily===getComputedStyle(bucket).fontFamily,'Oldest date font family drifted from bucket labels');
+    assert(getComputedStyle(oldest).fontWeight===getComputedStyle(bucket).fontWeight,'Oldest date font weight drifted from bucket labels');
+    assert(getComputedStyle(oldest).opacity==='1' && getComputedStyle(oldest).writingMode==='horizontal-tb','Oldest date is still synthesized as translucent vertical text');
   });
   await test('Read micro ticks share equal slots with unread dots', () => {
     const saved=[...w.cache],now=new Date();w.cache.clear();
@@ -46,6 +48,7 @@
     const ticks=marks.filter(mark=>mark.classList.contains('read'));
     assert(ticks.length===2 && ticks.every(mark=>getComputedStyle(mark).width==='1px' && getComputedStyle(mark).height==='9px'),'Read messages did not render as micro ticks');
     assert([...w.root.querySelectorAll('.eiw-bucket')].every(bucket=>bucket.getBoundingClientRect().width>=36),'Timeline bucket collapsed under its label');
+    assert([...w.root.querySelectorAll('.eiw-bname')].map(label=>label.textContent).join(',')==='Today','Empty relative-date buckets were rendered');
     w.cache.clear();saved.forEach(([key,value])=>w.cache.set(key,value));w.render();
   });
   await test('Promotions tag stays hidden when Outlook recycles a message row', async () => {

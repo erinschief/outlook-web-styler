@@ -94,7 +94,8 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 ## Releases
 
 - **Styler 0.73:** finds the Promotions subject tag without relying on Outlook's generated label class and updates it immediately when virtualized inbox rows are recycled.
-- **Widgets 0.4.5:** keeps every timeline bucket wide enough to own its marks, softens the vertical oldest-date label, closes My Day after script-initiated startup refreshes, and shortens the header label to conversations.
+- **Widgets 0.4.6:** omits empty relative-date buckets and their dividers, and rotates the oldest-date label as normal horizontal Segoe text so its glyph weight matches the other timeline labels.
+- **Widgets 0.4.5:** keeps every rendered timeline bucket wide enough to own its marks, softens the vertical oldest-date label, closes My Day after script-initiated startup refreshes, and shortens the header label to conversations.
 - **Widgets 0.4.4:** replaces read-message dots with low-emphasis micro ticks while retaining equal chronological spacing for every message inside each timeline bucket.
 - **Widgets 0.4.3:** locks the vertical oldest-conversation date to the same theme-derived text color as the Today, Yesterday, and other timeline bucket labels.
 - **Widgets 0.4.2:** preserves the last confirmed Inbox totals while My Day hides Outlook's folder tree and keeps adjusting unread changes even when the widget is collapsed.
