@@ -45,7 +45,12 @@
     assert(count()==='5','Collapsed count stopped updating');
     w.root.querySelector('[data-action="collapse"]').click();assert(count()==='5','Expanding changed count source');
     w.state.todo='self';w.state.tab='timeline';w.render();folder.remove();await wait(50);
-    assert(w.root.querySelector('.eiw-count-source').textContent.includes('cached conversations'),'Missing honest fallback label');
+    assert(count()==='5' && w.root.querySelector('.eiw-summary').title.includes('Last confirmed'),'Lost the Inbox baseline when My Day hid folder totals');
+    w.root.querySelector('[data-action="collapse"]').click();
+    const live=document.querySelector('[data-convid="live"]');live.setAttribute('aria-label','Unread');await wait(200);
+    assert(count()==='6','Collapsed tracked count missed a visible unread change');
+    live.setAttribute('aria-label','Read');await wait(200);assert(count()==='5','Tracked count did not restore after marking read');
+    w.root.querySelector('[data-action="collapse"]').click();
   });
   await test('My Day schedule changes update without a full inbox refresh', async () => {
     const drawer=document.querySelector('[data-app-section="DrawerPane"]'),content=drawer.querySelector('[data-test-schedule]');

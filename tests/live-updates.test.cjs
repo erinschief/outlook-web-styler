@@ -11,18 +11,21 @@ function load(values, from, to) {
   return c;
 }
 
-test('Header follows folder counts in both states, falls back honestly, and avoids idle DOM writes', () => {
+test('Header follows folder counts, retains their baseline when hidden, and avoids idle DOM writes', () => {
   let folder = {unread:7,total:20}, writes=0;
   const node = () => ({value:'',get textContent(){return this.value},set textContent(v){writes++;this.value=v}});
   const values=[node(),node()], label=node();
   const summary={querySelectorAll:()=>values,querySelector:()=>label};
-  const c=load({root:{querySelector:()=>summary},state:{collapsed:false},cache:new Map([['a',{unread:true}]]),inboxFolderCounts:()=>folder,scanning:false},'  function updateSummary(','  function advanceFocus(');
+  const cache=new Map([['a',{unread:true}]]);
+  const c=load({root:{querySelector:()=>summary},state:{collapsed:false},cache,inboxFolderCounts:()=>folder,scanning:false,lastInboxCounts:null,countCacheSnapshot:null},'  function updateSummary(','  function advanceFocus(');
   c.updateSummary();assert.deepEqual(values.map(x=>x.value),['7','20']);assert.equal(label.value,' in inbox');
   const before=writes;c.updateSummary();assert.equal(writes,before);
   c.state.collapsed=true;c.updateSummary();assert.equal(values[0].value,'7');
-  folder={unread:0,total:19};c.updateSummary();assert.equal(values[0].value,'0');
-  c.state.collapsed=false;folder=null;c.updateSummary();assert.equal(values[0].value,'1');
-  assert.equal(label.value,' cached conversations');assert.match(summary.title,/unavailable/);
+  cache.get('a').unread=false;folder={unread:0,total:19};c.updateSummary();assert.equal(values[0].value,'0');
+  c.state.collapsed=false;folder=null;c.updateSummary();assert.equal(values[0].value,'0');
+  assert.equal(label.value,' in inbox');assert.match(summary.title,/Last confirmed/);
+  cache.get('a').unread=true;c.updateSummary();assert.equal(values[0].value,'1');
+  cache.set('b',{unread:true});c.updateSummary();assert.deepEqual(values.map(x=>x.value),['2','20']);
 });
 
 test('Inbox selection prevents a shared mailbox or Favorites duplicate from choosing wrong counts', () => {
