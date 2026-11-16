@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.4.0
+// @version      0.4.1
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -63,6 +63,8 @@
   let scanComplete = false;
   let scanProgress = 0;
   let scannedScroller = null;
+  let initialRefreshQueued = false;
+  let initialRefreshDone = false;
   let pendingBlock = null;
   let focus = { part: 0, elapsed: 0, running: false, finished: false, last: 0 };
   const PARTS = [
@@ -169,6 +171,7 @@
     activeDrag?.(); pendingBlock = null; renderPending = false; resizeObserver?.disconnect();
     scanGeneration++;
     cache.clear(); scannedScroller = null; scanComplete = false;
+    initialRefreshQueued = false; initialRefreshDone = false;
     if (root) { root.remove(); root = null; }
     if (focus.running) startFocus(true);
     else clearInterval(focusTick);
@@ -627,13 +630,32 @@
     }, 120);
   }
 
-  function queueScan(force = false, delay = 600) {
+  function queueScan(force = false, delay = 600, initial = false) {
     clearTimeout(scanTimer);
     scanTimer = setTimeout(() => {
       scanTimer = 0;
-      if (interactionActive() || Date.now() - lastUserScroll < 1200) { queueScan(force, 1500); return; }
-      void scanAllMessages(force);
+      if (interactionActive() || Date.now() - lastUserScroll < 1200) { queueScan(force, 1500, initial); return; }
+      void scanAllMessages(force, initial);
     }, delay);
+  }
+
+  function openMyDayForInitialRefresh() {
+    const drawer = document.querySelector('[data-app-section="DrawerPane"]');
+    if (drawer && visible(drawer)) return false;
+    const button = [...document.querySelectorAll('button[aria-label], button[title]')].find(el =>
+      visible(el) && [el.getAttribute('aria-label'), el.getAttribute('title')].some(label => /^My Day$/i.test(label || '')));
+    if (!button) return false;
+    button.click();
+    return true;
+  }
+
+  function queueInitialRefresh() {
+    if (initialRefreshDone || initialRefreshQueued || !widgetContext() || state.collapsed) return;
+    initialRefreshQueued = true;
+    // Opening My Day can replace Outlook's list geometry. Give that native layout change time
+    // to settle before resolving the scroller that the transactional startup sweep will use.
+    const openingMyDay = openMyDayForInitialRefresh();
+    queueScan(true, openingMyDay ? 900 : 250, true);
   }
 
   function mount(scrape = true) {
@@ -671,7 +693,8 @@
     // Counts update in place even while an editor or drag defers panel replacement.
     updateSummary();
     if (created || messagesChanged || scheduleChanged) render(); else queueGeometry();
-    // Background updates never move Outlook's list. Full traversal is explicitly requested.
+    queueInitialRefresh();
+    // After the one startup traversal, background updates never move Outlook's list.
   }
   function onListScroll() {
     if (scanning) return;
@@ -711,10 +734,16 @@
     });
   }
 
-  async function scanAllMessages(force) {
-    if (scanning || !dataLoadingAllowed() || document.hidden || interactionActive()) return;
+  async function scanAllMessages(force, initial = false) {
+    if (scanning || !dataLoadingAllowed() || document.hidden || interactionActive()) {
+      if (initial) initialRefreshQueued = false;
+      return false;
+    }
     const scroller = messageList()?.querySelector('[data-testid="virtuoso-scroller"]');
-    if (!scroller || (!force && scroller === scannedScroller)) return;
+    if (!scroller || (!force && scroller === scannedScroller)) {
+      if (initial) initialRefreshQueued = false;
+      return false;
+    }
     const generation = ++scanGeneration, path = location.pathname, scope = storageKey;
     const valid = () => generation === scanGeneration && scope === storageKey && path === location.pathname &&
       dataLoadingAllowed() && !document.hidden && scroller.isConnected && messageList()?.querySelector('[data-testid="virtuoso-scroller"]') === scroller;
@@ -757,10 +786,15 @@
       if (path === location.pathname && scroller.isConnected) scroller.scrollTop = originalTop;
       scroller.removeAttribute('data-erin-inbox-scan');
       scanning = false;
+      if (initial) {
+        initialRefreshQueued = false;
+        initialRefreshDone = scanComplete;
+      }
       if (widgetContext()) render(); else mount(false);
       scheduleRender();
       if (!scanComplete && valid()) scannedScroller = scroller;
     }
+    return completed && scanComplete;
   }
 
   function updateSummary(items = cache) {

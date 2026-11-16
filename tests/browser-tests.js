@@ -16,8 +16,13 @@
     const tag = document.createElement('span'); tag.className = 'fui-Tag__primaryText'; tag.textContent = 'Self: Review'; el.appendChild(tag);
     stream.appendChild(el); return el;
   };
-  await wait(250); w.stopAutoScan();
+  await wait(1800); w.stopAutoScan();
   await test('Both full scripts start without exceptions', () => assert(w.root && window.styler && !errors.length, errors.join('; ') || 'Missing UI'));
+  await test('Initial load opens My Day and completes one full sweep', () => {
+    assert(document.querySelector('[data-app-section="DrawerPane"]'),'My Day did not open');
+    assert(w.complete,'Startup sweep did not complete');
+    assert(w.state.schedule[0]?.title==='Initial meeting','Startup My Day schedule was not collected');
+  });
   await test('Visible inbox changes update in the background without scrolling or a full scan', async () => {
     const scroller=stream.parentElement, before=scroller.scrollTop;
     const el=row('live','Live arrival');await wait(200);
@@ -43,9 +48,7 @@
     assert(w.root.querySelector('.eiw-count-source').textContent.includes('cached conversations'),'Missing honest fallback label');
   });
   await test('My Day schedule changes update without a full inbox refresh', async () => {
-    const drawer=document.createElement('div');drawer.dataset.appSection='DrawerPane';document.getElementById('fixture').appendChild(drawer);
-    const tab=document.createElement('button');tab.setAttribute('role','tab');tab.setAttribute('name','Calendar');tab.setAttribute('aria-selected','true');drawer.appendChild(tab);
-    const content=document.createElement('div');content.innerText='Today\n9:00 AM\nInitial meeting\n1 hr\nTomorrow';drawer.appendChild(content);
+    const drawer=document.querySelector('[data-app-section="DrawerPane"]'),content=drawer.querySelector('[data-test-schedule]');
     await wait(200);assert(w.state.schedule[0]?.title==='Initial meeting','Calendar not collected automatically');
     content.innerText='Today\n10:00 AM\nUpdated meeting\n30 min\nTomorrow';await wait(200);
     assert(w.state.schedule[0]?.title==='Updated meeting' && w.state.schedule[0].start===600,'Calendar change remained stale');drawer.remove();

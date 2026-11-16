@@ -44,6 +44,27 @@ test('Mutation batches request a real scrape and do not queue work in a hidden t
   c.document.hidden=false;c.scanning=true;c.scheduleRender();assert.equal(calls,1);
 });
 
+test('First expanded load opens My Day and queues exactly one delayed full refresh', () => {
+  let clicks=0;const scans=[];
+  const button={getAttribute:key=>key==='aria-label'?'My Day':'',click:()=>clicks++};
+  const state={collapsed:true};
+  const c=load({initialRefreshDone:false,initialRefreshQueued:false,state,widgetContext:()=>true,visible:()=>true,
+    document:{querySelector:()=>null,querySelectorAll:()=>[button]},queueScan:(...args)=>scans.push(args)},
+    '  function openMyDayForInitialRefresh()','  function mount(');
+  c.queueInitialRefresh();assert.equal(clicks,0);assert.equal(scans.length,0);
+  state.collapsed=false;c.queueInitialRefresh();c.queueInitialRefresh();
+  assert.equal(clicks,1);assert.deepEqual(scans,[[true,900,true]]);
+});
+
+test('Startup refresh leaves an already-open My Day pane alone', () => {
+  let clicks=0;const scans=[];const drawer={};
+  const button={getAttribute:key=>key==='aria-label'?'My Day':'',click:()=>clicks++};
+  const c=load({initialRefreshDone:false,initialRefreshQueued:false,state:{collapsed:false},widgetContext:()=>true,visible:()=>true,
+    document:{querySelector:()=>drawer,querySelectorAll:()=>[button]},queueScan:(...args)=>scans.push(args)},
+    '  function openMyDayForInitialRefresh()','  function mount(');
+  c.queueInitialRefresh();assert.equal(clicks,0);assert.deepEqual(scans,[[true,250,true]]);
+});
+
 test('Visible unread and category changes update cache; recycled and removed rows retain off-screen records', () => {
   let rows=[], unread=true, category='Self: Review';
   const title={textContent:'Hello'}, sender={textContent:'Sender'};

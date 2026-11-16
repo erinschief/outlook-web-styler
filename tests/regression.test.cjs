@@ -81,7 +81,7 @@ function scanContext({grow=false,abort=false,fail=false}={}) {
     updateSummary(){},render:()=>rendered++,pruneState:()=>pruned++,widgetContext:()=>true,mount(){},queueScan(){},scheduleRender(){},scanSignature:()=>String(top),delay:async()=>{},
     settleVirtualList:async()=>{passes++;if(grow && passes===2)max=1500;if(abort && passes===2)c.scanGeneration++;if(fail)throw Error('Synthetic failure');return true;},
     scrapeMessages:()=>{if(c.scanTarget)c.scanTarget.set(`at-${top}`,{id:`at-${top}`});},console:{warn(){}}});
-  load(c,'  async function scanAllMessages(force)','  function updateSummary(');
+  load(c,'  async function scanAllMessages(force, initial = false)','  function updateSummary(');
   return {c,cache,attributes,get furthest(){return furthest},get top(){return top},get pruned(){return pruned},get rendered(){return rendered}};
 }
 
