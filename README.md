@@ -93,6 +93,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 
 ## Releases
 
+- **Styler 0.73:** finds the Promotions subject tag without relying on Outlook's generated label class and updates it immediately when virtualized inbox rows are recycled.
 - **Widgets 0.4.1:** restores one full current-view Inbox sweep on first expanded load, opens native My Day before that sweep, then returns to lightweight live updates for ongoing triage.
 - **Widgets 0.4.2:** preserves the last confirmed Inbox totals while My Day hides Outlook's folder tree and keeps adjusting unread changes even when the widget is collapsed.
 - **Widgets 0.4.0:** live Inbox-folder counts expanded and collapsed; batched background updates of visible conversations and My Day; immediate visible-row startup without a full sweep; adaptive full-refresh settling; explicit conversation-snapshot coverage and cached-count fallback labels.

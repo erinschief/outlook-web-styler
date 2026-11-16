@@ -171,7 +171,7 @@ test('Storage pruning retains filtered-out edits until their retention period ex
 
 test('Styler ignores widget mutations and batches sign-in inspection by scope',()=>{
   let observerCallback,builds=0,checks=0;
-  const c=context({Node:{ELEMENT_NODE:1},MutationObserver:class{constructor(fn){observerCallback=fn}},relevantAttrTarget:()=>false,scheduleBuild:()=>builds++,clickSessionExpiredSignIn:()=>checks++,checkAddedMenus(){},checkAddedDropTargets(){},removeDeleteMenuItems(){},hideNeverDeleteRetention(){}});
+  const c=context({Node:{ELEMENT_NODE:1,TEXT_NODE:3},MutationObserver:class{constructor(fn){observerCallback=fn}},relevantAttrTarget:()=>false,scheduleBuild:()=>builds++,clickSessionExpiredSignIn:()=>checks++,hideSenderCategories(){},checkAddedMenus(){},checkAddedDropTargets(){},removeDeleteMenuItems(){},hideNeverDeleteRetention(){}});
   load(c,'    const ownedUI =','    mainObserver.observe',stylerSource);
   const owned={nodeType:1,closest:()=>({})};observerCallback([{type:'childList',target:owned}]);assert.equal(builds,0);assert.equal(checks,0);
   const scope={},node={nodeType:1,closest:()=>scope,matches:()=>false,querySelector:()=>null},target={nodeType:1,closest:()=>null};
@@ -182,7 +182,7 @@ test('Styler ignores widget mutations and batches sign-in inspection by scope',(
 
 test('Sign-in banner auto-click is limited and selects the sign-in button',()=>{
   let clicks=0;const close={getAttribute:()=> 'Dismiss'},signIn={getAttribute:()=> 'Sign in',click:()=>clicks++};const banner={textContent:'You need to sign in.',querySelectorAll:()=>[close,signIn]};
-  const c=context({document:{},within:()=>[banner]});load(c,'    const signInClicks =','    function hideSenderCategories()',stylerSource);
+  const c=context({document:{},within:()=>[banner]});load(c,'    const signInClicks =','    function hideSenderCategories(root = document)',stylerSource);
   c.clickSessionExpiredSignIn();c.clickSessionExpiredSignIn();assert.equal(clicks,1);
 });
 

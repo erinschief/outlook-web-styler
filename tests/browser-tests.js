@@ -29,6 +29,14 @@
     w.state.tab='todo';w.render();
     assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'To-do filler text is still visible');
   });
+  await test('Promotions tag stays hidden when Outlook recycles a message row', async () => {
+    const label=document.querySelector('[data-promotion-label]'),host=label.parentElement;
+    assert(host.hasAttribute('data-erin-promotions'),'Initial Promotions tag was not hidden');
+    label.textContent='Other';await wait(50);
+    assert(!host.hasAttribute('data-erin-promotions'),'Recycled non-Promotions tag stayed hidden');
+    label.textContent='Promotions';await wait(50);
+    assert(host.hasAttribute('data-erin-promotions'),'Recycled Promotions tag was not hidden immediately');
+  });
   await test('Visible inbox changes update in the background without scrolling or a full scan', async () => {
     const scroller=stream.parentElement, before=scroller.scrollTop;
     const el=row('live','Live arrival');await wait(200);

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Outlook Web Styler and QOL Improvements
-// @version      0.72
+// @version      0.73
 // @description  Outlook web: hides left rail, app launcher and Teams button; adds a collapsible apps menu (Mail/Calendar/To Do) in the top bar; floating full-width layout.
 // @author       Erin
 // @match        https://outlook.office.com/*
@@ -1325,11 +1325,35 @@ async function openSharedMailboxInbox() {
         return false;
     }
 
-    function hideSenderCategories() {
-        // Avoid writing the same style attribute from inside an observer that watches styles.
-        for (const label of document.querySelectorAll('span.t1Kw7')) {
-            const host = label.closest('.BNwHL');
-            if (host) host.toggleAttribute('data-erin-promotions', label.textContent?.trim() === 'Promotions');
+    function hideSenderCategories(root = document) {
+        const scope = root?.nodeType === Node.TEXT_NODE ? root.parentElement : root;
+        if (!scope) return;
+        const hosts = new Set();
+        const rememberTaggedHost = node => {
+            const host = node?.matches?.('[data-erin-promotions]') ? node : node?.closest?.('[data-erin-promotions]');
+            if (host) hosts.add(host);
+        };
+        rememberTaggedHost(scope);
+        scope.querySelectorAll?.('[data-erin-promotions]').forEach(host => hosts.add(host));
+
+        const labels = [];
+        if (scope.matches?.('span')) labels.push(scope);
+        labels.push(...(scope.querySelectorAll?.('span') || []));
+        for (const label of labels) {
+            if (label.textContent?.trim() !== 'Promotions') continue;
+            if (!label.closest('[data-app-section="MessageList"] [role="option"]')) continue;
+            // Outlook currently wraps the label in a span, but generated class names and row
+            // recycling are not stable. Hide the smallest wrapper whose only text is the tag.
+            const parent = label.parentElement;
+            hosts.add(parent?.tagName === 'SPAN' && parent.textContent?.trim() === 'Promotions' ? parent : label);
+        }
+
+        // Re-check previously tagged wrappers too, so a recycled row is immediately restored
+        // when Outlook changes the label or replaces its contents.
+        for (const host of hosts) {
+            const inMessageSubject = !!host.closest('[data-app-section="MessageList"] [role="option"]');
+            const isPromotions = host.textContent?.trim() === 'Promotions';
+            host.toggleAttribute('data-erin-promotions', inMessageSubject && isPromotions);
         }
     }
     GM_addStyle('[data-erin-promotions] { display: none !important; }');
@@ -1350,13 +1374,22 @@ async function openSharedMailboxInbox() {
         }
     }
 
-    const ownedUI = node => node.nodeType === Node.ELEMENT_NODE && !!node.closest?.('#erin-inbox-widgets, #erin-apps-panel, #erin-apps-btn, #erin-tip');
+    const ownedUI = node => {
+        const element = node?.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+        return element?.nodeType === Node.ELEMENT_NODE && !!element.closest?.('#erin-inbox-widgets, #erin-apps-panel, #erin-apps-btn, #erin-tip');
+    };
     const shellSelector = '#OwaTitleBar, #LeftRail, #mainApp, #ConversationReadingPaneContainer, .fui-Toaster, [role="menu"], [data-app-section="DrawerPane"], [data-app-section="Ribbon"]';
     const mainObserver = new MutationObserver((mutations) => {
         let needsBuild = false;
         const signInScopes = new Set();
         for (const mutation of mutations) {
             if (ownedUI(mutation.target)) continue;
+            const promotionTarget = mutation.target.nodeType === Node.TEXT_NODE ? mutation.target.parentElement : mutation.target;
+            if (mutation.type === 'characterData' && !promotionTarget?.closest?.('[data-app-section="MessageList"] [role="option"]')) continue;
+            const promotionHost = promotionTarget?.matches?.('[data-erin-promotions]') ? promotionTarget : promotionTarget?.closest?.('[data-erin-promotions]');
+            if (promotionHost || promotionTarget?.closest?.('[data-app-section="MessageList"] [role="option"]')) {
+                hideSenderCategories(promotionHost || promotionTarget);
+            }
             if (mutation.type === 'childList') {
                 const added = [...mutation.addedNodes].filter(node => node.nodeType === Node.ELEMENT_NODE && !ownedUI(node));
                 const removed = [...mutation.removedNodes].filter(node => node.nodeType === Node.ELEMENT_NODE && !ownedUI(node));
@@ -1366,6 +1399,7 @@ async function openSharedMailboxInbox() {
                     (node.matches?.(shellSelector) || node.querySelector?.(shellSelector));
                 if (relevantAttrTarget(mutation.target) || added.some(significant) || removed.some(significant)) needsBuild = true;
                 for (const node of added) {
+                    hideSenderCategories(node);
                     checkAddedMenus(node); checkAddedDropTargets(node);
                     removeDeleteMenuItems(node); hideNeverDeleteRetention(node);
                     signInScopes.add(node.closest('[role="group"]') || node);
@@ -1380,6 +1414,7 @@ async function openSharedMailboxInbox() {
     mainObserver.observe(document.documentElement, {
         childList: true,
         subtree: true,
+        characterData: true,
         attributes: true,
         attributeFilter: [
             'aria-pressed',
