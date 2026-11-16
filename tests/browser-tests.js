@@ -18,10 +18,15 @@
   };
   await wait(1800); w.stopAutoScan();
   await test('Both full scripts start without exceptions', () => assert(w.root && window.styler && !errors.length, errors.join('; ') || 'Missing UI'));
-  await test('Initial load uses My Day, completes one full sweep, and closes the pane', () => {
-    assert(!document.querySelector('[data-app-section="DrawerPane"]'),'My Day stayed open after the startup sweep');
+  await test('Initial load completes one full Inbox sweep without using My Day', () => {
+    assert(!document.querySelector('[data-app-section="DrawerPane"]'),'My Day opened during the startup Inbox sweep');
     assert(w.complete,'Startup sweep did not complete');
-    assert(w.state.schedule[0]?.title==='Initial meeting','Startup My Day schedule was not collected');
+    assert(!w.state.schedule.length,'Schedule data was collected before opening Schedule');
+  });
+  await test('Opening Schedule refreshes its cache and closes script-opened My Day', async () => {
+    w.root.querySelector('[data-tab="schedule"]').click();await wait(700);
+    assert(w.state.schedule[0]?.title==='Initial meeting','Schedule tab did not refresh My Day data');
+    assert(!document.querySelector('[data-app-section="DrawerPane"]'),'My Day stayed open after the Schedule refresh');
   });
   await test('Unread and To-do panels do not show refresh filler text', () => {
     w.state.tab='timeline';w.render();

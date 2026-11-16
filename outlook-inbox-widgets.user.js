@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.4.6
+// @version      0.4.7
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -65,7 +65,8 @@
   let scannedScroller = null;
   let initialRefreshQueued = false;
   let initialRefreshDone = false;
-  let initialRefreshOpenedMyDay = false;
+  let scheduleRefreshGeneration = 0;
+  let scheduleRefreshOpenedMyDay = false;
   let lastInboxCounts = null;
   let countCacheSnapshot = null;
   let pendingBlock = null;
@@ -175,7 +176,8 @@
     scanGeneration++;
     cache.clear(); scannedScroller = null; scanComplete = false;
     lastInboxCounts = null; countCacheSnapshot = null;
-    initialRefreshQueued = false; initialRefreshDone = false; initialRefreshOpenedMyDay = false;
+    initialRefreshQueued = false; initialRefreshDone = false;
+    scheduleRefreshGeneration++; scheduleRefreshOpenedMyDay = false;
     if (root) { root.remove(); root = null; }
     if (focus.running) startFocus(true);
     else clearInterval(focusTick);
@@ -644,7 +646,7 @@
     }, delay);
   }
 
-  function openMyDayForInitialRefresh() {
+  function openMyDayForScheduleRefresh() {
     const drawer = document.querySelector('[data-app-section="DrawerPane"]');
     if (drawer && visible(drawer)) return false;
     const button = [...document.querySelectorAll('button[aria-label], button[title]')].find(el =>
@@ -654,15 +656,15 @@
     return true;
   }
 
-  function closeMyDayAfterInitialRefresh() {
-    if (!initialRefreshOpenedMyDay) return false;
-    initialRefreshOpenedMyDay = false;
+  function closeMyDayAfterScheduleRefresh() {
+    if (!scheduleRefreshOpenedMyDay) return false;
     const drawer = document.querySelector('[data-app-section="DrawerPane"]');
     if (!drawer || !visible(drawer)) return false;
     const button = [...drawer.querySelectorAll('button')].find(el =>
       visible(el) && [el.getAttribute('aria-label'), el.getAttribute('title'), el.textContent]
         .some(label => /^Close$/i.test(label?.trim() || '')));
     if (!button) return false;
+    scheduleRefreshOpenedMyDay = false;
     button.click();
     return true;
   }
@@ -670,11 +672,29 @@
   function queueInitialRefresh() {
     if (initialRefreshDone || initialRefreshQueued || !widgetContext() || state.collapsed) return;
     initialRefreshQueued = true;
-    // Opening My Day can replace Outlook's list geometry. Give that native layout change time
-    // to settle before resolving the scroller that the transactional startup sweep will use.
-    const openingMyDay = openMyDayForInitialRefresh();
-    initialRefreshOpenedMyDay = openingMyDay;
-    queueScan(true, openingMyDay ? 900 : 250, true);
+    queueScan(true, 250, true);
+  }
+
+  async function refreshScheduleFromMyDay() {
+    const generation = ++scheduleRefreshGeneration;
+    const opened = openMyDayForScheduleRefresh();
+    scheduleRefreshOpenedMyDay = opened;
+    const valid = () => generation === scheduleRefreshGeneration && widgetContext() && !state.collapsed && state.tab === 'schedule' && !document.hidden;
+    const ready = () => {
+      const drawer = document.querySelector('[data-app-section="DrawerPane"]');
+      return drawer && drawer.querySelector('[role="tab"][aria-selected="true"][name="Calendar"],#time-panel-pivot-Calendar[aria-selected="true"]') && /(^|\n)Today(\n|$)/.test(drawer.innerText);
+    };
+    try {
+      if (opened) await delay(350);
+      const deadline = Date.now() + 5000;
+      while (valid() && Date.now() < deadline) {
+        if (ready()) { scrapeMyDay(); render(); return true; }
+        await delay(150);
+      }
+      return false;
+    } finally {
+      if (opened) closeMyDayAfterScheduleRefresh();
+    }
   }
 
   function mount(scrape = true) {
@@ -710,11 +730,12 @@
     // A collapsed widget still tracks visible message changes. This keeps the compact unread
     // total live when My Day temporarily removes Outlook's folder tree from the DOM.
     const messagesChanged = scrape && !scanning ? scrapeMessages() : false;
-    const scheduleChanged = scrape && !state.collapsed ? scrapeMyDay() : false;
+    const scheduleChanged = scrape && !state.collapsed && state.tab === 'schedule' ? scrapeMyDay() : false;
     // Counts update in place even while an editor or drag defers panel replacement.
     updateSummary();
     if (created || messagesChanged || scheduleChanged) render(); else queueGeometry();
     queueInitialRefresh();
+    if (created && !state.collapsed && state.tab === 'schedule') void refreshScheduleFromMyDay();
     // After the one startup traversal, background updates never move Outlook's list.
   }
   function onListScroll() {
@@ -757,12 +778,12 @@
 
   async function scanAllMessages(force, initial = false) {
     if (scanning || !dataLoadingAllowed() || document.hidden || interactionActive()) {
-      if (initial) { initialRefreshQueued = false; closeMyDayAfterInitialRefresh(); }
+      if (initial) initialRefreshQueued = false;
       return false;
     }
     const scroller = messageList()?.querySelector('[data-testid="virtuoso-scroller"]');
     if (!scroller || (!force && scroller === scannedScroller)) {
-      if (initial) { initialRefreshQueued = false; closeMyDayAfterInitialRefresh(); }
+      if (initial) initialRefreshQueued = false;
       return false;
     }
     const generation = ++scanGeneration, path = location.pathname, scope = storageKey;
@@ -813,7 +834,6 @@
       if (initial) {
         initialRefreshQueued = false;
         initialRefreshDone = scanComplete;
-        closeMyDayAfterInitialRefresh();
       }
       if (widgetContext()) render(); else mount(false);
       scheduleRender();
@@ -891,7 +911,13 @@
     root.addEventListener('click', event => {
       const target = event.target.closest('button');
       if (!target) return;
-      if (target.dataset.tab) { state.tab = target.dataset.tab; save(); render(); return; }
+      if (target.dataset.tab) {
+        const nextTab = target.dataset.tab;
+        if (state.tab === 'schedule' && nextTab !== 'schedule') { scheduleRefreshGeneration++; closeMyDayAfterScheduleRefresh(); }
+        state.tab = nextTab; save(); render();
+        if (nextTab === 'schedule') void refreshScheduleFromMyDay();
+        return;
+      }
       if (target.dataset.todo) { state.todo = target.dataset.todo; state.todoExpanded = false; save(); render(); return; }
       if (target.dataset.selfSort) { state.selfSort = target.dataset.selfSort; save(); render(); return; }
       if (target.dataset.openMessage) {
@@ -909,7 +935,8 @@
       switch (target.dataset.action) {
         case 'collapse': {
           state.collapsed = !state.collapsed; save(); render();
-          if (!state.collapsed) mount();
+          if (state.collapsed) { scheduleRefreshGeneration++; closeMyDayAfterScheduleRefresh(); }
+          else { mount(); if (state.tab === 'schedule') void refreshScheduleFromMyDay(); }
           break;
         }
         case 'scan':

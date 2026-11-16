@@ -47,37 +47,32 @@ test('Mutation batches request a real scrape and do not queue work in a hidden t
   c.document.hidden=false;c.scanning=true;c.scheduleRender();assert.equal(calls,1);
 });
 
-test('First expanded load opens My Day and queues exactly one delayed full refresh', () => {
+test('First expanded load queues one full Inbox refresh without opening My Day', () => {
   let clicks=0;const scans=[];
   const button={getAttribute:key=>key==='aria-label'?'My Day':'',click:()=>clicks++};
   const state={collapsed:true};
   const c=load({initialRefreshDone:false,initialRefreshQueued:false,state,widgetContext:()=>true,visible:()=>true,
     document:{querySelector:()=>null,querySelectorAll:()=>[button]},queueScan:(...args)=>scans.push(args)},
-    '  function openMyDayForInitialRefresh()','  function mount(');
+    '  function openMyDayForScheduleRefresh()','  function mount(');
   c.queueInitialRefresh();assert.equal(clicks,0);assert.equal(scans.length,0);
   state.collapsed=false;c.queueInitialRefresh();c.queueInitialRefresh();
-  assert.equal(clicks,1);assert.deepEqual(scans,[[true,900,true]]);
-  assert.equal(c.initialRefreshOpenedMyDay,true);
+  assert.equal(clicks,0);assert.deepEqual(scans,[[true,250,true]]);
 });
 
-test('Startup refresh leaves an already-open My Day pane alone', () => {
-  let clicks=0;const scans=[];const drawer={};
-  const button={getAttribute:key=>key==='aria-label'?'My Day':'',click:()=>clicks++};
-  const c=load({initialRefreshDone:false,initialRefreshQueued:false,state:{collapsed:false},widgetContext:()=>true,visible:()=>true,
-    document:{querySelector:()=>drawer,querySelectorAll:()=>[button]},queueScan:(...args)=>scans.push(args)},
-    '  function openMyDayForInitialRefresh()','  function mount(');
-  c.queueInitialRefresh();assert.equal(clicks,0);assert.deepEqual(scans,[[true,250,true]]);
-  assert.equal(c.initialRefreshOpenedMyDay,false);
-});
-
-test('Startup refresh closes only a My Day pane that it opened', () => {
-  let clicks=0;
-  const close={textContent:'Close',getAttribute:()=>'',click:()=>clicks++};
-  const drawer={querySelectorAll:()=>[close]};
-  const c=load({initialRefreshOpenedMyDay:true,visible:()=>true,document:{querySelector:()=>drawer,querySelectorAll:()=>[]}},
-    '  function openMyDayForInitialRefresh()','  function mount(');
-  assert.equal(c.closeMyDayAfterInitialRefresh(),true);assert.equal(clicks,1);assert.equal(c.initialRefreshOpenedMyDay,false);
-  assert.equal(c.closeMyDayAfterInitialRefresh(),false);assert.equal(clicks,1);
+test('Opening Schedule refreshes My Day and closes only a pane the widget opened', async () => {
+  let drawer=null,opens=0,closes=0,scrapes=0,renders=0;
+  const close={textContent:'Close',getAttribute:()=>'',click:()=>{closes++;drawer=null}};
+  const makeDrawer=()=>({innerText:'Today\n9:00 AM\nMeeting\nTomorrow',querySelector:()=>({}),querySelectorAll:()=>[close]});
+  const button={getAttribute:key=>key==='aria-label'?'My Day':'',click:()=>{opens++;drawer=makeDrawer()}};
+  const document={hidden:false,querySelector:()=>drawer,querySelectorAll:()=>[button]};
+  const c=load({scheduleRefreshGeneration:0,scheduleRefreshOpenedMyDay:false,state:{collapsed:false,tab:'schedule'},widgetContext:()=>true,
+    visible:()=>true,document,delay:async()=>{},scrapeMyDay:()=>{scrapes++;return true},render:()=>renders++},
+    '  function openMyDayForScheduleRefresh()','  function mount(');
+  assert.equal(await c.refreshScheduleFromMyDay(),true);
+  assert.deepEqual({opens,closes,scrapes,renders},{opens:1,closes:1,scrapes:1,renders:1});
+  drawer=makeDrawer();
+  assert.equal(await c.refreshScheduleFromMyDay(),true);
+  assert.deepEqual({opens,closes,scrapes,renders},{opens:1,closes:1,scrapes:2,renders:2});
 });
 
 test('Visible unread and category changes update cache; recycled and removed rows retain off-screen records', () => {

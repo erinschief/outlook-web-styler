@@ -122,7 +122,7 @@ test('Focus display updates nodes without replacing widget controls',()=>{
 
 test('Account change switches storage without carrying private state',()=>{
   const stored=new Map(),focus={part:0,elapsed:5,running:false};let account='second@example.com';
-  const c=context({readAccount:()=>account,flushSave(){},accountId:'first@example.com',storageKey:'first',state:{localBlocks:[{title:'Private'}]},focus,location:{host:'outlook.office.com'},STORE:'erinInboxWidgets.v1',GM_getValue:(k,d)=>stored.get(k)??d,GM_setValue:(k,v)=>stored.set(k,v),normalizeState:v=>v||{localBlocks:[]},PARTS:[1,2,3,4],activeDrag:null,pendingBlock:{title:'private'},renderPending:false,resizeObserver:null,scanGeneration:0,cache:new Map(),root:null,scannedScroller:null,scanComplete:false,focusTick:0,startFocus(){},clearInterval(){},save(){}});
+  const c=context({readAccount:()=>account,flushSave(){},accountId:'first@example.com',storageKey:'first',state:{localBlocks:[{title:'Private'}]},focus,location:{host:'outlook.office.com'},STORE:'erinInboxWidgets.v1',GM_getValue:(k,d)=>stored.get(k)??d,GM_setValue:(k,v)=>stored.set(k,v),normalizeState:v=>v||{localBlocks:[]},PARTS:[1,2,3,4],activeDrag:null,pendingBlock:{title:'private'},renderPending:false,resizeObserver:null,scanGeneration:0,scheduleRefreshGeneration:0,scheduleRefreshOpenedMyDay:false,cache:new Map(),root:null,scannedScroller:null,scanComplete:false,focusTick:0,startFocus(){},clearInterval(){},save(){}});
   load(c,'  function syncAccount()','  function flushSave()');c.syncAccount();assert.equal(c.state.localBlocks.length,0);assert.equal(c.pendingBlock,null);assert(c.storageKey.endsWith(':second@example.com'));
 });
 
