@@ -18,8 +18,8 @@
   };
   await wait(1800); w.stopAutoScan();
   await test('Both full scripts start without exceptions', () => assert(w.root && window.styler && !errors.length, errors.join('; ') || 'Missing UI'));
-  await test('Initial load opens My Day and completes one full sweep', () => {
-    assert(document.querySelector('[data-app-section="DrawerPane"]'),'My Day did not open');
+  await test('Initial load uses My Day, completes one full sweep, and closes the pane', () => {
+    assert(!document.querySelector('[data-app-section="DrawerPane"]'),'My Day stayed open after the startup sweep');
     assert(w.complete,'Startup sweep did not complete');
     assert(w.state.schedule[0]?.title==='Initial meeting','Startup My Day schedule was not collected');
   });
@@ -35,6 +35,7 @@
     const oldest=w.root.querySelector('.eiw-oldest-bound'),bucket=w.root.querySelector('.eiw-bname');
     assert(oldest && bucket,'Timeline labels missing');
     assert(getComputedStyle(oldest).color===getComputedStyle(bucket).color,'Oldest date color drifted from bucket labels');
+    assert(Number(getComputedStyle(oldest).opacity)<1,'Vertical oldest date still has full visual weight');
   });
   await test('Read micro ticks share equal slots with unread dots', () => {
     const saved=[...w.cache],now=new Date();w.cache.clear();
@@ -44,6 +45,7 @@
     assert(marks.map(mark=>parseFloat(mark.style.left)).join(',')==='12.5,37.5,62.5,87.5','Timeline marks are not evenly spaced');
     const ticks=marks.filter(mark=>mark.classList.contains('read'));
     assert(ticks.length===2 && ticks.every(mark=>getComputedStyle(mark).width==='1px' && getComputedStyle(mark).height==='9px'),'Read messages did not render as micro ticks');
+    assert([...w.root.querySelectorAll('.eiw-bucket')].every(bucket=>bucket.getBoundingClientRect().width>=36),'Timeline bucket collapsed under its label');
     w.cache.clear();saved.forEach(([key,value])=>w.cache.set(key,value));w.render();
   });
   await test('Promotions tag stays hidden when Outlook recycles a message row', async () => {

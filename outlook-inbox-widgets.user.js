@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.4.4
+// @version      0.4.5
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -65,6 +65,7 @@
   let scannedScroller = null;
   let initialRefreshQueued = false;
   let initialRefreshDone = false;
+  let initialRefreshOpenedMyDay = false;
   let lastInboxCounts = null;
   let countCacheSnapshot = null;
   let pendingBlock = null;
@@ -174,7 +175,7 @@
     scanGeneration++;
     cache.clear(); scannedScroller = null; scanComplete = false;
     lastInboxCounts = null; countCacheSnapshot = null;
-    initialRefreshQueued = false; initialRefreshDone = false;
+    initialRefreshQueued = false; initialRefreshDone = false; initialRefreshOpenedMyDay = false;
     if (root) { root.remove(); root = null; }
     if (focus.running) startFocus(true);
     else clearInterval(focusTick);
@@ -240,7 +241,7 @@
     .eiw-top{height:38px;display:flex;align-items:center;gap:6px;padding:4px 6px 4px 10px}.eiw-title{font-weight:650;flex:1;white-space:nowrap}.eiw-summary{color:var(--mute);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .eiw-iconbtn,.eiw-tab,.eiw-btn{border:1px solid transparent;background:transparent;border-radius:6px;min-height:28px}.eiw-iconbtn{width:30px;padding:0;font-size:17px;display:grid;place-items:center;line-height:1}.eiw-iconbtn:hover,.eiw-btn:hover{background:color-mix(in srgb,var(--brand) 9%,transparent)}
     .eiw-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:0 6px 6px}.eiw-tab{padding:4px 5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.eiw-tab[aria-selected="true"]{background:var(--brand);color:#fff}.eiw-panel{border-top:1px solid var(--line);padding:10px;max-height:min(480px,55vh);overflow:auto}.eiw-empty{color:var(--mute);padding:18px 8px;text-align:center}.eiw-note{font-size:11px;color:var(--mute);margin:0 0 8px}.eiw-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}.eiw-hd b{font-size:13px}.eiw-btn{border-color:var(--line);padding:4px 9px;background:var(--bg)}
-    .eiw-timeline{position:relative;height:106px;padding-top:20px}.eiw-line{position:relative;display:flex;height:58px}.eiw-line:before{content:"";position:absolute;left:0;right:0;top:31px;border-top:2px solid #9aa1ab}.eiw-bucket{position:relative;min-width:0}.eiw-bucket+.eiw-bucket:before{content:"";position:absolute;left:0;top:22px;height:20px;border-left:2px solid #9aa1ab}.eiw-bname{position:absolute;left:6px;top:0;font-size:9px;white-space:nowrap;transform:rotate(-28deg);transform-origin:left bottom}.eiw-bcount{position:absolute;left:5px;top:42px;font-size:9px;color:var(--mute)}.eiw-dot{position:absolute;top:28px;width:7px;height:7px;margin:-1px 0 0 -3px;border-radius:50%;background:var(--brand)}.eiw-dot.read{width:1px;height:9px;margin:0;border-radius:1px;background:var(--mute);opacity:.34}.eiw-dot.newest{width:11px;height:11px;margin:-3px 0 0 -5px;box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 28%,transparent)}.eiw-dot.oldest{width:11px;height:11px;margin:-3px 0 0 -5px;background:var(--red)}.eiw-total{position:absolute;right:0;top:0;color:var(--mute);font-size:10px}.eiw-total b{font-size:14px;color:var(--brand)}.eiw-ends{display:flex;justify-content:space-between;font-size:10px;line-height:1.2;padding-top:5px}.eiw-ends span:first-child{color:var(--brand)}.eiw-ends span:last-child{text-align:right;color:var(--red)}
+    .eiw-timeline{position:relative;height:106px;padding-top:20px}.eiw-line{position:relative;display:flex;height:58px}.eiw-line:before{content:"";position:absolute;left:0;right:0;top:31px;border-top:2px solid #9aa1ab}.eiw-bucket{position:relative;min-width:36px}.eiw-bucket+.eiw-bucket:before{content:"";position:absolute;left:0;top:22px;height:20px;border-left:2px solid #9aa1ab}.eiw-bname{position:absolute;left:6px;top:0;font-size:9px;white-space:nowrap;transform:rotate(-28deg);transform-origin:left bottom}.eiw-bcount{position:absolute;left:5px;top:42px;font-size:9px;color:var(--mute)}.eiw-dot{position:absolute;top:28px;width:7px;height:7px;margin:-1px 0 0 -3px;border-radius:50%;background:var(--brand)}.eiw-dot.read{width:1px;height:9px;margin:0;border-radius:1px;background:var(--mute);opacity:.34}.eiw-dot.newest{width:11px;height:11px;margin:-3px 0 0 -5px;box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 28%,transparent)}.eiw-dot.oldest{width:11px;height:11px;margin:-3px 0 0 -5px;background:var(--red)}.eiw-total{position:absolute;right:0;top:0;color:var(--mute);font-size:10px}.eiw-total b{font-size:14px;color:var(--brand)}.eiw-ends{display:flex;justify-content:space-between;font-size:10px;line-height:1.2;padding-top:5px}.eiw-ends span:first-child{color:var(--brand)}.eiw-ends span:last-child{text-align:right;color:var(--red)}
     .eiw-day{display:flex;gap:6px;align-items:center;overflow-x:auto;padding:5px 0}.eiw-pill{flex:none;border-left:4px solid var(--blue);background:color-mix(in srgb,var(--blue) 12%,var(--bg));border-radius:6px;padding:5px 8px;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.eiw-strip{position:relative;height:56px;border-top:1px solid var(--line);margin:18px 0 8px}.eiw-hour{position:absolute;top:-16px;bottom:0;border-left:1px solid var(--line);font-size:9px;color:var(--mute);padding-left:2px}.eiw-event{position:absolute;top:7px;height:40px;min-width:2px;border-left:4px solid var(--brand);border-radius:5px;background:var(--meet);padding:4px 6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:10px}.eiw-event.focus{background:var(--focus);border-color:var(--green)}.eiw-event.admin{background:var(--admin);border-color:#b07d12}.eiw-event.break{background:var(--rest);border-color:#7b8190}.eiw-now{position:absolute;top:-5px;bottom:0;border-left:2px solid var(--red)}.eiw-now:before{content:"Now";position:absolute;top:-13px;left:-10px;background:var(--red);color:#fff;font-size:8px;padding:0 3px;border-radius:2px}.eiw-next{font-size:11px;font-weight:650;color:var(--red);min-height:15px}.eiw-local{font-size:10px;color:var(--mute);margin-top:8px}.eiw-local-list{display:flex;gap:5px;overflow-x:auto}.eiw-local-list button{flex:none;border:1px dashed var(--brand);background:transparent;border-radius:5px;padding:4px 7px}
     .eiw-focus{position:relative;display:flex;gap:14px;align-items:center}.eiw-ring{position:relative;width:118px;height:118px;flex:none}.eiw-ring svg{width:100%;height:100%;transform:rotate(-90deg)}.eiw-ring circle{fill:none;stroke-width:9}.eiw-ring .back{stroke:var(--line)}.eiw-ring .fill{stroke:var(--green);stroke-linecap:round;stroke-dasharray:314;transition:stroke-dashoffset .2s linear}.eiw-clock{position:absolute;inset:0;display:grid;place-content:center;text-align:center}.eiw-clock b{font-size:25px;font-variant-numeric:tabular-nums}.eiw-clock span{font-size:10px;color:var(--mute)}.eiw-focus-side{flex:1;min-width:0}.eiw-parts{display:flex;gap:3px;height:42px;margin-bottom:10px}.eiw-part{display:grid;place-items:center;min-width:25px;border-radius:5px;background:var(--focus);color:var(--green);font-size:9px;opacity:.65}.eiw-part.break{background:var(--rest);color:var(--mute)}.eiw-part.current{outline:2px solid var(--brand);opacity:1}.eiw-controls{display:flex;gap:5px;flex-wrap:wrap}.eiw-finish{position:absolute;inset:-2px;background:var(--bg);display:grid;place-content:center;text-align:center;border-radius:8px;z-index:2}.eiw-finish b{font-size:18px}.eiw-finish p{color:var(--mute);margin:4px 0 8px}
     .eiw-switch{display:flex;gap:3px}.eiw-switch button{border:1px solid var(--line);background:var(--bg);padding:3px 9px;border-radius:999px}.eiw-switch button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}.eiw-cards{display:flex;flex-direction:column;gap:7px}.eiw-card{position:relative;height:76px;min-height:76px;display:flex;gap:7px;align-items:flex-start;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;background:var(--bg);padding:8px 8px 8px 10px;overflow:hidden}.eiw-card.waiting{border-left-color:var(--purple)}.eiw-card.overdue{border-left-color:var(--red);background:color-mix(in srgb,var(--red) 5%,var(--bg))}.eiw-card.dragging{opacity:.55}.eiw-card-main{flex:1;min-width:0}.eiw-card-title,.eiw-people,.eiw-tags{height:18px;line-height:18px;white-space:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;text-overflow:ellipsis}.eiw-card-title{font-size:13px;font-weight:650}.eiw-people{font-size:11px;color:var(--mute)}.eiw-tags{display:flex;gap:5px}.eiw-tag{flex:none;border-radius:999px;padding:0 7px;background:color-mix(in srgb,var(--orange) 18%,var(--bg));color:color-mix(in srgb,var(--orange) 75%,var(--ink));font-size:10px;font-weight:600}.eiw-card.waiting .eiw-tag.main{background:color-mix(in srgb,var(--purple) 18%,var(--bg));color:color-mix(in srgb,var(--purple) 75%,var(--ink))}.eiw-tag.extra{background:color-mix(in srgb,var(--blue) 14%,var(--bg));color:color-mix(in srgb,var(--blue) 75%,var(--ink))}.eiw-age{width:42px;flex:none;text-align:center}.eiw-age b{display:block;font-size:15px}.eiw-age span{font-size:9px;color:var(--mute)}.eiw-open{align-self:center;width:28px;height:28px;border:1px solid transparent;background:transparent;border-radius:6px}.eiw-open:hover{border-color:var(--line);color:var(--brand)}.eiw-more{width:100%;margin-top:7px}
@@ -266,6 +267,7 @@
     #${ROOT_ID}[data-collapsed="true"] .eiw-collapse:after{transform:rotate(180deg)}
     #${ROOT_ID} .eiw-panel{overflow:hidden;padding:10px 12px 12px}
     #${ROOT_ID} .eiw-bname,#${ROOT_ID} .eiw-oldest-bound{color:var(--mute)!important}
+    #${ROOT_ID} .eiw-oldest-bound{opacity:.68}
     #${ROOT_ID} .eiw-timeline{height:103px;padding:12px 6px 0}.eiw-total{display:none}.eiw-bcount{display:block!important;left:50%;top:42px;transform:translateX(-50%);font-size:9px;white-space:nowrap}.eiw-bcount b{color:var(--brand)}.eiw-line{height:54px;z-index:1}.eiw-line:after{content:"";position:absolute;right:0;top:22px;height:20px;border-left:2px solid #9aa1ab}.eiw-oldest-bound{position:absolute;right:6px;top:-10px;height:38px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;line-height:9px;font-weight:400;white-space:nowrap;z-index:2}.eiw-dot{top:31px!important;margin:0!important;transform:translate(-50%,-50%);width:8px;height:8px}.eiw-dot.read{width:1px;height:9px;margin:0!important;border-radius:1px;background:var(--mute);opacity:.34}.eiw-dot.newest,.eiw-dot.oldest{width:11px;height:11px;margin:0!important}.eiw-dot.oldest{background:var(--oldest-unread)}#${ROOT_ID} .eiw-ends{position:relative;z-index:2}#${ROOT_ID} .eiw-ends span:last-child{color:var(--oldest-unread)}.eiw-oldest-link{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0;color:var(--oldest-unread)}.eiw-oldest-link path{fill:none;stroke:currentColor;stroke-width:1.5;stroke-dasharray:4 4;stroke-linecap:round}.eiw-no-unread{height:35px;padding-top:5px;display:flex;align-items:center;gap:8px;color:var(--brand);font-size:10px;font-weight:650}.eiw-no-unread:before,.eiw-no-unread:after{content:"";height:1px;background:var(--brand);flex:1}
     #${ROOT_ID} .eiw-all-day{display:flex;align-items:flex-start;gap:6px;margin:4px 0 9px}
     #${ROOT_ID} .eiw-day{flex:1;display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px;padding:0;overflow:hidden;max-height:30px}
@@ -653,12 +655,26 @@
     return true;
   }
 
+  function closeMyDayAfterInitialRefresh() {
+    if (!initialRefreshOpenedMyDay) return false;
+    initialRefreshOpenedMyDay = false;
+    const drawer = document.querySelector('[data-app-section="DrawerPane"]');
+    if (!drawer || !visible(drawer)) return false;
+    const button = [...drawer.querySelectorAll('button')].find(el =>
+      visible(el) && [el.getAttribute('aria-label'), el.getAttribute('title'), el.textContent]
+        .some(label => /^Close$/i.test(label?.trim() || '')));
+    if (!button) return false;
+    button.click();
+    return true;
+  }
+
   function queueInitialRefresh() {
     if (initialRefreshDone || initialRefreshQueued || !widgetContext() || state.collapsed) return;
     initialRefreshQueued = true;
     // Opening My Day can replace Outlook's list geometry. Give that native layout change time
     // to settle before resolving the scroller that the transactional startup sweep will use.
     const openingMyDay = openMyDayForInitialRefresh();
+    initialRefreshOpenedMyDay = openingMyDay;
     queueScan(true, openingMyDay ? 900 : 250, true);
   }
 
@@ -742,12 +758,12 @@
 
   async function scanAllMessages(force, initial = false) {
     if (scanning || !dataLoadingAllowed() || document.hidden || interactionActive()) {
-      if (initial) initialRefreshQueued = false;
+      if (initial) { initialRefreshQueued = false; closeMyDayAfterInitialRefresh(); }
       return false;
     }
     const scroller = messageList()?.querySelector('[data-testid="virtuoso-scroller"]');
     if (!scroller || (!force && scroller === scannedScroller)) {
-      if (initial) initialRefreshQueued = false;
+      if (initial) { initialRefreshQueued = false; closeMyDayAfterInitialRefresh(); }
       return false;
     }
     const generation = ++scanGeneration, path = location.pathname, scope = storageKey;
@@ -798,6 +814,7 @@
       if (initial) {
         initialRefreshQueued = false;
         initialRefreshDone = scanComplete;
+        closeMyDayAfterInitialRefresh();
       }
       if (widgetContext()) render(); else mount(false);
       scheduleRender();
@@ -835,7 +852,7 @@
     if (values[0] && values[0].textContent !== String(unread)) values[0].textContent = String(unread);
     if (values[1] && values[1].textContent !== String(total)) values[1].textContent = String(total);
     const source = summary.querySelector('.eiw-count-source');
-    const sourceLabel = sourceMode === 'cache' ? ' cached conversations' : ' in inbox';
+    const sourceLabel = ' conversations';
     if (source && source.textContent !== sourceLabel) source.textContent = sourceLabel;
     const countLabel = sourceMode === 'folder' ? 'Live counts from the Inbox folder' : sourceMode === 'tracked'
       ? 'Last confirmed Inbox totals, updated from visible changes while Outlook hides folder totals'

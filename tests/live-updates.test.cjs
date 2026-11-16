@@ -18,12 +18,12 @@ test('Header follows folder counts, retains their baseline when hidden, and avoi
   const summary={querySelectorAll:()=>values,querySelector:()=>label};
   const cache=new Map([['a',{unread:true}]]);
   const c=load({root:{querySelector:()=>summary},state:{collapsed:false},cache,inboxFolderCounts:()=>folder,scanning:false,lastInboxCounts:null,countCacheSnapshot:null},'  function updateSummary(','  function advanceFocus(');
-  c.updateSummary();assert.deepEqual(values.map(x=>x.value),['7','20']);assert.equal(label.value,' in inbox');
+  c.updateSummary();assert.deepEqual(values.map(x=>x.value),['7','20']);assert.equal(label.value,' conversations');
   const before=writes;c.updateSummary();assert.equal(writes,before);
   c.state.collapsed=true;c.updateSummary();assert.equal(values[0].value,'7');
   cache.get('a').unread=false;folder={unread:0,total:19};c.updateSummary();assert.equal(values[0].value,'0');
   c.state.collapsed=false;folder=null;c.updateSummary();assert.equal(values[0].value,'0');
-  assert.equal(label.value,' in inbox');assert.match(summary.title,/Last confirmed/);
+  assert.equal(label.value,' conversations');assert.match(summary.title,/Last confirmed/);
   cache.get('a').unread=true;c.updateSummary();assert.equal(values[0].value,'1');
   cache.set('b',{unread:true});c.updateSummary();assert.deepEqual(values.map(x=>x.value),['2','20']);
 });
@@ -57,6 +57,7 @@ test('First expanded load opens My Day and queues exactly one delayed full refre
   c.queueInitialRefresh();assert.equal(clicks,0);assert.equal(scans.length,0);
   state.collapsed=false;c.queueInitialRefresh();c.queueInitialRefresh();
   assert.equal(clicks,1);assert.deepEqual(scans,[[true,900,true]]);
+  assert.equal(c.initialRefreshOpenedMyDay,true);
 });
 
 test('Startup refresh leaves an already-open My Day pane alone', () => {
@@ -66,6 +67,17 @@ test('Startup refresh leaves an already-open My Day pane alone', () => {
     document:{querySelector:()=>drawer,querySelectorAll:()=>[button]},queueScan:(...args)=>scans.push(args)},
     '  function openMyDayForInitialRefresh()','  function mount(');
   c.queueInitialRefresh();assert.equal(clicks,0);assert.deepEqual(scans,[[true,250,true]]);
+  assert.equal(c.initialRefreshOpenedMyDay,false);
+});
+
+test('Startup refresh closes only a My Day pane that it opened', () => {
+  let clicks=0;
+  const close={textContent:'Close',getAttribute:()=>'',click:()=>clicks++};
+  const drawer={querySelectorAll:()=>[close]};
+  const c=load({initialRefreshOpenedMyDay:true,visible:()=>true,document:{querySelector:()=>drawer,querySelectorAll:()=>[]}},
+    '  function openMyDayForInitialRefresh()','  function mount(');
+  assert.equal(c.closeMyDayAfterInitialRefresh(),true);assert.equal(clicks,1);assert.equal(c.initialRefreshOpenedMyDay,false);
+  assert.equal(c.closeMyDayAfterInitialRefresh(),false);assert.equal(clicks,1);
 });
 
 test('Visible unread and category changes update cache; recycled and removed rows retain off-screen records', () => {
