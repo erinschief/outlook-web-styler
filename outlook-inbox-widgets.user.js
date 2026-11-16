@@ -473,7 +473,7 @@
     }).join('');
     const footer = unread.length ? `<div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatUnreadEndpoint(newest))}</span><span class="eiw-oldest-label"><b>Oldest unread</b><br>${esc(formatUnreadEndpoint(oldest))}</span></div>` : '<div class="eiw-no-unread">No unread conversations in this snapshot</div>';
     const connector = unread.length ? '<svg class="eiw-oldest-link" aria-hidden="true"><path/></svg>' : '';
-    return `<p class="eiw-note">Conversation snapshot · visible rows update automatically. Full refresh reconciles off-screen changes in the current view.</p><div class="eiw-timeline">${connector}${oldestEmail ? `<span class="eiw-oldest-bound" title="Oldest cached conversation">${esc(oldestEmail.date.toLocaleDateString([], {month:'short',day:'numeric'}))}</span>` : ''}<div class="eiw-line">${groups}</div>${footer}</div>`;
+    return `<div class="eiw-timeline">${connector}${oldestEmail ? `<span class="eiw-oldest-bound" title="Oldest cached conversation">${esc(oldestEmail.date.toLocaleDateString([], {month:'short',day:'numeric'}))}</span>` : ''}<div class="eiw-line">${groups}</div>${footer}</div>`;
   }
 
   function scheduleHTML() {
@@ -548,7 +548,7 @@
     if (state.tab === 'timeline') return timelineHTML(items);
     if (state.tab === 'schedule') return scheduleHTML();
     if (state.tab === 'focus') return focusHTML();
-    return '<p class="eiw-note">Cached conversations · visible rows update automatically. Full refresh reconciles off-screen changes.</p>' + todoHTML();
+    return todoHTML();
   }
 
   function render(force = false) {

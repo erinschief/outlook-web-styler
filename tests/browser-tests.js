@@ -23,6 +23,12 @@
     assert(w.complete,'Startup sweep did not complete');
     assert(w.state.schedule[0]?.title==='Initial meeting','Startup My Day schedule was not collected');
   });
+  await test('Unread and To-do panels do not show refresh filler text', () => {
+    w.state.tab='timeline';w.render();
+    assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'Unread filler text is still visible');
+    w.state.tab='todo';w.render();
+    assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'To-do filler text is still visible');
+  });
   await test('Visible inbox changes update in the background without scrolling or a full scan', async () => {
     const scroller=stream.parentElement, before=scroller.scrollTop;
     const el=row('live','Live arrival');await wait(200);
