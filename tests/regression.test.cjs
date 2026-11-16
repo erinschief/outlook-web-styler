@@ -78,7 +78,7 @@ function scanContext({grow=false,abort=false,fail=false}={}) {
   const scroller={isConnected:true,clientHeight:500,get scrollHeight(){return max+500},get scrollTop(){return top},set scrollTop(value){top=Math.min(max,value);furthest=Math.max(furthest,top)},setAttribute:name=>attributes.add(name),removeAttribute:name=>attributes.delete(name)};
   const cache=new Map([['stale',{id:'stale'}]]);
   const c=context({scanning:false,dataLoadingAllowed:()=>true,document:{hidden:false},interactionActive:()=>false,scannedScroller:null,scanGeneration:0,location:{pathname:'/mail/inbox'},storageKey:'account-A',messageList:()=>({querySelector:()=>scroller}),scanComplete:false,scanProgress:0,scanTarget:null,cache,
-    updateSummary(){},render:()=>rendered++,pruneState:()=>pruned++,widgetContext:()=>true,mount(){},queueScan(){},delay:async()=>{},
+    updateSummary(){},render:()=>rendered++,pruneState:()=>pruned++,widgetContext:()=>true,mount(){},queueScan(){},scheduleRender(){},scanSignature:()=>String(top),delay:async()=>{},
     settleVirtualList:async()=>{passes++;if(grow && passes===2)max=1500;if(abort && passes===2)c.scanGeneration++;if(fail)throw Error('Synthetic failure');return true;},
     scrapeMessages:()=>{if(c.scanTarget)c.scanTarget.set(`at-${top}`,{id:`at-${top}`});},console:{warn(){}}});
   load(c,'  async function scanAllMessages(force)','  function updateSummary(');
@@ -185,3 +185,4 @@ test('Sign-in banner auto-click is limited and selects the sign-in button',()=>{
   const c=context({document:{},within:()=>[banner]});load(c,'    const signInClicks =','    function hideSenderCategories()',stylerSource);
   c.clickSessionExpiredSignIn();c.clickSessionExpiredSignIn();assert.equal(clicks,1);
 });
+

@@ -20,7 +20,11 @@ Repeat those steps once on each browser or device where you use Outlook.
 2. Choose **Install** on Tampermonkey's installation screen.
 3. Reload the personal Outlook inbox.
 
-The widget sweeps Outlook's virtualized personal-inbox list and restores the original scroll position. It follows a growing list until its bottom settles, then replaces its message cache. Inbox changes do not trigger automatic rescans while you triage; use **Refresh inbox data** when you want to rebuild the full widget cache. Scans stop safely if you navigate away, collapse the widget, or hide the tab. An interrupted scan keeps the previous cache and is never labelled complete. While collapsed, the summary reads Outlook's lightweight Inbox-folder totals instead of scanning the message list. A scan covers the currently displayed inbox view, including any native Outlook filter.
+The header follows Outlook's lightweight Inbox-folder totals whether expanded or collapsed. Message arrivals, read/unread changes, category edits, and scrolling automatically update the visible conversation cache in short batches without moving the inbox. A five-second fallback checks visible data when Outlook misses a mutation. Background updates pause in hidden tabs; returning to the tab refreshes visible data. Counts update in place even while you edit or drag.
+
+The Unread timeline and To-do cards are conversation snapshots, not whole-mailbox message totals. Outlook virtualizes off-screen rows, so archived/deleted conversations and off-screen changes can remain in the snapshot until a full refresh. Native filters and Focused/Other views also limit what rows are available. When the Inbox-folder totals are unavailable or multiple unselected Inboxes disagree, the header explicitly labels its fallback as **cached conversations**. Folder-title parsing currently supports English Inbox labels.
+
+Use **Full refresh of the current inbox view** to reconcile the whole displayed list. It follows a growing list until its bottom settles, replaces the cache only after completion, and restores the original scroll position. Rendering changes trigger adaptive settling rather than a fixed wait at every step. Scans stop safely if you navigate away, collapse the widget, or hide the tab. An interrupted scan keeps the previous cache and is never labelled complete. Full sweeps run only when requested; initial load and background updates read visible rows immediately.
 
 It follows the visible message-list container in both single-pane and multi-pane layouts. Open Outlook's native **My Day** pane when you want to refresh Schedule. Calendar parsing supports English all-day labels, 12/24-hour clocks, time ranges, and compound hour/minute durations. If no end time or duration is exposed, the event tooltip explicitly labels the 30-minute estimate. Schedule's time indicators update while visible; the script does not write to mail categories or the Outlook calendar.
 
@@ -72,10 +76,10 @@ Run the dependency-free automated checks with Node.js 20 or newer:
 ```sh
 node --check outlook-web-styler.user.js
 node --check outlook-inbox-widgets.user.js
-node --test tests/regression.test.cjs
+node --test tests/*.test.cjs
 ```
 
-GitHub Actions runs syntax and regression checks on pushes and pull requests. The tests exercise both full-script startup paths with a mocked loading shell, plus scanning, cancellation, cache reconciliation, message routing, calendar boundaries, time parsing, storage isolation, editing protection, pointer cancellation, timer updates, observer filtering, and flyout accessibility state.
+GitHub Actions runs syntax and regression checks on pushes and pull requests. The tests exercise both full-script startup paths with a mocked loading shell, plus live folder counts, incremental row changes, adaptive scan settling, scanning, cancellation, cache reconciliation, message routing, calendar boundaries, time parsing, storage isolation, editing protection, pointer cancellation, timer updates, observer filtering, and flyout accessibility state.
 
 For manual Chromium smoke testing against a synthetic Outlook DOM:
 
@@ -87,6 +91,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 
 ## Releases
 
+- **Widgets 0.4.0:** live Inbox-folder counts expanded and collapsed; batched background updates of visible conversations and My Day; immediate visible-row startup without a full sweep; adaptive full-refresh settling; explicit conversation-snapshot coverage and cached-count fallback labels.
 - **Widgets 0.3.5:** preserves the inbox snapshot across search, folder navigation, visibility changes, and collapse/reopen; full virtual-list traversal now occurs only for an empty first load or an explicit refresh.
 - **Widgets 0.3.4:** changes the oldest-unread connector to a straight vertical drop, one compact rounded right-angle turn, and a straight horizontal run to the label.
 - **Widgets 0.3.3:** restores the mockup's curved dashed connector from the center of the oldest-unread timeline dot to its endpoint label, with the connector layered behind all timeline text.
@@ -101,4 +106,5 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 ## License
 
 [MIT](LICENSE)
+
 

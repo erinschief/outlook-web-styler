@@ -18,6 +18,38 @@
   };
   await wait(250); w.stopAutoScan();
   await test('Both full scripts start without exceptions', () => assert(w.root && window.styler && !errors.length, errors.join('; ') || 'Missing UI'));
+  await test('Visible inbox changes update in the background without scrolling or a full scan', async () => {
+    const scroller=stream.parentElement, before=scroller.scrollTop;
+    const el=row('live','Live arrival');await wait(200);
+    assert(w.cache.get('live')?.unread,'New arrival not collected automatically');
+    el.setAttribute('aria-label','Read');el.querySelector('.fui-Tag__primaryText').textContent='Waiting: Reply';await wait(200);
+    assert(!w.cache.get('live').unread && w.cache.get('live').categories.includes('Waiting: Reply'),'Row change not reflected');
+    assert(scroller.scrollTop===before && !w.scanning,'Background update moved the inbox or started a scan');
+  });
+  await test('Folder counts remain live expanded, while editing, and collapsed', async () => {
+    const folder=document.createElement('div');folder.setAttribute('role','treeitem');folder.title='Inbox - 20 items (7 unread)';folder.setAttribute('aria-selected','true');document.getElementById('fixture').appendChild(folder);
+    await wait(50);
+    const count=()=>w.root.querySelector('.eiw-summary b').textContent;
+    assert(count()==='7','Expanded header used cached conversation count');
+    w.state.tab='todo';w.state.todo='waiting';w.render();
+    const title=w.root.querySelector('[data-edit-title]');title.focus();title.textContent='Unsaved live edit';
+    folder.title='Inbox - 20 items (6 unread)';await wait(200);
+    assert(count()==='6' && title.isConnected && title.textContent==='Unsaved live edit','Count update interrupted editing');
+    title.blur();await wait(20);
+    w.root.querySelector('[data-action="collapse"]').click();folder.title='Inbox - 20 items (5 unread)';await wait(50);
+    assert(count()==='5','Collapsed count stopped updating');
+    w.root.querySelector('[data-action="collapse"]').click();assert(count()==='5','Expanding changed count source');
+    w.state.todo='self';w.state.tab='timeline';w.render();folder.remove();await wait(50);
+    assert(w.root.querySelector('.eiw-count-source').textContent.includes('cached conversations'),'Missing honest fallback label');
+  });
+  await test('My Day schedule changes update without a full inbox refresh', async () => {
+    const drawer=document.createElement('div');drawer.dataset.appSection='DrawerPane';document.getElementById('fixture').appendChild(drawer);
+    const tab=document.createElement('button');tab.setAttribute('role','tab');tab.setAttribute('name','Calendar');tab.setAttribute('aria-selected','true');drawer.appendChild(tab);
+    const content=document.createElement('div');content.innerText='Today\n9:00 AM\nInitial meeting\n1 hr\nTomorrow';drawer.appendChild(content);
+    await wait(200);assert(w.state.schedule[0]?.title==='Initial meeting','Calendar not collected automatically');
+    content.innerText='Today\n10:00 AM\nUpdated meeting\n30 min\nTomorrow';await wait(200);
+    assert(w.state.schedule[0]?.title==='Updated meeting' && w.state.schedule[0].start===600,'Calendar change remained stale');drawer.remove();
+  });
   await test('Calendar buckets respect midnight, month and year', () => {
     const now = new Date(2026, 10, 8, 9);
     assert(w.bucketFor({date:new Date(2026,10,7,23,59)},now) === 1, 'Yesterday is Today');
@@ -61,10 +93,27 @@
     assert(grown && w.complete && w.cache.size===16 && !w.cache.has('removed'),'Incomplete reconciliation');
     assert(Math.abs(scroller.scrollTop-17)<2,'Scroll position not restored');
   });
+  await test('Full sweep collects asynchronously recycled virtual rows', async () => {
+    const scroller=stream.parentElement;stream.replaceChildren();stream.style.height='2400px';stream.style.position='relative';
+    let timer=0;
+    const paint=()=>{
+      stream.replaceChildren();const start=Math.max(0,Math.floor(scroller.scrollTop/60)-1);
+      for(let i=start;i<Math.min(40,start+7);i++){const el=row(`virtual-${i}`);el.style.position='absolute';el.style.top=`${i*60}px`;}
+    };
+    const onScroll=()=>{clearTimeout(timer);timer=setTimeout(paint,20)};
+    scroller.scrollTop=0;paint();scroller.addEventListener('scroll',onScroll);
+    try {
+      await w.scanAllMessages(true);
+      assert(w.complete && w.cache.size===40 && w.cache.has('virtual-39'),'Virtual rows skipped or stale records retained');
+    } finally {
+      scroller.removeEventListener('scroll',onScroll);clearTimeout(timer);stream.style.height='';stream.style.position='';
+      for(const el of stream.children){el.style.position='';el.style.top='';}
+    }
+  });
   await test('Navigation aborts a scan without committing partial data', async () => {
-    w.stopAutoScan();const pending=w.scanAllMessages(true);await wait(100);window.testLocation.pathname='/mail/sentitems';await pending;
+    w.stopAutoScan();const before=[...w.cache.keys()].join('|');const pending=w.scanAllMessages(true);await wait(100);window.testLocation.pathname='/mail/sentitems';await pending;
     assert(!w.complete && !w.scanning,'Aborted scan reports complete');window.testLocation.pathname='/mail/inbox';
-    assert(w.cache.size===0,'Old inbox data retained outside inbox');
+    assert([...w.cache.keys()].join('|')===before,'Navigation discarded the previous inbox snapshot');w.mount();
   });
   await test('Apps menu handles quotes in shared labels and keyboard opening', () => {
     const panel=document.getElementById('erin-apps-panel'),btn=document.getElementById('erin-apps-btn');
@@ -90,3 +139,4 @@
   w.stopAutoScan();window.testResults={passed:results.filter(x=>x.startsWith('PASS')).length,failed:results.filter(x=>x.startsWith('FAIL')).length,results};
   output.textContent=results.join('\n')+`\n\n${testResults.passed} passed, ${testResults.failed} failed`;document.title=`${testResults.failed?'FAIL':'PASS'} Outlook regressions`;output.dataset.complete='true';
 })();
+
