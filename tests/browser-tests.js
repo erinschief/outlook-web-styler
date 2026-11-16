@@ -29,6 +29,13 @@
     w.state.tab='todo';w.render();
     assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'To-do filler text is still visible');
   });
+  await test('Oldest timeline date matches the bucket-label color', () => {
+    w.cache.set('label-color',{id:'label-color',subject:'Color check',date:new Date(),unread:true,categories:[]});
+    w.state.tab='timeline';w.render();
+    const oldest=w.root.querySelector('.eiw-oldest-bound'),bucket=w.root.querySelector('.eiw-bname');
+    assert(oldest && bucket,'Timeline labels missing');
+    assert(getComputedStyle(oldest).color===getComputedStyle(bucket).color,'Oldest date color drifted from bucket labels');
+  });
   await test('Promotions tag stays hidden when Outlook recycles a message row', async () => {
     const label=document.querySelector('[data-promotion-label]'),host=label.parentElement;
     assert(host.hasAttribute('data-erin-promotions'),'Initial Promotions tag was not hidden');
