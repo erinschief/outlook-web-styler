@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.3.5
+// @version      0.4.0
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -208,10 +208,15 @@
   const widgetContext = () => personalInbox() && !searchActive();
   const dataLoadingAllowed = () => widgetContext() && !state.collapsed;
   function inboxFolderCounts() {
-    const folders = [...document.querySelectorAll('[role="treeitem"][title^="Inbox -"]')];
-    const folder = folders.find(el => el.getAttribute('aria-selected') === 'true' || /selected/i.test(el.textContent || '')) || folders[0];
-    const match = folder?.getAttribute('title')?.match(/^Inbox\s*-\s*([\d,]+)\s+items?\s*\(([\d,]+)\s+unread\)/i);
-    return match ? { total: Number(match[1].replaceAll(',', '')), unread: Number(match[2].replaceAll(',', '')) } : null;
+    const folders = [...document.querySelectorAll('[role="treeitem"][title]')].map(el => {
+      const match = el.getAttribute('title')?.match(/^Inbox\s*[-–—]\s*([\d,]+)\s+items?\s*\(([\d,]+)\s+unread\)/i);
+      return match ? { el, total: Number(match[1].replaceAll(',', '')), unread: Number(match[2].replaceAll(',', '')) } : null;
+    }).filter(Boolean);
+    const selected = folders.find(folder => folder.el.getAttribute('aria-selected') === 'true');
+    // Favorites can duplicate the personal Inbox. If unselected Inboxes disagree, do not
+    // accidentally report a shared mailbox's totals as the personal Inbox.
+    const folder = selected || (folders.every(x => x.total === folders[0].total && x.unread === folders[0].unread) ? folders[0] : null);
+    return folder ? { total: folder.total, unread: folder.unread } : null;
   }
   const visible = el => !!el && el.getClientRects().length > 0;
   const messageList = () => {
@@ -460,9 +465,9 @@
       const countLabel = unreadCount ? `<b>${unreadCount}</b> / ${bucket.items.length}` : `${bucket.items.length}`;
       return `<div class="eiw-bucket" style="flex:${count}"><span class="eiw-bname">${bucket.name}</span><span class="eiw-bcount">${countLabel}</span>${dots}</div>`;
     }).join('');
-    const footer = unread.length ? `<div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatUnreadEndpoint(newest))}</span><span class="eiw-oldest-label"><b>Oldest unread</b><br>${esc(formatUnreadEndpoint(oldest))}</span></div>` : '<div class="eiw-no-unread">No unread emails, woo!</div>';
+    const footer = unread.length ? `<div class="eiw-ends"><span><b>Newest unread</b><br>${esc(formatUnreadEndpoint(newest))}</span><span class="eiw-oldest-label"><b>Oldest unread</b><br>${esc(formatUnreadEndpoint(oldest))}</span></div>` : '<div class="eiw-no-unread">No unread conversations in this snapshot</div>';
     const connector = unread.length ? '<svg class="eiw-oldest-link" aria-hidden="true"><path/></svg>' : '';
-    return `<div class="eiw-timeline">${connector}${oldestEmail ? `<span class="eiw-oldest-bound" title="Oldest inbox email">${esc(oldestEmail.date.toLocaleDateString([], {month:'short',day:'numeric'}))}</span>` : ''}<div class="eiw-line">${groups}</div>${footer}</div>`;
+    return `<p class="eiw-note">Conversation snapshot · visible rows update automatically. Full refresh reconciles off-screen changes in the current view.</p><div class="eiw-timeline">${connector}${oldestEmail ? `<span class="eiw-oldest-bound" title="Oldest cached conversation">${esc(oldestEmail.date.toLocaleDateString([], {month:'short',day:'numeric'}))}</span>` : ''}<div class="eiw-line">${groups}</div>${footer}</div>`;
   }
 
   function scheduleHTML() {
@@ -537,7 +542,7 @@
     if (state.tab === 'timeline') return timelineHTML(items);
     if (state.tab === 'schedule') return scheduleHTML();
     if (state.tab === 'focus') return focusHTML();
-    return todoHTML();
+    return '<p class="eiw-note">Cached conversations · visible rows update automatically. Full refresh reconciles off-screen changes.</p>' + todoHTML();
   }
 
   function render(force = false) {
@@ -548,11 +553,8 @@
     const active = root.contains(document.activeElement) ? document.activeElement : null;
     const focusKey = active ? ['data-action', 'data-tab', 'data-todo', 'data-self-sort', 'data-open-message'].find(k => active.hasAttribute(k)) : null;
     const focusValue = focusKey ? active.getAttribute(focusKey) : null;
-    const folderCounts = state.collapsed ? inboxFolderCounts() : null;
-    const unread = folderCounts?.unread ?? [...cache.values()].filter(x => x.unread).length;
-    const total = folderCounts?.total ?? cache.size;
     root.dataset.collapsed = String(state.collapsed);
-    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b>${unread}</b> unread / <b class="eiw-inbox-total">${total}</b> in inbox</span><button class="eiw-iconbtn eiw-refresh" data-action="scan" title="Refresh inbox data" aria-label="Refresh inbox data"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1"/><path d="M13.5 2v4h-4"/></svg></button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
+    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b></b> unread / <b class="eiw-inbox-total"></b><span class="eiw-count-source"></span></span><button class="eiw-iconbtn eiw-refresh" data-action="scan" title="Full refresh of the current inbox view" aria-label="Full refresh of the current inbox view"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1"/><path d="M13.5 2v4h-4"/></svg></button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
     for (const [selector, top] of scrolls) { const el = root.querySelector(selector); if (el) el.scrollTop = top; }
     if (focusKey) [...root.querySelectorAll(`[${focusKey}]`)].find(el => el.getAttribute(focusKey) === focusValue)?.focus({ preventScroll: true });
     updateSummary();
@@ -621,7 +623,7 @@
     if (renderTimer || scanning || document.hidden) return;
     renderTimer = setTimeout(() => {
       renderTimer = 0;
-      mount(false);
+      if (!document.hidden && !scanning) mount();
     }, 120);
   }
 
@@ -666,29 +668,47 @@
     }
     const messagesChanged = scrape && !state.collapsed && !scanning ? scrapeMessages() : false;
     const scheduleChanged = scrape && !state.collapsed ? scrapeMyDay() : false;
-    if (created || messagesChanged || scheduleChanged) render(); else { if (state.collapsed) updateSummary(); queueGeometry(); }
-    /* A new virtual scroller is normal after Outlook navigation. Full traversal is automatic only
-       for the first empty load; later snapshots remain cached until the refresh button is used. */
-    if (!state.collapsed && !cache.size && scroller && scroller !== scannedScroller && !scanning && !scanTimer) queueScan();
+    // Counts update in place even while an editor or drag defers panel replacement.
+    updateSummary();
+    if (created || messagesChanged || scheduleChanged) render(); else queueGeometry();
+    // Background updates never move Outlook's list. Full traversal is explicitly requested.
   }
   function onListScroll() {
     if (scanning) return;
     lastUserScroll = Date.now();
+    scheduleRender();
   }
 
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
   const listSignature = scroller => [...scroller.querySelectorAll('[role="option"][data-convid]')].map(el => el.dataset.convid).join('|');
-  async function settleVirtualList(scroller, valid) {
-    let previous = '', stable = 0;
-    for (let pass = 0; pass < 20 && valid(); pass++) {
-      await delay(60);
-      const signature = `${scroller.scrollHeight}:${listSignature(scroller)}`;
-      const busy = scroller.querySelector('[aria-busy="true"], [role="progressbar"]');
-      stable = signature === previous && !busy ? stable + 1 : 0;
-      if (stable >= 2) return true;
-      previous = signature;
-    }
-    return false;
+  const scanSignature = scroller => `${scroller.scrollHeight}:${listSignature(scroller)}`;
+  function settleVirtualList(scroller, valid, beforeScroll = null) {
+    return new Promise(resolve => {
+      let timer = 0, finished = false;
+      const started = Date.now();
+      let lastChange = started, signature = scanSignature(scroller);
+      let changed = beforeScroll === null || signature !== beforeScroll;
+      const finish = result => {
+        finished = true; clearTimeout(timer); watcher.disconnect(); resolve(result);
+      };
+      const check = () => {
+        if (finished) return;
+        clearTimeout(timer);
+        if (!valid()) { finish(false); return; }
+        const now = Date.now(), next = scanSignature(scroller);
+        if (next !== signature) { signature = next; changed = true; lastChange = now; }
+        const busy = scroller.querySelector('[aria-busy="true"], [role="progressbar"]');
+        // Settle quickly after real rendering. If a scroll produced no new rows, allow extra
+        // time for Outlook to react before accepting an unchanged (e.g. overscanned) viewport.
+        if (!busy && now - lastChange >= 48 && (changed || now - started >= 160)) { finish(true); return; }
+        if (now - started >= 1500) { finish(false); return; }
+        timer = setTimeout(check, 24);
+      };
+      const watcher = new MutationObserver(() => { lastChange = Date.now(); check(); });
+      watcher.observe(scroller, { childList: true, subtree: true, characterData: true, attributes: true,
+        attributeFilter: ['data-convid', 'aria-busy', 'aria-label', 'title'] });
+      check();
+    });
   }
 
   async function scanAllMessages(force) {
@@ -705,21 +725,24 @@
     let completed = false;
     const deadline = Date.now() + 90000;
     try {
+      let beforeScroll = scroller.scrollTop ? scanSignature(scroller) : null;
       scroller.scrollTop = 0;
       let bottomPasses = 0, previousBottom = -1;
       while (valid() && Date.now() < deadline) {
-        if (!await settleVirtualList(scroller, valid) || !valid()) break;
+        if (!await settleVirtualList(scroller, valid, beforeScroll) || !valid()) break;
         scrapeMessages();
         const max = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
         scanProgress = max ? Math.min(99, Math.round(scroller.scrollTop / max * 100)) : 99;
-        updateSummary(scanTarget);
+        updateSummary();
         if (scroller.scrollTop >= max - 2) {
           bottomPasses = previousBottom === max ? bottomPasses + 1 : 0;
           previousBottom = max;
           if (bottomPasses >= 2) { completed = true; break; }
           await delay(250);
         } else bottomPasses = 0;
-        scroller.scrollTop = Math.min(max, scroller.scrollTop + Math.max(100, Math.floor(scroller.clientHeight * .75)));
+        const nextTop = Math.min(max, scroller.scrollTop + Math.max(100, Math.floor(scroller.clientHeight * .9)));
+        beforeScroll = nextTop !== scroller.scrollTop ? scanSignature(scroller) : null;
+        scroller.scrollTop = nextTop;
       }
       if (completed && valid()) {
         cache.clear(); for (const [id, item] of scanTarget) cache.set(id, item);
@@ -735,6 +758,7 @@
       scroller.removeAttribute('data-erin-inbox-scan');
       scanning = false;
       if (widgetContext()) render(); else mount(false);
+      scheduleRender();
       if (!scanComplete && valid()) scannedScroller = scroller;
     }
   }
@@ -742,13 +766,16 @@
   function updateSummary(items = cache) {
     const summary = root?.querySelector('.eiw-summary');
     if (!summary) return;
-    const folderCounts = state.collapsed ? inboxFolderCounts() : null;
+    const folderCounts = inboxFolderCounts();
     const unread = folderCounts?.unread ?? [...items.values()].filter(x => x.unread).length;
     const total = folderCounts?.total ?? items.size;
     const values = summary.querySelectorAll('b');
-    if (values[0]) values[0].textContent = String(unread);
-    if (values[1]) values[1].textContent = String(total);
-    const label = state.collapsed && folderCounts ? 'Live counts from the Inbox folder' : scanning ? `Scanning inbox: ${scanProgress}%` : scanComplete ? 'Inbox scan complete' : 'Inbox data may be incomplete; refresh to rescan';
+    if (values[0] && values[0].textContent !== String(unread)) values[0].textContent = String(unread);
+    if (values[1] && values[1].textContent !== String(total)) values[1].textContent = String(total);
+    const source = summary.querySelector('.eiw-count-source');
+    const sourceLabel = folderCounts ? ' in inbox' : ' cached conversations';
+    if (source && source.textContent !== sourceLabel) source.textContent = sourceLabel;
+    const label = `${folderCounts ? 'Live counts from the Inbox folder' : 'Folder totals unavailable; counts cover cached conversations only'}. ${scanning ? `Scanning current view: ${scanProgress}%` : 'Visible conversations update automatically; full refresh reconciles off-screen changes in the current view'}`;
     if (summary.title !== label) summary.title = label;
   }
 
@@ -804,7 +831,9 @@
           if (!state.collapsed) mount();
           break;
         }
-        case 'scan': queueScan(true, 0); break;
+        case 'scan':
+          if (state.collapsed) { state.collapsed = false; save(); render(); }
+          queueScan(true, 0); break;
         case 'todo-expand': state.todoExpanded = !state.todoExpanded; save(); render(); break;
         case 'todo-top': root.querySelector('[data-flow]')?.scrollTo({top:0,behavior:'smooth'}); break;
         case 'all-day-toggle': state.allDayExpanded = !state.allDayExpanded; save(); render(); break;
@@ -867,18 +896,18 @@
   const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(queueGeometry) : null;
   const outsideWidget = node => node instanceof Element && !node.closest(`#${ROOT_ID}`);
   observer = new MutationObserver(mutations => {
-    if (scanning) return;
     let relevant = false, folderCountChanged = false;
     for (const mutation of mutations) {
       const target = mutation.target.nodeType === Node.TEXT_NODE ? mutation.target.parentElement : mutation.target;
       if (!outsideWidget(target)) continue;
-      if (target.closest('[data-app-section="Ribbon"], #OwaTitleBar, .fui-FluentProvider')) themeDirty = true;
-      if (target.closest('[role="treeitem"][title^="Inbox -"]') ||
-          [...mutation.addedNodes].some(node => node.nodeType === Node.ELEMENT_NODE && (node.matches?.('[role="treeitem"][title^="Inbox -"]') || node.querySelector?.('[role="treeitem"][title^="Inbox -"]')))) folderCountChanged = true;
+      if (target.closest('[data-app-section="Ribbon"], #OwaTitleBar') ||
+          mutation.type === 'attributes' && target.matches('.fui-FluentProvider')) themeDirty = true;
+      if (target.closest('[role="treeitem"]') ||
+          [...mutation.addedNodes, ...mutation.removedNodes].some(node => node.nodeType === Node.ELEMENT_NODE && (node.matches?.('[role="treeitem"]') || node.querySelector?.('[role="treeitem"]')))) folderCountChanged = true;
       if (target.closest('[data-app-section="MessageList"], [data-app-section="DrawerPane"], #OwaTitleBar, #owa-me-control-container') ||
           [...mutation.addedNodes].some(node => outsideWidget(node) && (node.matches('[data-app-section="MessageList"], #OwaTitleBar') || node.querySelector('[data-app-section="MessageList"], #OwaTitleBar')))) relevant = true;
     }
-    if (folderCountChanged && state.collapsed) updateSummary();
+    if (folderCountChanged) updateSummary();
     if (relevant) scheduleRender();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true,
@@ -893,7 +922,7 @@
   // A low-frequency fallback handles Outlook pushState navigation and account-control replacement.
   setInterval(() => {
     if (document.hidden || scanning) return;
-    mount(false);
+    mount();
     const minute = `${todayKey()}:${new Date().getHours()}:${new Date().getMinutes()}`;
     if (minute !== lastMinute) {
       lastMinute = minute;
@@ -903,3 +932,4 @@
   }, 5000);
   mount();
 })();
+
