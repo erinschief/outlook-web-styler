@@ -94,6 +94,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 ## Releases
 
 - **Styler 0.73:** finds the Promotions subject tag without relying on Outlook's generated label class and updates it immediately when virtualized inbox rows are recycled.
+- **Widgets 0.4.13:** gives the oldest-conversation date the same ten-pixel clearance above the timeline's vertical endpoint cap as the angled relative-date labels at every width.
 - **Widgets 0.4.12:** anchors the oldest-conversation date to the timeline's responsive axis so its transformed bottom edge stays four pixels above the line and its right edge remains flush at every width.
 - **Widgets 0.4.11:** omits Outlook's Pinned group from the unread timeline and places pinned categorized conversations first in the matching Self and Waiting lists.
 - **Widgets 0.4.10:** preserves both the names and displayed order of Outlook's own inbox group headers while the virtualized list scrolls, rather than deriving either from message dates or recycled-row arrival order.

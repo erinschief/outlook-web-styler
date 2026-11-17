@@ -34,7 +34,7 @@
     w.state.tab='todo';w.render();
     assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'To-do filler text is still visible');
   });
-  await test('Oldest timeline date uses the bucket-label typography and clears the axis at every width', async () => {
+  await test('Oldest timeline date clears the endpoint cap at every width', async () => {
     w.cache.set('label-color',{id:'label-color',subject:'Color check',date:new Date(),group:'Today',unread:true,categories:[]});
     w.state.tab='timeline';w.render();
     const oldest=w.root.querySelector('.eiw-oldest-bound'),bucket=w.root.querySelector('.eiw-bname');
@@ -43,12 +43,12 @@
     assert(getComputedStyle(oldest).fontFamily===getComputedStyle(bucket).fontFamily,'Oldest date font family drifted from bucket labels');
     assert(getComputedStyle(oldest).fontWeight===getComputedStyle(bucket).fontWeight,'Oldest date font weight drifted from bucket labels');
     assert(getComputedStyle(oldest).opacity==='1' && getComputedStyle(oldest).writingMode==='horizontal-tb','Oldest date is still synthesized as translucent vertical text');
-    const measure=()=>{const lineEl=w.root.querySelector('.eiw-line'),line=lineEl.getBoundingClientRect(),label=oldest.getBoundingClientRect(),axis=parseFloat(getComputedStyle(lineEl).getPropertyValue('--axis-y'));return{gap:line.top+axis-label.bottom,right:line.right-label.right}};
+    const measure=()=>{const lineEl=w.root.querySelector('.eiw-line'),line=lineEl.getBoundingClientRect(),label=oldest.getBoundingClientRect(),style=getComputedStyle(lineEl),axis=parseFloat(style.getPropertyValue('--axis-y')),capRise=parseFloat(style.getPropertyValue('--end-cap-rise'));return{gap:line.top+axis-capRise-label.bottom,right:line.right-label.right}};
     let geometry=measure();
-    assert(Math.abs(geometry.gap-4)<=1,`Oldest date is ${geometry.gap}px away from the timeline axis`);
+    assert(Math.abs(geometry.gap-10)<=1,`Oldest date is ${geometry.gap}px away from the endpoint cap`);
     assert(Math.abs(geometry.right)<=1,'Oldest date is not aligned to the timeline right edge');
     const width=w.root.style.width;w.root.style.width='320px';await wait(30);geometry=measure();
-    assert(Math.abs(geometry.gap-4)<=1,`Narrow oldest date is ${geometry.gap}px away from the timeline axis`);
+    assert(Math.abs(geometry.gap-10)<=1,`Narrow oldest date is ${geometry.gap}px away from the endpoint cap`);
     assert(Math.abs(geometry.right)<=1,'Narrow oldest date is not aligned to the timeline right edge');
     w.root.style.width=width;
   });
