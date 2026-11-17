@@ -94,6 +94,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 ## Releases
 
 - **Styler 0.73:** finds the Promotions subject tag without relying on Outlook's generated label class and updates it immediately when virtualized inbox rows are recycled.
+- **Widgets 0.4.15:** restores the concise empty-state message, “No unread emails, woo!”
 - **Widgets 0.4.14:** recognizes Outlook's zero-unread Inbox label when it omits the `(0 unread)` suffix, so the live header reaches zero without requiring a full refresh.
 - **Widgets 0.4.13:** gives the oldest-conversation date the same ten-pixel clearance above the timeline's vertical endpoint cap as the angled relative-date labels at every width.
 - **Widgets 0.4.12:** anchors the oldest-conversation date to the timeline's responsive axis so its transformed bottom edge stays four pixels above the line and its right edge remains flush at every width.

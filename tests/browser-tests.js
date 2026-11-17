@@ -29,8 +29,11 @@
     assert(!document.querySelector('[data-app-section="DrawerPane"]'),'My Day stayed open after the Schedule refresh');
   });
   await test('Unread and To-do panels do not show refresh filler text', () => {
+    w.cache.set('empty-copy',{id:'empty-copy',subject:'Read message',date:new Date(),group:'Today',unread:false,categories:[]});
     w.state.tab='timeline';w.render();
     assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'Unread filler text is still visible');
+    assert(w.root.querySelector('.eiw-no-unread')?.textContent==='No unread emails, woo!','Empty unread message changed');
+    w.cache.delete('empty-copy');
     w.state.tab='todo';w.render();
     assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'To-do filler text is still visible');
   });
