@@ -32,13 +32,13 @@ test('Both full userscripts initialize against a loading Outlook shell', async (
   }
 });
 
-test('Calendar boundaries use local days, Monday weeks, months, and years', () => {
-  const c=load(context(),'  function bucketFor(item,','  function formatStamp');
-  const now=new Date(2026,10,8,9);
-  for(const [date,expected] of [[new Date(2026,10,8),0],[new Date(2026,10,7,23,59),1],[new Date(2026,10,3),2],[new Date(2026,10,1),3],[new Date(2026,9,31),4],[new Date(2026,8,30),5]]) assert.equal(c.bucketFor({date},now),expected);
-  assert.equal(c.bucketFor({date:new Date(2025,11,31)},new Date(2026,0,10)),4);
-  // DST ends on Nov 1: calendar grouping must not rely on a 24-hour subtraction.
-  assert.equal(c.bucketFor({date:new Date(2026,9,31,23,59)},new Date(2026,10,1,9)),1);
+test('Timeline grouping preserves Outlook labels instead of recalculating dates', () => {
+  const c=load(context(),'  const outlookGroup =','  function formatStamp');
+  vm.runInContext('this.outlookGroup = outlookGroup',c);
+  assert.equal(c.outlookGroup({group:'This Week',date:new Date(2020,0,1)}),'This Week');
+  assert.equal(c.outlookGroup({group:'This Month',date:new Date()}),'This Month');
+  assert.equal(c.outlookGroup({group:'  Pinned  '}),'Pinned');
+  assert.equal(c.outlookGroup({date:new Date()}),'');
 });
 
 test('12/24-hour clocks, ranges, compound durations, and invalid input',()=>{

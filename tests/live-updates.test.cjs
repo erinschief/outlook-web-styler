@@ -92,6 +92,22 @@ test('Visible unread and category changes update cache; recycled and removed row
   rows=[];c.scrapeMessages();assert.equal(cache.size,2);
 });
 
+test('Full scan carries the active Outlook group across virtualized viewports', () => {
+  let nodes=[];
+  const header={id:'groupHeaderThisWeek',getAttribute:key=>key==='aria-label'?'This Week':'',textContent:'This Week'};
+  const row=id=>({id:'',dataset:{convid:id},getAttribute:()=> 'Read',
+    querySelector:selector=>selector==='.TtcXM'?{textContent:id}:null,querySelectorAll:()=>[]});
+  const stream={querySelectorAll:()=>nodes};
+  const scanTarget=new Map();
+  const c=load({cache:new Map(),scanTarget,scanGroup:'',messageList:()=>({querySelector:()=>stream}),
+    getComputedStyle:()=>({fontSize:'13px'}),visible:()=>true,parseDateTitle:()=>null,rowDate:()=>null},
+    '  function scrapeMessages(','  function parseClock(');
+  nodes=[header,row('A')];c.scrapeMessages(scanTarget);
+  nodes=[row('B')];c.scrapeMessages(scanTarget);
+  assert.equal(scanTarget.get('A').group,'This Week');
+  assert.equal(scanTarget.get('B').group,'This Week');
+});
+
 function settleFixture() {
   let now=0, nextId=0, signature='old', busy=false, valid=true, disconnected=0, notify;
   const tasks=new Map();

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.4.8
+// @version      0.4.9
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -52,6 +52,7 @@
   let lastUserScroll = 0;
   let observedScroller = null;
   let scanTarget = null;
+  let scanGroup = '';
   let geometryFrame = 0;
   let themeDirty = true;
   let lastMinute = '';
@@ -174,7 +175,7 @@
       : { part: 0, elapsed: 0, running: false, finished: false, last: 0 };
     activeDrag?.(); pendingBlock = null; renderPending = false; resizeObserver?.disconnect();
     scanGeneration++;
-    cache.clear(); scannedScroller = null; scanComplete = false;
+    cache.clear(); scannedScroller = null; scanComplete = false; scanGroup = '';
     lastInboxCounts = null; countCacheSnapshot = null;
     initialRefreshQueued = false; initialRefreshDone = false;
     scheduleRefreshGeneration++; scheduleRefreshOpenedMyDay = false;
@@ -334,11 +335,12 @@
     const list = messageList();
     if (!list) return false;
     let changed = false;
-    let currentGroup = '';
+    let currentGroup = target === scanTarget ? scanGroup : '';
     const stream = list.querySelector('[data-testid="virtuoso-item-list"]') || list;
     [...stream.querySelectorAll('[id^="groupHeader"], [role="option"][data-convid]')].forEach(el => {
       if (el.id.startsWith('groupHeader')) {
         currentGroup = el.getAttribute('aria-label') || el.textContent.trim();
+        if (target === scanTarget) scanGroup = currentGroup;
         return;
       }
       const id = el.dataset.convid;
@@ -429,20 +431,7 @@
     return changed;
   }
 
-  function bucketFor(item, now = new Date()) {
-    if (!item.date) {
-      const g = item.group.toLowerCase();
-      if (g.includes('today')) return 0;
-      if (g.includes('yesterday')) return 1;
-      return 5;
-    }
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const yesterday = new Date(today); yesterday.setDate(yesterday.getDate() - 1);
-    const week = new Date(today); week.setDate(week.getDate() - (week.getDay() + 6) % 7);
-    const month = new Date(now.getFullYear(), now.getMonth(), 1);
-    const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-    return item.date >= today ? 0 : item.date >= yesterday ? 1 : item.date >= week ? 2 : item.date >= month ? 3 : item.date >= lastMonth ? 4 : 5;
-  }
+  const outlookGroup = item => String(item?.group || '').trim();
 
   function formatStamp(item, short = false) {
     if (!item?.date) return item?.group || 'Date unavailable';
@@ -460,14 +449,20 @@
 
   function timelineHTML(items) {
     if (!items.length) return `<div class="eiw-empty">${scanning ? 'Scanning the inbox…' : 'No inbox messages loaded yet.'}</div>`;
-    const names = ['Today', 'Yesterday', 'This week', 'This month', 'Last month', 'Earlier'];
-    const buckets = names.map(name => ({ name, items: [] }));
-    const now = new Date();
-    for (const item of items) buckets[bucketFor(item, now)].items.push(item);
-    const unread = items.filter(x => x.unread).sort((a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
+    const bucketMap = new Map();
+    for (const item of items) {
+      const name = outlookGroup(item);
+      if (!name) continue;
+      if (!bucketMap.has(name)) bucketMap.set(name, { name, items: [] });
+      bucketMap.get(name).items.push(item);
+    }
+    const buckets = [...bucketMap.values()];
+    const displayedItems = buckets.flatMap(bucket => bucket.items);
+    if (!displayedItems.length) return `<div class="eiw-empty">${scanning ? 'Scanning Outlook groups…' : 'No Outlook inbox groups loaded yet.'}</div>`;
+    const unread = displayedItems.filter(x => x.unread).sort((a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
     const newest = unread[0], oldest = unread[unread.length - 1];
-    const oldestEmail = items.filter(x => x.date).sort((a,b) => a.date-b.date)[0];
-    const groups = buckets.filter(bucket => bucket.items.length).map(bucket => {
+    const oldestEmail = displayedItems.filter(x => x.date).sort((a,b) => a.date-b.date)[0];
+    const groups = buckets.map(bucket => {
       bucket.items.sort((a,b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
       const count = bucket.items.length;
       const dots = bucket.items.map((item, i) => `<i class="eiw-dot${item.unread ? '' : ' read'}${item === newest ? ' newest' : ''}${item === oldest ? ' oldest' : ''}" style="left:${((i + .5) / bucket.items.length) * 100}%" title="${item.unread ? 'Unread' : 'Read'}: ${esc(item.subject)} — ${esc(formatStamp(item))}"></i>`).join('');
@@ -791,6 +786,7 @@
       dataLoadingAllowed() && !document.hidden && scroller.isConnected && messageList()?.querySelector('[data-testid="virtuoso-scroller"]') === scroller;
     scanning = true; scanComplete = false; scanProgress = 0;
     scanTarget = new Map();
+    scanGroup = '';
     const originalTop = scroller.scrollTop;
     scroller.setAttribute('data-erin-inbox-scan', '');
     let completed = false;
@@ -827,6 +823,7 @@
       console.warn('Outlook widgets: inbox scan interrupted', error);
     } finally {
       scanTarget = null;
+      scanGroup = '';
       // Never scroll a different folder after navigating away during a scan.
       if (path === location.pathname && scroller.isConnected) scroller.scrollTop = originalTop;
       scroller.removeAttribute('data-erin-inbox-scan');

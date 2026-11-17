@@ -49,7 +49,7 @@
   });
   await test('Read micro ticks share equal slots with unread dots', () => {
     const saved=[...w.cache],now=new Date();w.cache.clear();
-    for(let i=0;i<4;i++)w.cache.set(`slot-${i}`,{id:`slot-${i}`,subject:`Slot ${i}`,date:new Date(now.getTime()-i*60000),unread:i%2===0,categories:[]});
+    for(let i=0;i<4;i++)w.cache.set(`slot-${i}`,{id:`slot-${i}`,subject:`Slot ${i}`,date:new Date(now.getTime()-i*60000),group:'Today',unread:i%2===0,categories:[]});
     w.state.tab='timeline';w.render();
     const marks=[...w.root.querySelector('.eiw-bucket').querySelectorAll('.eiw-dot')];
     assert(marks.map(mark=>parseFloat(mark.style.left)).join(',')==='12.5,37.5,62.5,87.5','Timeline marks are not evenly spaced');
@@ -96,17 +96,16 @@
     live.setAttribute('aria-label','Read');await wait(200);assert(count()==='5','Tracked count did not restore after marking read');
     w.root.querySelector('[data-action="collapse"]').click();
   });
-  await test('My Day schedule changes update without a full inbox refresh', async () => {
+  await test('Schedule cache does not refresh while another widget tab is active', async () => {
+    w.state.tab='timeline';w.render();document.getElementById('my-day').click();
     const drawer=document.querySelector('[data-app-section="DrawerPane"]'),content=drawer.querySelector('[data-test-schedule]');
-    await wait(200);assert(w.state.schedule[0]?.title==='Initial meeting','Calendar not collected automatically');
     content.innerText='Today\n10:00 AM\nUpdated meeting\n30 min\nTomorrow';await wait(200);
-    assert(w.state.schedule[0]?.title==='Updated meeting' && w.state.schedule[0].start===600,'Calendar change remained stale');drawer.remove();
+    assert(w.state.schedule[0]?.title==='Initial meeting','Schedule refreshed while its tab was inactive');
+    drawer.querySelector('button').click();
   });
-  await test('Calendar buckets respect midnight, month and year', () => {
-    const now = new Date(2026, 10, 8, 9);
-    assert(w.bucketFor({date:new Date(2026,10,7,23,59)},now) === 1, 'Yesterday is Today');
-    assert(w.bucketFor({date:new Date(2026,9,20)},now) === 4, 'Last month incorrect');
-    assert(w.bucketFor({date:new Date(2025,11,20)},new Date(2026,0,10)) === 4, 'Year boundary incorrect');
+  await test('Timeline buckets preserve Outlook group labels', () => {
+    assert(w.outlookGroup({group:'This Week',date:new Date(2020,0,1)}) === 'This Week','Outlook group was recalculated from the date');
+    assert(w.outlookGroup({group:'This Month',date:new Date()}) === 'This Month','Outlook This Month label changed');
   });
   await test('Clock and duration parsers support 12h, 24h and ranges', () => {
     assert(w.parseClock('12:00 AM')===0 && w.parseClock('12:00 PM')===720 && w.parseClock('17:30')===1050,'Clock parsing');
