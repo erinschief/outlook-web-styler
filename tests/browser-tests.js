@@ -34,8 +34,8 @@
     w.state.tab='todo';w.render();
     assert(!w.root.querySelector('.eiw-panel > .eiw-note'),'To-do filler text is still visible');
   });
-  await test('Oldest timeline date uses the bucket-label typography', () => {
-    w.cache.set('label-color',{id:'label-color',subject:'Color check',date:new Date(),unread:true,categories:[]});
+  await test('Oldest timeline date uses the bucket-label typography and clears the axis at every width', async () => {
+    w.cache.set('label-color',{id:'label-color',subject:'Color check',date:new Date(),group:'Today',unread:true,categories:[]});
     w.state.tab='timeline';w.render();
     const oldest=w.root.querySelector('.eiw-oldest-bound'),bucket=w.root.querySelector('.eiw-bname');
     assert(oldest && bucket,'Timeline labels missing');
@@ -43,9 +43,14 @@
     assert(getComputedStyle(oldest).fontFamily===getComputedStyle(bucket).fontFamily,'Oldest date font family drifted from bucket labels');
     assert(getComputedStyle(oldest).fontWeight===getComputedStyle(bucket).fontWeight,'Oldest date font weight drifted from bucket labels');
     assert(getComputedStyle(oldest).opacity==='1' && getComputedStyle(oldest).writingMode==='horizontal-tb','Oldest date is still synthesized as translucent vertical text');
-    const line=w.root.querySelector('.eiw-line').getBoundingClientRect(),label=oldest.getBoundingClientRect(),gap=line.top+31-label.bottom;
-    assert(gap>=0 && gap<=8,`Oldest date is ${gap}px away from the timeline axis`);
-    assert(Math.abs(line.right-label.right)<=1,'Oldest date is not aligned to the timeline right edge');
+    const measure=()=>{const lineEl=w.root.querySelector('.eiw-line'),line=lineEl.getBoundingClientRect(),label=oldest.getBoundingClientRect(),axis=parseFloat(getComputedStyle(lineEl).getPropertyValue('--axis-y'));return{gap:line.top+axis-label.bottom,right:line.right-label.right}};
+    let geometry=measure();
+    assert(Math.abs(geometry.gap-4)<=1,`Oldest date is ${geometry.gap}px away from the timeline axis`);
+    assert(Math.abs(geometry.right)<=1,'Oldest date is not aligned to the timeline right edge');
+    const width=w.root.style.width;w.root.style.width='320px';await wait(30);geometry=measure();
+    assert(Math.abs(geometry.gap-4)<=1,`Narrow oldest date is ${geometry.gap}px away from the timeline axis`);
+    assert(Math.abs(geometry.right)<=1,'Narrow oldest date is not aligned to the timeline right edge');
+    w.root.style.width=width;
   });
   await test('Read micro ticks share equal slots with unread dots', () => {
     const saved=[...w.cache],now=new Date();w.cache.clear();
