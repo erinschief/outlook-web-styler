@@ -5,7 +5,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const widgets = fs.readFileSync(path.join(root, 'outlook-inbox-widgets.user.js'), 'utf8')
   .replace("'use strict';", "'use strict'; const location = window.testLocation;")
-  .replace(/\}\)\(\);\s*$/, `window.widgets = {cache, get state(){return state}, get focus(){return focus}, get scanning(){return scanning}, get complete(){return scanComplete}, get root(){return root}, outlookGroup, orderByOutlookGroups, rowDate, parseClock, parseTimeRange, parseDuration, scrapeMessages, render, mount, scanAllMessages, syncAccount, flushSave, advanceFocus, startFocus, pruneState, observer, cancelScan(){scanGeneration++}, stopAutoScan(){clearTimeout(scanTimer)}, get pendingBlock(){return pendingBlock}, set pendingBlock(v){pendingBlock=v} };})();`);
+  .replace(/\}\)\(\);\s*$/, `window.widgets = {cache, get state(){return state}, get focus(){return focus}, get scanning(){return scanning}, get complete(){return scanComplete}, get root(){return root}, outlookGroup, isPinned, pinnedFirst, orderByOutlookGroups, rowDate, parseClock, parseTimeRange, parseDuration, scrapeMessages, render, mount, scanAllMessages, syncAccount, flushSave, advanceFocus, startFocus, pruneState, observer, cancelScan(){scanGeneration++}, stopAutoScan(){clearTimeout(scanTimer)}, get pendingBlock(){return pendingBlock}, set pendingBlock(v){pendingBlock=v} };})();`);
 const styler = fs.readFileSync(path.join(root, 'outlook-web-styler.user.js'), 'utf8')
   .replace("'use strict';", "'use strict'; const location = window.testLocation;")
   .replace('function build() {', 'function build() { window.buildCount++;')

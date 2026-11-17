@@ -59,6 +59,20 @@
     assert([...w.root.querySelectorAll('.eiw-bname')].map(label=>label.textContent).join(',')==='Today','Empty relative-date buckets were rendered');
     w.cache.clear();saved.forEach(([key,value])=>w.cache.set(key,value));w.render();
   });
+  await test('Pinned conversations stay off the timeline and lead their categorized To-do lists', () => {
+    const saved=[...w.cache],savedTab=w.state.tab,savedTodo=w.state.todo,savedSort=w.state.selfSort;
+    const now=new Date();w.cache.clear();
+    w.cache.set('normal',{id:'normal',subject:'Normal',sender:'Sender',date:now,group:'Today',unread:false,categories:['Self: Review','Waiting on: reply'],categoryStyles:[]});
+    w.cache.set('pinned',{id:'pinned',subject:'Pinned',sender:'Sender',date:new Date(now-864e5),group:'Pinned',unread:false,categories:['Self: Review','Waiting on: reply'],categoryStyles:[]});
+    w.state.tab='timeline';w.render();
+    assert([...w.root.querySelectorAll('.eiw-bname')].map(x=>x.textContent).join(',')==='Today','Pinned group appeared on the timeline');
+    for(const todo of ['self','waiting']){
+      w.state.tab='todo';w.state.todo=todo;w.state.selfSort='recent';w.render();
+      assert(w.root.querySelector('.eiw-card')?.dataset.messageId==='pinned',`Pinned conversation did not lead the ${todo} list`);
+    }
+    w.cache.clear();saved.forEach(([key,value])=>w.cache.set(key,value));
+    w.state.tab=savedTab;w.state.todo=savedTodo;w.state.selfSort=savedSort;w.render();
+  });
   await test('Promotions tag stays hidden when Outlook recycles a message row', async () => {
     const label=document.querySelector('[data-promotion-label]'),host=label.parentElement;
     assert(host.hasAttribute('data-erin-promotions'),'Initial Promotions tag was not hidden');

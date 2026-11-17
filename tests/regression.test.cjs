@@ -34,11 +34,13 @@ test('Both full userscripts initialize against a loading Outlook shell', async (
 
 test('Timeline grouping preserves Outlook labels instead of recalculating dates', () => {
   const c=load(context(),'  const outlookGroup =','  function formatStamp');
-  vm.runInContext('this.outlookGroup = outlookGroup; this.orderByOutlookGroups = orderByOutlookGroups',c);
+  vm.runInContext('this.outlookGroup = outlookGroup; this.isPinned = isPinned; this.pinnedFirst = pinnedFirst; this.orderByOutlookGroups = orderByOutlookGroups',c);
   assert.equal(c.outlookGroup({group:'This Week',date:new Date(2020,0,1)}),'This Week');
   assert.equal(c.outlookGroup({group:'This Month',date:new Date()}),'This Month');
   assert.equal(c.outlookGroup({group:'  Pinned  '}),'Pinned');
   assert.equal(c.outlookGroup({date:new Date()}),'');
+  assert.equal(c.isPinned({group:'Pinned'}),true);
+  assert.deepEqual([{id:'normal',group:'Today'},{id:'pinned',group:'Pinned'}].sort(c.pinnedFirst).map(x=>x.id),['pinned','normal']);
   const items=new Map([['july',{group:'July'}],['september',{group:'September'}]]);
   assert.deepEqual([...c.orderByOutlookGroups(items,['September','July'])].map(([id])=>id),['september','july']);
 });
