@@ -36,6 +36,7 @@ test('Inbox selection prevents a shared mailbox or Favorites duplicate from choo
   assert.equal(c.inboxFolderCounts().total,1234);
   folders=[folder('Inbox - 4 items (2 unread)'),folder('Inbox - 5 items (3 unread)')];assert.equal(c.inboxFolderCounts(),null);
   folders=[folder('Inbox - 0 items (0 unread)'),folder('Inbox - 0 items (0 unread)')];assert.equal(c.inboxFolderCounts().unread,0);
+  folders=[folder('Inbox - 20 items',true)];assert.equal(c.inboxFolderCounts().total,20);assert.equal(c.inboxFolderCounts().unread,0);
   folders=[folder('Sent - 3 items (0 unread)')];assert.equal(c.inboxFolderCounts(),null);
 });
 

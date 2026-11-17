@@ -114,6 +114,11 @@
     assert(count()==='6','Collapsed tracked count missed a visible unread change');
     live.setAttribute('aria-label','Read');await wait(200);assert(count()==='5','Tracked count did not restore after marking read');
     w.root.querySelector('[data-action="collapse"]').click();
+    folder.title='Inbox - 20 items (1 unread)';folder.setAttribute('aria-selected','true');document.getElementById('fixture').appendChild(folder);
+    live.setAttribute('aria-label','Unread');await wait(200);assert(count()==='1','Final-unread fixture did not establish its folder baseline');
+    live.setAttribute('aria-label','Read');folder.title='Inbox - 20 items';await wait(200);
+    assert(count()==='0','Header retained one unread when Outlook removed the zero-unread suffix');
+    folder.remove();
   });
   await test('Schedule cache does not refresh while another widget tab is active', async () => {
     w.state.tab='timeline';w.render();document.getElementById('my-day').click();
