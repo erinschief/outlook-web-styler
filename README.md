@@ -94,6 +94,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 ## Releases
 
 - **Styler 0.73:** finds the Promotions subject tag without relying on Outlook's generated label class and updates it immediately when virtualized inbox rows are recycled.
+- **Widgets 0.4.8:** places the rotated oldest-conversation date beside the timeline endpoint instead of leaving it detached above the axis.
 - **Widgets 0.4.7:** keeps Inbox refreshes independent of My Day and refreshes the cached schedule only when the Schedule tab is opened.
 - **Widgets 0.4.6:** omits empty relative-date buckets and their dividers, and rotates the oldest-date label as normal horizontal Segoe text so its glyph weight matches the other timeline labels.
 - **Widgets 0.4.5:** keeps every rendered timeline bucket wide enough to own its marks, softens the vertical oldest-date label, closes My Day after script-initiated startup refreshes, and shortens the header label to conversations.

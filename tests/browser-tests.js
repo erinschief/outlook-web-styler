@@ -43,6 +43,9 @@
     assert(getComputedStyle(oldest).fontFamily===getComputedStyle(bucket).fontFamily,'Oldest date font family drifted from bucket labels');
     assert(getComputedStyle(oldest).fontWeight===getComputedStyle(bucket).fontWeight,'Oldest date font weight drifted from bucket labels');
     assert(getComputedStyle(oldest).opacity==='1' && getComputedStyle(oldest).writingMode==='horizontal-tb','Oldest date is still synthesized as translucent vertical text');
+    const line=w.root.querySelector('.eiw-line').getBoundingClientRect(),label=oldest.getBoundingClientRect(),gap=line.top+31-label.bottom;
+    assert(gap>=0 && gap<=8,`Oldest date is ${gap}px away from the timeline axis`);
+    assert(Math.abs(line.right-label.right)<=1,'Oldest date is not aligned to the timeline right edge');
   });
   await test('Read micro ticks share equal slots with unread dots', () => {
     const saved=[...w.cache],now=new Date();w.cache.clear();
