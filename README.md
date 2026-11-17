@@ -94,6 +94,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 ## Releases
 
 - **Styler 0.73:** finds the Promotions subject tag without relying on Outlook's generated label class and updates it immediately when virtualized inbox rows are recycled.
+- **Widgets 0.4.10:** preserves both the names and displayed order of Outlook's own inbox group headers while the virtualized list scrolls, rather than deriving either from message dates or recycled-row arrival order.
 - **Widgets 0.4.9:** uses Outlook's own inbox group labels and preserves the active group while the virtualized list scrolls, rather than recalculating relative-date sections independently.
 - **Widgets 0.4.8:** places the rotated oldest-conversation date beside the timeline endpoint instead of leaving it detached above the axis.
 - **Widgets 0.4.7:** keeps Inbox refreshes independent of My Day and refreshes the cached schedule only when the Schedule tab is opened.

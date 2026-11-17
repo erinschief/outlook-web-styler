@@ -34,11 +34,13 @@ test('Both full userscripts initialize against a loading Outlook shell', async (
 
 test('Timeline grouping preserves Outlook labels instead of recalculating dates', () => {
   const c=load(context(),'  const outlookGroup =','  function formatStamp');
-  vm.runInContext('this.outlookGroup = outlookGroup',c);
+  vm.runInContext('this.outlookGroup = outlookGroup; this.orderByOutlookGroups = orderByOutlookGroups',c);
   assert.equal(c.outlookGroup({group:'This Week',date:new Date(2020,0,1)}),'This Week');
   assert.equal(c.outlookGroup({group:'This Month',date:new Date()}),'This Month');
   assert.equal(c.outlookGroup({group:'  Pinned  '}),'Pinned');
   assert.equal(c.outlookGroup({date:new Date()}),'');
+  const items=new Map([['july',{group:'July'}],['september',{group:'September'}]]);
+  assert.deepEqual([...c.orderByOutlookGroups(items,['September','July'])].map(([id])=>id),['september','july']);
 });
 
 test('12/24-hour clocks, ranges, compound durations, and invalid input',()=>{
@@ -77,8 +79,9 @@ function scanContext({grow=false,abort=false,fail=false}={}) {
   const attributes=new Set();
   const scroller={isConnected:true,clientHeight:500,get scrollHeight(){return max+500},get scrollTop(){return top},set scrollTop(value){top=Math.min(max,value);furthest=Math.max(furthest,top)},setAttribute:name=>attributes.add(name),removeAttribute:name=>attributes.delete(name)};
   const cache=new Map([['stale',{id:'stale'}]]);
-  const c=context({scanning:false,dataLoadingAllowed:()=>true,document:{hidden:false},interactionActive:()=>false,scannedScroller:null,scanGeneration:0,location:{pathname:'/mail/inbox'},storageKey:'account-A',messageList:()=>({querySelector:()=>scroller}),scanComplete:false,scanProgress:0,scanTarget:null,cache,
+  const c=context({scanning:false,dataLoadingAllowed:()=>true,document:{hidden:false},interactionActive:()=>false,scannedScroller:null,scanGeneration:0,location:{pathname:'/mail/inbox'},storageKey:'account-A',messageList:()=>({querySelector:()=>scroller}),scanComplete:false,scanProgress:0,scanTarget:null,scanGroup:'',scanGroupOrder:[],cache,
     updateSummary(){},render:()=>rendered++,pruneState:()=>pruned++,widgetContext:()=>true,mount(){},queueScan(){},scheduleRender(){},scanSignature:()=>String(top),delay:async()=>{},
+    orderByOutlookGroups:items=>[...items],
     settleVirtualList:async()=>{passes++;if(grow && passes===2)max=1500;if(abort && passes===2)c.scanGeneration++;if(fail)throw Error('Synthetic failure');return true;},
     scrapeMessages:()=>{if(c.scanTarget)c.scanTarget.set(`at-${top}`,{id:`at-${top}`});},console:{warn(){}}});
   load(c,'  async function scanAllMessages(force, initial = false)','  function updateSummary(');

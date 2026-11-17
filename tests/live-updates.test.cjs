@@ -99,13 +99,14 @@ test('Full scan carries the active Outlook group across virtualized viewports', 
     querySelector:selector=>selector==='.TtcXM'?{textContent:id}:null,querySelectorAll:()=>[]});
   const stream={querySelectorAll:()=>nodes};
   const scanTarget=new Map();
-  const c=load({cache:new Map(),scanTarget,scanGroup:'',messageList:()=>({querySelector:()=>stream}),
+  const c=load({cache:new Map(),scanTarget,scanGroup:'',scanGroupOrder:[],messageList:()=>({querySelector:()=>stream}),
     getComputedStyle:()=>({fontSize:'13px'}),visible:()=>true,parseDateTitle:()=>null,rowDate:()=>null},
     '  function scrapeMessages(','  function parseClock(');
   nodes=[header,row('A')];c.scrapeMessages(scanTarget);
   nodes=[row('B')];c.scrapeMessages(scanTarget);
   assert.equal(scanTarget.get('A').group,'This Week');
   assert.equal(scanTarget.get('B').group,'This Week');
+  assert.deepEqual(c.scanGroupOrder,['This Week']);
 });
 
 function settleFixture() {
