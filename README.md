@@ -93,7 +93,9 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 
 ## Releases
 
+- **Styler 0.74:** moves the multi-pane mail area 11 pixels right to expose the widget and Inbox left corners, preserving single-pane spacing.
 - **Styler 0.73:** finds the Promotions subject tag without relying on Outlook's generated label class and updates it immediately when virtualized inbox rows are recycled.
+- **Widgets 0.4.18:** slightly enlarges the unread summary while keeping its number larger and in the theme color.
 - **Widgets 0.4.17:** counts unique cached conversations instead of the sidebar’s message total; collapsed mode displays only the live unread count.
 - **Widgets 0.4.16:** keeps collapsed toolbar counts current from sidebar mutations without refreshing widget content; hides the collapsed conversation total when sidebar totals are unavailable.
 - **Widgets 0.4.15:** restores the concise empty-state message, “No unread emails, woo!”
