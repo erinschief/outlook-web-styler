@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook Inbox Widgets
 // @namespace    https://github.com/erinschief/outlook-web-styler
-// @version      0.4.15
+// @version      0.4.16
 // @description  Collapsible personal-inbox widgets for unread mail, today's schedule, focus sessions, and Self/Waiting categories.
 // @author       Erin
 // @icon         data:image/png;base64,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
@@ -59,6 +59,7 @@
   let lastMinute = '';
   let root = null;
   let renderTimer = 0;
+  let summaryTimer = 0;
   let observer = null;
   let focusTick = 0;
   let scanning = false;
@@ -569,7 +570,7 @@
     const focusKey = active ? ['data-action', 'data-tab', 'data-todo', 'data-self-sort', 'data-open-message'].find(k => active.hasAttribute(k)) : null;
     const focusValue = focusKey ? active.getAttribute(focusKey) : null;
     root.dataset.collapsed = String(state.collapsed);
-    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b></b> unread / <b class="eiw-inbox-total"></b><span class="eiw-count-source"></span></span><button class="eiw-iconbtn eiw-refresh" data-action="scan" title="Full refresh of the current inbox view" aria-label="Full refresh of the current inbox view"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1"/><path d="M13.5 2v4h-4"/></svg></button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${panelHTML()}</div></div>`);
+    setMarkup(root, `<div class="eiw-shell"><div class="eiw-top"><span class="eiw-title">Widgets</span><span class="eiw-summary"><b></b> unread<span class="eiw-summary-total"> / <b class="eiw-inbox-total"></b><span class="eiw-count-source"></span></span></span><button class="eiw-iconbtn eiw-refresh" data-action="scan" title="Full refresh of the current inbox view" aria-label="Full refresh of the current inbox view"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1"/><path d="M13.5 2v4h-4"/></svg></button><button class="eiw-iconbtn eiw-collapse" data-action="collapse" aria-expanded="${!state.collapsed}" aria-label="${state.collapsed ? 'Open' : 'Close'} Widgets"></button></div><div class="eiw-tabs" role="tablist">${[['timeline','Unread'],['schedule','Schedule'],['focus','Focus'],['todo','To-do']].map(([id,label]) => `<button class="eiw-tab" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${label}</button>`).join('')}</div><div class="eiw-panel" role="tabpanel">${state.collapsed ? '' : panelHTML()}</div></div>`);
     for (const [selector, top] of scrolls) { const el = root.querySelector(selector); if (el) el.scrollTop = top; }
     if (focusKey) [...root.querySelectorAll(`[${focusKey}]`)].find(el => el.getAttribute(focusKey) === focusValue)?.focus({ preventScroll: true });
     updateSummary();
@@ -732,9 +733,8 @@
       observedScroller = scroller;
       scroller?.addEventListener('scroll', onListScroll, { passive: true });
     }
-    // A collapsed widget still tracks visible message changes. This keeps the compact unread
-    // total live when My Day temporarily removes Outlook's folder tree from the DOM.
-    const messagesChanged = scrape && !scanning ? scrapeMessages() : false;
+    // Collapsed mode reads only the sidebar totals; leave the conversation cache alone.
+    const messagesChanged = scrape && !state.collapsed && !scanning ? scrapeMessages() : false;
     const scheduleChanged = scrape && !state.collapsed && state.tab === 'schedule' ? scrapeMyDay() : false;
     // Counts update in place even while an editor or drag defers panel replacement.
     updateSummary();
@@ -855,14 +855,15 @@
     const summary = root?.querySelector('.eiw-summary');
     if (!summary) return;
     const folderCounts = inboxFolderCounts();
-    const snapshot = { total: items.size, unread: [...items.values()].filter(x => x.unread).length };
+    // The sidebar is authoritative. In collapsed mode, never walk the message cache.
+    const snapshot = state.collapsed ? null : { total: items.size, unread: [...items.values()].filter(x => x.unread).length };
     let counts = folderCounts;
     let sourceMode = 'folder';
     if (folderCounts) {
       lastInboxCounts = { ...folderCounts };
       countCacheSnapshot = snapshot;
     } else if (lastInboxCounts) {
-      if (countCacheSnapshot) {
+      if (snapshot && countCacheSnapshot) {
         const total = Math.max(0, lastInboxCounts.total + snapshot.total - countCacheSnapshot.total);
         const unread = Math.max(0, Math.min(total, lastInboxCounts.unread + snapshot.unread - countCacheSnapshot.unread));
         lastInboxCounts = { total, unread };
@@ -871,22 +872,34 @@
       counts = lastInboxCounts;
       sourceMode = 'tracked';
     } else {
-      counts = snapshot;
+      counts = snapshot || { unread: null, total: null };
       countCacheSnapshot = snapshot;
       sourceMode = 'cache';
     }
     const { unread, total } = counts;
     const values = summary.querySelectorAll('b');
-    if (values[0] && values[0].textContent !== String(unread)) values[0].textContent = String(unread);
+    const unreadLabel = unread === null ? '—' : String(unread);
+    if (values[0] && values[0].textContent !== unreadLabel) values[0].textContent = unreadLabel;
+    const totalGroup = summary.querySelector('.eiw-summary-total');
+    const hideTotal = state.collapsed && !folderCounts;
+    if (totalGroup && totalGroup.hidden !== hideTotal) totalGroup.hidden = hideTotal;
     if (values[1] && values[1].textContent !== String(total)) values[1].textContent = String(total);
     const source = summary.querySelector('.eiw-count-source');
     const sourceLabel = ' conversations';
     if (source && source.textContent !== sourceLabel) source.textContent = sourceLabel;
-    const countLabel = sourceMode === 'folder' ? 'Live counts from the Inbox folder' : sourceMode === 'tracked'
+    const countLabel = state.collapsed && !folderCounts ? 'Inbox sidebar unavailable; unread count is the last confirmed value' : sourceMode === 'folder' ? 'Live counts from the Inbox folder' : sourceMode === 'tracked'
       ? 'Last confirmed Inbox totals, updated from visible changes while Outlook hides folder totals'
       : 'Folder totals unavailable; counts cover cached conversations only';
-    const label = `${countLabel}. ${scanning ? `Scanning current view: ${scanProgress}%` : 'Visible conversations update automatically; full refresh reconciles off-screen changes in the current view'}`;
+    const label = state.collapsed ? countLabel : `${countLabel}. ${scanning ? `Scanning current view: ${scanProgress}%` : 'Visible conversations update automatically; full refresh reconciles off-screen changes in the current view'}`;
     if (summary.title !== label) summary.title = label;
+  }
+
+  function scheduleSummary() {
+    if (summaryTimer || document.hidden || !widgetContext()) return;
+    summaryTimer = setTimeout(() => {
+      summaryTimer = 0;
+      if (!document.hidden && widgetContext()) updateSummary();
+    }, 120);
   }
 
   function advanceFocus(now = Date.now()) {
@@ -1024,7 +1037,8 @@
       if (target.closest('[data-app-section="MessageList"], [data-app-section="DrawerPane"], #OwaTitleBar, #owa-me-control-container') ||
           [...mutation.addedNodes].some(node => outsideWidget(node) && (node.matches('[data-app-section="MessageList"], #OwaTitleBar') || node.querySelector('[data-app-section="MessageList"], #OwaTitleBar')))) relevant = true;
     }
-    if (folderCountChanged) updateSummary();
+    // Sidebar mutations take the count-only path, including while the widget is collapsed.
+    if (folderCountChanged) scheduleSummary();
     if (relevant) scheduleRender();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true,

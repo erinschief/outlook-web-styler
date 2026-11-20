@@ -20,7 +20,7 @@ Repeat those steps once on each browser or device where you use Outlook.
 2. Choose **Install** on Tampermonkey's installation screen.
 3. Reload the personal Outlook inbox.
 
-The header follows Outlook's lightweight Inbox-folder totals whether expanded or collapsed. Message arrivals, read/unread changes, category edits, and scrolling automatically update the visible conversation cache in short batches without moving the inbox. A five-second fallback checks visible data when Outlook misses a mutation. Background updates pause in hidden tabs; returning to the tab refreshes visible data. Counts update in place even while you edit or drag.
+The header observes Outlook's lightweight Inbox-folder totals whether expanded or collapsed, batching sidebar changes into count-only updates. Collapsed widgets do not scrape messages, walk the conversation cache, or render hidden panels. Both counts remain live while Outlook exposes the Inbox folder title; if the sidebar is unavailable, the collapsed toolbar retains the last confirmed unread count and hides the conversation total. Message arrivals, read/unread changes, category edits, and scrolling automatically update the visible conversation cache in short batches without moving the inbox. A five-second fallback checks visible data while expanded when Outlook misses a mutation. Background updates pause in hidden tabs; returning to the tab refreshes visible data. Counts update in place even while you edit or drag.
 
 The Unread timeline and To-do cards are conversation snapshots, not whole-mailbox message totals. Outlook virtualizes off-screen rows, so archived/deleted conversations and off-screen changes can remain in the snapshot until a full refresh. Native filters and Focused/Other views also limit what rows are available. The header uses the concise label **conversations**; its tooltip explains whether the number comes from the Inbox folder, a last-confirmed total, or the local snapshot. Folder-title parsing currently supports English Inbox labels.
 
@@ -94,6 +94,7 @@ Open the printed local file URL in Chromium; it displays its own pass/fail resul
 ## Releases
 
 - **Styler 0.73:** finds the Promotions subject tag without relying on Outlook's generated label class and updates it immediately when virtualized inbox rows are recycled.
+- **Widgets 0.4.16:** keeps collapsed toolbar counts current from sidebar mutations without refreshing widget content; hides the collapsed conversation total when sidebar totals are unavailable.
 - **Widgets 0.4.15:** restores the concise empty-state message, “No unread emails, woo!”
 - **Widgets 0.4.14:** recognizes Outlook's zero-unread Inbox label when it omits the `(0 unread)` suffix, so the live header reaches zero without requiring a full refresh.
 - **Widgets 0.4.13:** gives the oldest-conversation date the same ten-pixel clearance above the timeline's vertical endpoint cap as the angled relative-date labels at every width.

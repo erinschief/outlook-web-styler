@@ -99,7 +99,7 @@
   });
   await test('Folder counts remain live expanded, while editing, and collapsed', async () => {
     const folder=document.createElement('div');folder.setAttribute('role','treeitem');folder.title='Inbox - 20 items (7 unread)';folder.setAttribute('aria-selected','true');document.getElementById('fixture').appendChild(folder);
-    await wait(50);
+    await wait(200);
     const count=()=>w.root.querySelector('.eiw-summary b').textContent;
     assert(count()==='7','Expanded header used cached conversation count');
     w.state.tab='todo';w.state.todo='waiting';w.render();
@@ -107,14 +107,17 @@
     folder.title='Inbox - 20 items (6 unread)';await wait(200);
     assert(count()==='6' && title.isConnected && title.textContent==='Unsaved live edit','Count update interrupted editing');
     title.blur();await wait(20);
-    w.root.querySelector('[data-action="collapse"]').click();folder.title='Inbox - 20 items (5 unread)';await wait(50);
+    w.root.querySelector('[data-action="collapse"]').click();folder.title='Inbox - 20 items (5 unread)';await wait(200);
     assert(count()==='5','Collapsed count stopped updating');
     w.root.querySelector('[data-action="collapse"]').click();assert(count()==='5','Expanding changed count source');
-    w.state.todo='self';w.state.tab='timeline';w.render();folder.remove();await wait(50);
+    w.state.todo='self';w.state.tab='timeline';w.render();folder.remove();await wait(200);
     assert(count()==='5' && w.root.querySelector('.eiw-summary').title.includes('Last confirmed'),'Lost the Inbox baseline when My Day hid folder totals');
     w.root.querySelector('[data-action="collapse"]').click();
     const live=document.querySelector('[data-convid="live"]');live.setAttribute('aria-label','Unread');await wait(200);
-    assert(count()==='6','Collapsed tracked count missed a visible unread change');
+    assert(count()==='5','Collapsed mode changed the last confirmed sidebar count');
+    assert(!w.cache.get('live').unread,'Collapsed mode scraped message rows');
+    assert(w.root.querySelector('.eiw-summary-total').hidden,'Collapsed mode showed an unavailable total');
+    assert(!w.root.querySelector('.eiw-panel').hasChildNodes(),'Collapsed mode rendered a hidden panel');
     live.setAttribute('aria-label','Read');await wait(200);assert(count()==='5','Tracked count did not restore after marking read');
     w.root.querySelector('[data-action="collapse"]').click();
     folder.title='Inbox - 20 items (1 unread)';folder.setAttribute('aria-selected','true');document.getElementById('fixture').appendChild(folder);

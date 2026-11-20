@@ -28,6 +28,27 @@ test('Header follows folder counts, retains their baseline when hidden, and avoi
   cache.set('b',{unread:true});c.updateSummary();assert.deepEqual(values.map(x=>x.value),['2','20']);
 });
 
+test('Collapsed counts use sidebar data without reading the conversation cache', () => {
+  let folder={unread:10,total:204};
+  const values=[{textContent:''},{textContent:''}], totalGroup={hidden:false}, source={textContent:''};
+  const summary={querySelectorAll:()=>values,querySelector:selector=>selector==='.eiw-summary-total'?totalGroup:source};
+  const cache={get size(){throw Error('Read cache size while collapsed')},values(){throw Error('Walked cache while collapsed')}};
+  const c=load({root:{querySelector:()=>summary},state:{collapsed:true},cache,inboxFolderCounts:()=>folder,scanning:false,lastInboxCounts:null,countCacheSnapshot:null},'  function updateSummary(','  function advanceFocus(');
+  c.updateSummary();assert.deepEqual(values.map(x=>x.textContent),['10','204']);assert.equal(totalGroup.hidden,false);
+  folder={unread:0,total:203};c.updateSummary();assert.deepEqual(values.map(x=>x.textContent),['0','203']);
+  folder=null;c.updateSummary();assert.equal(values[0].textContent,'0');assert.equal(totalGroup.hidden,true);
+  folder={unread:2,total:205};c.updateSummary();assert.equal(values[0].textContent,'2');assert.equal(totalGroup.hidden,false);
+  folder=null;c.lastInboxCounts=null;c.updateSummary();assert.equal(values[0].textContent,'—');
+});
+
+test('Sidebar mutation bursts queue one count-only update and pause in hidden tabs', () => {
+  let callback,queued=0,updates=0,context=true;
+  const c=load({summaryTimer:0,document:{hidden:false},widgetContext:()=>context,setTimeout:fn=>{queued++;callback=fn;return 1},updateSummary:()=>updates++},'  function scheduleSummary()','  function advanceFocus(');
+  for(let i=0;i<100;i++)c.scheduleSummary();assert.equal(queued,1);callback();assert.equal(updates,1);
+  c.document.hidden=true;c.scheduleSummary();assert.equal(queued,1);
+  c.document.hidden=false;c.scheduleSummary();context=false;callback();assert.equal(updates,1);
+});
+
 test('Inbox selection prevents a shared mailbox or Favorites duplicate from choosing wrong counts', () => {
   let folders=[];
   const folder=(title,selected=false)=>({getAttribute:key=>key==='title'?title:selected?'true':'false'});
