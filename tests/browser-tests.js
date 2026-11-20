@@ -101,7 +101,8 @@
     const folder=document.createElement('div');folder.setAttribute('role','treeitem');folder.title='Inbox - 20 items (7 unread)';folder.setAttribute('aria-selected','true');document.getElementById('fixture').appendChild(folder);
     await wait(200);
     const count=()=>w.root.querySelector('.eiw-summary b').textContent;
-    assert(count()==='7','Expanded header used cached conversation count');
+    assert(count()==='7','Expanded unread count missed sidebar data');
+    assert(w.root.querySelector('.eiw-inbox-total').textContent===String(w.cache.size),'Conversation total used folder message count');
     w.state.tab='todo';w.state.todo='waiting';w.render();
     const title=w.root.querySelector('[data-edit-title]');title.focus();title.textContent='Unsaved live edit';
     folder.title='Inbox - 20 items (6 unread)';await wait(200);
@@ -109,6 +110,7 @@
     title.blur();await wait(20);
     w.root.querySelector('[data-action="collapse"]').click();folder.title='Inbox - 20 items (5 unread)';await wait(200);
     assert(count()==='5','Collapsed count stopped updating');
+    assert(w.root.querySelector('.eiw-summary-total').hidden,'Collapsed toolbar showed a conversation total');
     w.root.querySelector('[data-action="collapse"]').click();assert(count()==='5','Expanding changed count source');
     w.state.todo='self';w.state.tab='timeline';w.render();folder.remove();await wait(200);
     assert(count()==='5' && w.root.querySelector('.eiw-summary').title.includes('Last confirmed'),'Lost the Inbox baseline when My Day hid folder totals');

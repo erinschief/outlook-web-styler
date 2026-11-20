@@ -18,14 +18,28 @@ test('Header follows folder counts, retains their baseline when hidden, and avoi
   const summary={querySelectorAll:()=>values,querySelector:()=>label};
   const cache=new Map([['a',{unread:true}]]);
   const c=load({root:{querySelector:()=>summary},state:{collapsed:false},cache,inboxFolderCounts:()=>folder,scanning:false,lastInboxCounts:null,countCacheSnapshot:null},'  function updateSummary(','  function advanceFocus(');
-  c.updateSummary();assert.deepEqual(values.map(x=>x.value),['7','20']);assert.equal(label.value,' conversations');
+  c.updateSummary();assert.deepEqual(values.map(x=>x.value),['7','1']);assert.equal(label.value,' conversations');
   const before=writes;c.updateSummary();assert.equal(writes,before);
   c.state.collapsed=true;c.updateSummary();assert.equal(values[0].value,'7');
   cache.get('a').unread=false;folder={unread:0,total:19};c.updateSummary();assert.equal(values[0].value,'0');
   c.state.collapsed=false;folder=null;c.updateSummary();assert.equal(values[0].value,'0');
   assert.equal(label.value,' conversations');assert.match(summary.title,/Last confirmed/);
   cache.get('a').unread=true;c.updateSummary();assert.equal(values[0].value,'1');
-  cache.set('b',{unread:true});c.updateSummary();assert.deepEqual(values.map(x=>x.value),['2','20']);
+  cache.set('b',{unread:true});c.updateSummary();assert.deepEqual(values.map(x=>x.value),['2','2']);
+});
+
+test('Conversation total uses unique conversation IDs instead of sidebar message totals', () => {
+  let folder={unread:10,total:204};
+  const values=[{textContent:''},{textContent:''}], totalGroup={hidden:false}, source={textContent:''};
+  const summary={querySelectorAll:()=>values,querySelector:selector=>selector==='.eiw-summary-total'?totalGroup:source};
+  const cache=new Map(Array.from({length:59},(_,i)=>[String(i),{unread:i<10}]));
+  const c=load({root:{querySelector:()=>summary},state:{collapsed:false},cache,inboxFolderCounts:()=>folder,scanning:false,lastInboxCounts:null,countCacheSnapshot:null},'  function updateSummary(','  function advanceFocus(');
+  c.updateSummary();assert.deepEqual(values.map(x=>x.textContent),['10','59']);
+  folder={unread:11,total:209};c.updateSummary();assert.equal(values[1].textContent,'59');
+  folder=null;cache.set('new',{unread:true});c.updateSummary();assert.equal(values[1].textContent,'60');
+  cache.delete('0');c.updateSummary();assert.equal(values[1].textContent,'59');
+  c.state.collapsed=true;c.updateSummary();assert.equal(totalGroup.hidden,true);
+  c.state.collapsed=false;c.updateSummary();assert.equal(totalGroup.hidden,false);assert.equal(values[1].textContent,'59');
 });
 
 test('Collapsed counts use sidebar data without reading the conversation cache', () => {
@@ -34,10 +48,10 @@ test('Collapsed counts use sidebar data without reading the conversation cache',
   const summary={querySelectorAll:()=>values,querySelector:selector=>selector==='.eiw-summary-total'?totalGroup:source};
   const cache={get size(){throw Error('Read cache size while collapsed')},values(){throw Error('Walked cache while collapsed')}};
   const c=load({root:{querySelector:()=>summary},state:{collapsed:true},cache,inboxFolderCounts:()=>folder,scanning:false,lastInboxCounts:null,countCacheSnapshot:null},'  function updateSummary(','  function advanceFocus(');
-  c.updateSummary();assert.deepEqual(values.map(x=>x.textContent),['10','204']);assert.equal(totalGroup.hidden,false);
-  folder={unread:0,total:203};c.updateSummary();assert.deepEqual(values.map(x=>x.textContent),['0','203']);
+  c.updateSummary();assert.deepEqual(values.map(x=>x.textContent),['10','']);assert.equal(totalGroup.hidden,true);
+  folder={unread:0,total:203};c.updateSummary();assert.deepEqual(values.map(x=>x.textContent),['0','']);
   folder=null;c.updateSummary();assert.equal(values[0].textContent,'0');assert.equal(totalGroup.hidden,true);
-  folder={unread:2,total:205};c.updateSummary();assert.equal(values[0].textContent,'2');assert.equal(totalGroup.hidden,false);
+  folder={unread:2,total:205};c.updateSummary();assert.equal(values[0].textContent,'2');assert.equal(totalGroup.hidden,true);
   folder=null;c.lastInboxCounts=null;c.updateSummary();assert.equal(values[0].textContent,'—');
 });
 
